@@ -1,0 +1,3 @@
+## Setup
+
+`Width Ratio`, `Height Ratio`, and `Fit Type` are used to size objects according to the parent dimensions. For example, if Width and Height Ratio are set to 50 and Fit Type is set to min, the object will be scaled to 50% of the smaller of the parent’s `baseWidth` and `baseHeight` properties. If max is selected, it will scale according to the larger dimension. Finally, if Stretch is selected, it will stretch to the Width Ratio and Height Ratio values regardless of the min or max settings.
