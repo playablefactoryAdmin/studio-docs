@@ -13,6 +13,21 @@
   border-radius: 5px;
   font-weight: bold;
 }
+.warning-message {
+  border: 2px solid #ec9704;
+  background-color: #f5ce8a;
+  color:#ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.warning-badge {
+  background-color: #ec9704;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 
 .center-image {
     text-align: center;

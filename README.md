@@ -16,3 +16,5 @@ Welcome! This documentation provides informations about the studio and template.
     - [3D](3d.md)
     - [Assets](assets.md)
         - [How to use an image asset?](useimage.md)
+    - [Lights](lights.md)
+        - [Shadow](3d/shadow.md)
