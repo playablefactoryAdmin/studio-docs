@@ -13,13 +13,13 @@ First you need to create a gitlab account if you don't already have one.
 
 Open powershell(windows) or terminal(mac). Type:
 
-```js
+```bash
 cd .ssh
 ```
 
 If you don't currently have ssh this will return an error, that means you need to create ssh first. Type
 
-```js
+```bash
 ssh-keygen
 ```
 
@@ -27,7 +27,7 @@ Press enter for all the questions. This will generate ssh files. Now type cd .ss
 
 In the .ssh folder type
 
-```js
+```bash
 cat id_rsa.pub
 ```
 
@@ -48,7 +48,7 @@ Copy the generated token, we will use this when logging in to studio.
 
 There is one last thing you need to do about gitlab. You need to clone a repesitory to give access to gitlab servers. Clone this repesitory to some folder:
 
-```js
+```bash
 git clone git@gitlab.com:playablefactory/playables/templates/studio-template.git
 ```
 
