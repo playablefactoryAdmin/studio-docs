@@ -1,34 +1,44 @@
 .important-message {
-  border: 2px solid #ff0000;
-  background-color: #fff4f4;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px 0;
+	border: 2px solid #ff0000;
+	background-color: #fff4f4;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 10px 0;
 }
 
 .danger-badge {
-  background-color: #ff0000;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
+	background-color: #ff0000;
+	color: #ffffff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-weight: bold;
 }
 .warning-message {
-  border: 2px solid #ec9704;
-  background-color: #f5ce8a;
-  color:#ffffff;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px 0;
+	border: 2px solid #ec9704;
+	background-color: #f5ce8a;
+	color: #ffffff;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 10px 0;
 }
 .warning-badge {
-  background-color: #ec9704;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
+	background-color: #ec9704;
+	color: #ffffff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-weight: bold;
 }
 
 .center-image {
-    text-align: center;
+	text-align: center;
+}
+
+/* HOVER BOX */
+.hover-box {
+	position: absolute;
+	width: 200px;
+	height: 100px;
+	background: #ffffff;
+	border: 1px solid #000000;
+	border-radius: 8px;
 }
