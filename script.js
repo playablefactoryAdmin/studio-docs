@@ -1,9 +1,6 @@
-console.log("script.js loaded");
 function init() {
-	console.log("init called");
 	const hoverBoxes = document.querySelectorAll(".hover-box");
 	const hoverTitles = document.querySelectorAll(".hover-box .title");
-	console.log(hoverTitles);
 	hoverTitles.forEach((title) => {
 		title.addEventListener("mouseover", () => {
 			hoverBoxes.forEach((hoverBox) => {
