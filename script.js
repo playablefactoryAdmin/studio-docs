@@ -31,4 +31,6 @@ function init() {
 	resize();
 }
 
-window.addEventListener("load", init);
+window.addEventListener("load", function () {
+	setTimeout(init, 1000);
+});
