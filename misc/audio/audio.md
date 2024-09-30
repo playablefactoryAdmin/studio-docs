@@ -1,6 +1,6 @@
 ## Audio
 
-Assets kısmında audio iconuna tıklayarak audio tab'ine ulaşıyoruz.
+Click the audio icon in the assets section to access audio tab.
 
 <div style="position:relative">
     <img src="./img/audio.png" alt="Gitlab Access Token"/>
@@ -58,5 +58,27 @@ Assets kısmında audio iconuna tıklayarak audio tab'ine ulaşıyoruz.
             This button will generate an item in data.js with the submitted ID and name. If an item with the same ID already exists, it will be overridden.
         </div>
     </div>
-
 </div>
+
+<div class="important-message">
+    <span class="danger-badge">Important</span>
+    <p>Studio automatically imports all of the audio assets in the project. Delete all the unused audios to prevent unnecessary file size!<p>
+</div>
+
+
+<div class="warning-message">
+    <span class="warning-badge">Background Music</span>
+    <p>To use a music as background music name it one of the followings: bgMusic, music, bgm, backgroundMusic. Studio will automatically treat this audio as the background music.<p>
+</div>
+
+
+
+## Usage
+
+To play an imported sound use:
+
+```js
+    // enter the name of the sound without the extension
+	AudioManager.playSound("soundName");
+```
+This will play the audio whether it is an audiosprite or normal sound. It will find the audio with the name, if there is multiple audios with the same name it can lead to unwanted results.
