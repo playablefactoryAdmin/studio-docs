@@ -75,6 +75,8 @@ Click the audio icon in the assets section to access audio tab.
 
 ## Usage
 
+In vars.js file set <b>enableAudio: true</b> (in future versions this will be set as true in default).
+
 To play an imported sound use:
 
 ```js
