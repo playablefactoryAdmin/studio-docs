@@ -15,12 +15,19 @@ variable = val;
 Özünde [Jsdoc](https://jsdoc.app/) kısmının düzgün çalışması için syntax bu şekilde, olay bir tane daha @ koymak ve val sonrası ; eklemek.
 
 `{className}` kısmına yazılabilen temel desteklenen tipler,
+
 `Number`
+
 `Vector2`
+
 `Vector3`
+
 `Boolean`
+
 `Color`
+
 `Class`
+
 Bunlar tipine göre editörde farklı görünecek.
 
 `{className}` kısmına herhangi bir script ya da class adını da yazabilirsiniz, intellisense çıkması için tepeye importlamayı unutmayın. Importlamanız editörde göstermeyle bağlantılı değil, jsdoc -özetle- intellisense için.
