@@ -5,6 +5,7 @@
         - [Objects](2d/objects.md)
             - [Sprite](2d/objects/sprite.md)
         - [Components](2d/components.md)
+            - [Node2D](2d/components/node2d.md)        
             - [Responsive2D](2d/components/responsive2d.md)        
             - [TransitionFX](2d/components/transitionFX.md)        
     - [3D](3d.md)

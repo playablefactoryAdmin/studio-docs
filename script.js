@@ -3,6 +3,7 @@ function init() {
 	const hoverTitles = document.querySelectorAll(".hover-box .title");
 	hoverTitles.forEach((title) => {
 		title.addEventListener("mouseover", () => {
+			console.log(hoverBoxes);
 			hoverBoxes.forEach((hoverBox) => {
 				hoverBox.style.zIndex = 0;
 			});
