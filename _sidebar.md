@@ -8,6 +8,7 @@
             - [Node2D](2d/components/node2d.md)        
             - [Responsive2D](2d/components/responsive2d.md)        
             - [TransitionFX](2d/components/transitionfx.md)        
+            - [Sprite](2d/components/sprite.md)        
     - [3D](3d.md)
         - [Lights](lights.md)
             - [Shadow](3d/shadow.md)
