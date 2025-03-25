@@ -12,7 +12,7 @@ Welcome! This documentation provides informations about the studio and template.
             - [Sprite](2d/objects/sprite.md)
         - [Components](2d/components.md)
             - [Responsive2D](2d/components/responsive2d.md)        
-            - [TransitionFX](2d/components/transitionFX.md)        
+            - [TransitionFX](2d/components/transitionfx.md)        
     - [3D](3d.md)
         - [Lights](lights.md)
             - [Shadow](3d/shadow.md)
