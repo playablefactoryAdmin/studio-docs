@@ -148,6 +148,10 @@ Be sure to put this line at the very beginnings of the processResults function.
 
 Adds dynamic resizing to the object. Check the check box add some id and click the update data.js file. This will generate the necessary fields in the data.js. This will override the responsive component if it is added to the object.
 
+###### Dynamic Offset
+
+It works similarly to the dynamic resize feature. Similarly, we can assign an ID and add it to data.js. The difference is that it runs after the existing resizes (normal and dynamic resize) and is used to apply an offset to the final position and adjust the scale by multiplying it.
+
 ###### Market Redirection
 
 When enabled clicking this object will redirect the user to the market.
