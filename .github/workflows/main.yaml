@@ -71,8 +71,8 @@ jobs:
       - name: Build 
         run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
 
-      - name: Postbuild 
-        run: ${{ steps.detect-package-manager.outputs.runner }} npm run postbuild
+      # - name: Postbuild 
+      #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run postbuild
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
