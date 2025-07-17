@@ -9,7 +9,7 @@ export function ScriptHeader({
 }) {
     return (
         <div className="flex flex-col gap-2 pb-2 pt-1 ">
-            <h1 className="text-4xl font-bold">{title}</h1>
+            <h1 className="text-4xl font-bold" id={title}>{title}</h1>
             <div className="flex flex-row gap-2 items-end -mt-2 brightness-100">
                 {extendsClass && (
                     <div className="flex flex-row gap-2">

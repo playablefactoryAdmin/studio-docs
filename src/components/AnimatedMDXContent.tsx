@@ -37,8 +37,8 @@ export default function AnimatedMDXContent({ children }) {
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 0.6,
-                        stagger: 0.1,
+                        duration: 0.4,
+                        stagger: 0.07,
                         delay: 0.0,
                         ease: "power3.out",
                     }

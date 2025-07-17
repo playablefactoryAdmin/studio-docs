@@ -217,3 +217,37 @@
 .x\:leading-7 {
   line-height: normal !important;
 }
+
+.hidden-heading {
+  font-size: 0.1px;       /* Tiny font size */
+  line-height: 1;         /* minimal line height */
+  color: transparent;     /* text invisible */
+  pointer-events: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+@theme {
+  --color-studio-50: "#f0f9ff", // Sky 50
+  --color-studio-100: "#e0f2fe", // Sky 100
+  --color-studio-200: "#bae6fd", // Sky 200
+  --color-studio-300: "#7dd3fc", // Sky 300
+  --color-studio-400: "#38bdf8", // Sky 400
+  --color-studio-500: "#0ea5e9", // Sky 500
+  --color-studio-600: "#0284c7", // Sky 600
+  --color-studio-700: "#0369a1", // Sky 700
+  --color-studio-800: "#075985", // Sky 800
+  --color-studio-900: "#0c4a6e", // Sky 900
+  
+  --color-special-50: "#B392F0",
+  --color-special-100: "#A78BFA",
+  --color-special-200: "#9C88FF",
+  --color-special-300: "#8B7CF6",
+  --color-special-400: "#7C6AE7",
+  --color-special-500: "#6D4FD8",
+  --color-special-600: "#5B3AC9",
+  --color-special-700: "#4A2BA4",
+  --color-special-800: "#3A1F7F",
+  --color-special-900: "#2A155A",
+}
