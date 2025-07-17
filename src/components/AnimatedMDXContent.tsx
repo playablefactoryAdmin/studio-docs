@@ -19,7 +19,7 @@ export default function AnimatedMDXContent({ children }) {
             // Skip the first element and animate the rest
             const elementsToAnimate = children.slice(1);
 
-            gsap.fromTo(children[0],
+            gsap.fromTo(children[0] as any,
                 { opacity: 0, x: -15 },
                 {
                     opacity: 1,
