@@ -1,0 +1,283 @@
+import ScriptHeader from "@components/ScriptsHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import InnerHeader from "@components/InnerHeader";
+
+<ScriptHeader
+    title="Container"
+    extendsClass="PIXI.Container"
+    extendsClassLink="https://pixijs.download/release/docs/scene.Container.html"
+    implementsClass="StudioObject2D"
+    implementsClassLink="/studio-docs/2d/objects/studio-object-2d"
+/>
+
+Create a `Container` in **Studio** by right clicking on the hierarchy and selecting `Add Node` -> `Core` -> `Container`.
+
+Studio automatically generates a container instance for you, based on the `PIXI.Container` class. 
+This instance includes all the core functionality of `PIXI.Container`, along with additional extensions designed to enhance usability.
+
+## Prototype Extensions
+
+### Properties
+
+<UserTable data={
+    [
+        {name: "id", desc: "Unique id given to this object."},
+        {name: "type", desc: "Type of the object. For example, sprite."},
+        {name: "baseWidth", desc: "Base width of the container. Unlike regular PixiJS, you can define the base width of the container."},
+        {name: "baseHeight", desc: "Base height of the container. Unlike regular PixiJS, you can define the base height of the container."},
+        {name: "body", desc: <HereLinkedText text="Physics body of the object if it has one. For more information, check physics" href="physics.mdx" />},
+        {name: "isScene", desc: "Returns true if the container is a scene object. Scenes are special container objects."},
+        {name: "parentScene", desc: "Returns the scene this object is in."},
+        {name: "isStudioObject", desc: "Returns if the object was created in Studio."},    
+        {name: "scaleX", desc: "Scale of the object on the x axis."},    
+        {name: "scaleY", desc: "Scale of the object on the y axis."},    
+        {name: "originX", desc: "Origin of the object on the x axis."},    
+        {name: "originY", desc: "Origin of the object on the y axis."},    
+        {name: "skewX", desc: "Skew of the object on the x axis."},    
+        {name: "skewY", desc: "Skew of the object on the y axis."},    
+    ]
+} />
+
+
+### Methods
+
+<UserTable data={
+    [
+        {name: "onResizeCallback", desc: "Callback on resize. You can override this to add your own logic.", href: "onresizecallback"},
+        {name: "onResize", desc: "Gets called after resize.", href: "onresize"},
+        {name: "preResize", desc: "Gets called before resize internally.", href: "preresize"},
+        {name: "clone", desc: "Clones the container.", href: "clone"},
+        {name: "playTransitionFX", desc: <HereLinkedText text="Play the given transitionFX. For more information, check transitionFX component" href="transitionfx.mdx" />, href: "playtransitionfx"},
+        {name: "updateResponsive2D", desc: "Updates the responsive2D component.", href: "updateresponsive2d", href: "updateresponsive2d"},
+        {name: "getChildByLabelRecursive", desc: "Gets child by label recursively.", href: "getchildbylabelrecursive"},
+        {name: "getObjectByName", desc: "Gets object by name.", href: "getobjectbyname", href: "getobjectbyname"},    
+        {name: "traverse", desc: "Tree traverse the children of the container.", href: "traverse", href: "traverse"},    
+        {name: "forceResize", desc: "Force resize the object. Calls the resize function of the Responsive2D component.", href: "forceresize", href: "forceresize"},    
+    ]
+} />
+
+
+#### onResizeCallback
+```ts
+onResizeCallback(w: number, h: number)
+```
+
+Gets called when the screen is resized. 
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "w", desc: "Width of the screen."},
+        {name: "h", desc: "Height of the screen."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.onResizeCallback = (w, h) => {
+    console.log("Screen resized to", w, "x", h);
+}
+```
+
+#### onResize
+```ts
+onResize(w: number, h: number)
+```
+
+Gets called after resize logic is done. 
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "w", desc: "Width of the screen."},
+        {name: "h", desc: "Height of the screen."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.onResize = (w, h) => {
+    console.log("Resize logic is done.");
+}
+```
+
+
+#### preResize
+```ts
+preResize(w: number, h: number)
+```
+
+Gets called before resize logic is done. 
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "w", desc: "Width of the screen."},
+        {name: "h", desc: "Height of the screen."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.preResize = (w, h) => {
+    console.log("Resize logic is done.");
+}
+```
+
+#### clone
+```ts
+clone()
+```
+Clones the container.
+
+<InnerHeader title="Example Usage"/>
+
+```js
+const clonedContainer = this.node.clone();
+```
+
+#### playTransitionFX
+```ts
+playTransitionFX(name: string)
+```
+
+Plays a transition effect on the container, based on information specified in the TransitionFX component inside Studio.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "name", desc: "TransitionFX name, specified in the TransitionFX component inside Studio."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.playTransitionFX("fadeIn");
+```
+
+
+#### updateResponsive2D
+```ts
+updateResponsive2D(index?: number, direction?: string, data?: any, animated?: boolean)
+```
+
+Changes and updates the responsive2D component data.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "index", desc: "Responsive2D index."},
+        {name: "direction", desc: "Portait or landscape. Defaults to portrait."},
+        {name: "data", desc: "Responsive2D data. An example with all the possible values is shown in the example usage section."},
+        {name: "animated", desc: "Determines whether the responsive2D is updated with animation. Defaults to false."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.updateResponsive2D(
+    0, 
+    "portrait", 
+    { 
+		fitType: "min"; //min, max, stretch
+		width: 25;
+		height: 25;
+		origin: "top"; //top-left, top, top-right, left, center, right, bottom-left, bottom, bottom-right
+		horizontalSpace: 10;
+		horizontalSpaceUnit: "self"; // %, px, self
+		verticalSpace: 10;
+		verticalSpaceUnit: "self";
+		enabled: true;
+    }, 
+    false
+);
+```
+
+#### getChildByLabelRecursive
+```ts
+getChildByLabelRecursive(name: string)
+```
+
+Gets a child object by label recursively.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "name", desc: "Label of the object to get."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+const targetObject = this.node.getChildByLabelRecursive("picture");
+```
+
+#### getObjectByName
+```ts
+getObjectByName(name: string)
+```
+
+Gets a child object by name.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "name", desc: "Name of the object to get."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+const targetObject = this.node.getObjectByName("picture");
+```
+
+
+#### traverse
+```ts
+traverse(callback: void)
+```
+Traverses the children of the container and calls the callback function for each child.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "callback", desc: "Function to call for each child."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.traverse((child: any)=>{
+    child.visible = false;
+});
+```
+
+#### forceResize
+```ts
+forceResize()
+```
+Call resize function without a screen size change.
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.forceResize();
+```
+

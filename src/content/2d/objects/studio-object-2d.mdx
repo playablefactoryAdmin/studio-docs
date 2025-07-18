@@ -1,3 +1,59 @@
 ---
 sidebarTitle: StudioObject2D
 ---
+import ScriptHeader from "@components/ScriptsHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+
+<ScriptHeader
+    title="StudioObject2D"
+/>
+
+This is not a class, it's a type. StudioObject2D is defined as:
+```ts
+export type StudioObject2D = PixiObject2D & PIXI.Container;
+```
+It is important to note that additional functionality has been added to the `PIXI.Container` prototype. Further details can be found [here](container.mdx).
+
+### PixiObject2D
+
+```ts twoslash
+type Components2D = {}
+// ---cut---
+type PixiObject2D = {
+	id: string;
+	type: string;
+	label: string;
+	components: Components2D;
+	updateComponents: (components: any) => void;
+	getComponent: (component: string) => any;
+	selected: boolean;
+	locked: boolean;
+	componentsData?: any;
+	nodeData?: any;
+	isContainer?: boolean;
+	customUpdate?: (delta: number) => void;
+};
+```
+
+#### Properties
+<UserTable data={
+    [
+        {name: "id", desc: "Unique id given to this object."},
+        {name: "type", desc: "Type of the object. For example, sprite."},
+        {name: "label", desc: "Label of the object. When you rename an object in Studio, this gets updated."},
+        {name: "components", desc: <HereLinkedText text="Components of the object. You can find more about components" href="components.mdx" />},
+        {name: "updateComponents", desc: <HereLinkedText text="Updates the components of the object. You can find more about components" href="components.mdx" />},
+        {name: "getComponent", desc: <HereLinkedText text="Gets a component of the object. You can find more about components" href="components.mdx" />},
+        {name: "selected", desc: "Whether the object is selected in Studio."},
+        {name: "locked", desc: "Whether the object is locked in Studio."},
+        {name: "componentsData", desc: <HereLinkedText text="Data of the components of the object. You can find more about components" href="components.mdx" />},
+        {name: "nodeData", desc: "Data of the node of the object. It's basically a condensed data form of the object."},
+        {name: "isContainer", desc: "Whether the object is a container."},
+        {name: "customUpdate", desc: "This gets called internally every frame to update the object."},
+    ]
+} />
+
+### Further Information
+
+For more information about the `PIXI.Container` prototype extensions, you can find more about it [here](container.mdx#prototypeextensions).
