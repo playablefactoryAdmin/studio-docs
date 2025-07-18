@@ -9,8 +9,9 @@ import InnerHeader from "@components/InnerHeader";
     extendsClassLink="https://pixijs.download/release/docs/scene.Container.html"
     implementsClass="StudioObject2D"
     implementsClassLink="/studio-docs/2d/objects/studio-object-2d"
+    usesComponent="container component"
+    usesComponentLink="/studio-docs/2d/components/container"
 />
-
 Create a `Container` in **Studio** by right clicking on the hierarchy and selecting `Add Node` -> `Core` -> `Container`.
 
 Studio automatically generates a container instance for you, based on the `PIXI.Container` class. 
@@ -53,7 +54,12 @@ This instance includes all the core functionality of `PIXI.Container`, along wit
         {name: "getChildByLabelRecursive", desc: "Gets child by label recursively.", href: "getchildbylabelrecursive"},
         {name: "getObjectByName", desc: "Gets object by name.", href: "getobjectbyname", href: "getobjectbyname"},    
         {name: "traverse", desc: "Tree traverse the children of the container.", href: "traverse", href: "traverse"},    
-        {name: "forceResize", desc: "Force resize the object. Calls the resize function of the Responsive2D component.", href: "forceresize", href: "forceresize"},    
+        {name: "forceResize", desc: "Force resize the object. Calls the resize function of the Responsive2D component.", href: "forceresize"},    
+        {name: "setScale", desc: "Setter function for scale.", href: "setscale"},    
+        {name: "setSkew", desc: "Setter function for skew.", href: "setskew"},    
+        {name: "setOrigin", desc: "Setter function for origin.", href: "setorigin"},    
+        {name: "bringToTop", desc: "Moves the specified child to the top of the display list so that it renders above other siblings.", href: "bringtotop"},    
+        {name: "sendToBack", desc: "Moves the specified child to the bottom of the display list so that it renders below other siblings.", href: "sendtoback"},    
     ]
 } />
 
@@ -279,5 +285,114 @@ Call resize function without a screen size change.
 
 ```js
 this.node.forceResize();
+```
+
+#### setScale
+```ts
+setScale(x: number, y: number)
+```
+Sets the scale of the container.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "x", desc: "Scale in x axis."},
+        {name: "y", desc: "Scale in y axis."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.setScale(2, 2);
+//or you could just use
+this.node.setScale(2);
+```
+
+#### setSkew
+```ts
+setSkew(x: number, y: number)
+```
+Sets the skew of the container.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "x", desc: "Skew in x axis."},
+        {name: "y", desc: "Skew in y axis."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.setSkew(2, 2);
+//or you could just use
+this.node.setSkew(2);
+```
+
+#### setOrigin
+```ts
+setOrigin(x: number, y: number)
+```
+Sets the origin of the container.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "x", desc: "Origin in x axis."},
+        {name: "y", desc: "Origin in y axis."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+this.node.setOrigin(0.5, 0.5);
+//or you could just use
+this.node.setOrigin(0.5);
+```
+
+#### bringToTop
+```ts
+bringToTop(child: PIXI.Container)
+```
+Brings container to the top of the display list.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "child", desc: "Children to bring to the top."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+globals.pixiScene.bringToTop(this.node);
+```
+
+#### sendToBack
+```ts
+sendToBack(child: PIXI.Container)
+```
+Sends container to the bottom of the display list.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "child", desc: "Children to send to the back."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+globals.pixiScene.sendToBack(this.node);
 ```
 

@@ -6,7 +6,7 @@ import gsap from "gsap";
 export default function AnimatedMDXContent({ children }) {
     const containerRef = useRef(null);
     const [isHydrated, setIsHydrated] = useState(false);
-
+    let loadAnimation: any; 
     // Set hydrated flag after client-side hydration
     useEffect(() => {
         setIsHydrated(true);
@@ -31,7 +31,7 @@ export default function AnimatedMDXContent({ children }) {
 
             if (elementsToAnimate.length > 0) {
                 // Start animation on all elements except the first
-                gsap.fromTo(
+                loadAnimation = gsap.fromTo(
                     elementsToAnimate,
                     { opacity: 0, y: 20 },
                     {
@@ -45,6 +45,20 @@ export default function AnimatedMDXContent({ children }) {
                 );
             }
         }
+
+        const handlePointerDown = () => {
+            if (loadAnimation) {
+                loadAnimation.progress(1);
+                loadAnimation.kill();
+                loadAnimation = null;
+            }
+        };
+
+        window.addEventListener("pointerdown", handlePointerDown);
+        
+        return () => {
+            window.removeEventListener("pointerdown", handlePointerDown);
+        };
     }, [isHydrated]);
 
     return (

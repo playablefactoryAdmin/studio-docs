@@ -11,7 +11,9 @@ const nextConfig = {
 }
 
 // Set up Nextra with its config (empty here)
-const withNextra = nextra({})
+const withNextra = nextra({
+  defaultShowCopyCode: true,
+})
 
 // Export final config with Nextra applied
 export default withNextra({

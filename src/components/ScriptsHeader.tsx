@@ -6,6 +6,8 @@ export function ScriptHeader({
     implementsClass,
     extendsClassLink,
     implementsClassLink,
+    usesComponent,
+    usesComponentLink,
 }) {
     return (
         <div className="flex flex-col gap-2 pb-2 pt-1 ">
@@ -44,6 +46,22 @@ export function ScriptHeader({
                     </div>
                 )}
             </div>
+
+            {usesComponent && (
+                <div className="flex flex-row gap-2 -mt-3">
+                    <h3 className="text-md font-semibold text-gray-400">
+                        uses
+                    </h3>
+                    <a href={usesComponentLink}>
+                        <h3 className="text-md font-semibold text-blue-500">
+                            {usesComponent}
+                        </h3>
+                    </a>
+                    <h3 className="text-md font-semibold text-gray-400">
+                        data
+                    </h3>
+                </div>
+            )}
         </div>
     );
 }
