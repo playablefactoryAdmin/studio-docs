@@ -2,10 +2,10 @@
 sidebarTitle: Sprite
 ---
 
-import ScriptHeader from "./../../../components/ScriptsHeader";
+import ScriptHeader from "@components/ScriptsHeader";
 import Image from "next/image";
-import UserTable from "../../../components/TableComponent";
-import InnerHeader from "../../../components/InnerHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
 
 <ScriptHeader
     title="Sprite"
@@ -15,15 +15,36 @@ import InnerHeader from "../../../components/InnerHeader";
     implementsClassLink="/studio-docs/scripting/objects/studioObject2D"
 />
 
+Create a sprite object in Studio by right clicking on the Hierarchy panel and selecting `Add Node` -> `Core` -> `Sprite`.
+
 Sprite objects are mainly used to display images. Technically, a sprite is a quad rendered on the screen with a texture applied to it.
 
 Add a script to a Sprite object in Studio. Within the script, you can access the sprite object using:
 
-```javascript 
-this.node //Returns the object it was attached to, in this case the sprite object
+{
+//Kimsenin böyle karmaşık bişey yapmasına gerek yok. Örnek olması için twoslash yazdım.
+//Direk ```js ``` kullanabilirsiniz
+}
+```ts twoslash
+type Sprite = {
+  this: Sprite;
+};
+
+type Script2D = {
+  this: Script2D;
+  node: Sprite;
+};
+
+const scriptContext: Script2D = {
+  this: {} as Script2D,
+  node: { this: {} as Sprite }
+};
+// ---cut---
+scriptContext.node //Access the node property of the script
+// @annotate: Try to hover on code. Use "this" keyword to access the node property inside the script.
 ```
 
-**this.node** returns the object to which the script is attached—in this case, the Sprite object.
+`this.node` returns the object to which the script is attached—in this case, the Sprite object.
 
 #### Further Information
 For more detailed technical information about sprites, please refer to the [Pixi.js documentation](https://pixijs.download/dev/docs/scene.Sprite.html).
@@ -50,6 +71,6 @@ Sets the texture frame of the sprite. Use this instead of setTexture function in
 } />
 
 <InnerHeader title="Example Usage"/>
-```javascript 
+```js 
 this.node.setTextureFrame(getTexture2D("coin")) 
 ```

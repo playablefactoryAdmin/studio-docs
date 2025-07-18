@@ -37,7 +37,7 @@ export default async function RootLayout({ children }) {
             </Head>
             <body>
                 <ThemeProvider defaultTheme="dark" enableSystem={false} attribute="class">
-                    <Layout
+                    <Layout sidebar={{ autoCollapse: false, defaultOpen: true, defaultMenuCollapseLevel: 1 }}
                         // banner={banner}
                         navbar={navbar}
                         pageMap={await getPageMap()}
