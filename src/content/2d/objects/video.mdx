@@ -1,0 +1,104 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="Video"  
+  extendsClass="PIXI.Sprite"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.Sprite.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="video component"  
+  usesComponentLink="/studio-docs/2d/components/video-component"  
+/>
+
+Create a `Video` object by right-clicking in the hierarchy and selecting `Add Node` → `Core` → `Video`.
+
+The Video object wraps an HTMLVideoElement as a PIXI.Texture, allowing video playback inside the Studio engine.
+
+It supports playback controls, looping, muting, autoplay, and unique texture keys for multiple instances.
+
+### Properties
+
+<UserTable data={[
+  { name: "src", desc: "Source URL of the video." },
+  { name: "loop", desc: "Whether the video loops." },
+  { name: "autoplay", desc: "Whether the video plays automatically on load." },
+  { name: "muted", desc: "Whether the video is muted." },
+  { name: "unmuteOnTouch", desc: "Whether video unmutes on touch input." },
+  { name: "useUniqueTexture", desc: "Whether to use a unique texture key for this instance." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateVideoComponent", desc: "Updates video settings from component data.", href: "updatevideocomponent" },
+  { name: "changeVideoTexture", desc: "Loads and applies a new video texture.", href: "changevideotexture" },
+  { name: "updateComponents", desc: "Updates all relevant components.", href: "updatecomponents" },
+  { name: "play", desc: "Starts video playback.", href: "play" },
+  { name: "pause", desc: "Pauses video playback.", href: "pause" },
+  { name: "stop", desc: "Stops and resets video playback.", href: "stop" }
+]} />
+
+---
+
+#### updateVideoComponent
+
+```ts
+updateVideoComponent(component: VideoGC): void
+````
+
+Updates the video element parameters and texture based on the provided component data.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+{ name: "component", desc: "Video component configuration." }
+]} />
+
+---
+
+#### changeVideoTexture
+
+```ts
+async changeVideoTexture(component: VideoGC): Promise<void>
+```
+
+Loads the video texture from the source URL and applies it to the sprite.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+{ name: "component", desc: "Video component configuration with source URL and playback options." }
+]} />
+
+---
+
+#### play
+
+```ts
+play(): void
+```
+
+Starts playing the video.
+
+---
+
+#### pause
+
+```ts
+pause(): void
+```
+
+Pauses the video.
+
+---
+
+#### stop
+
+```ts
+stop(): void
+```
+
+Stops the video and resets playback to the start.
+

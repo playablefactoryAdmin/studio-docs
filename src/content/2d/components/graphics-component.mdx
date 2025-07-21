@@ -1,0 +1,38 @@
+# Graphics Component
+
+import Image from "next/image";
+
+This component is automatically added to all **Graphics** objects.
+
+Use the **plus** button to add shapes to the graphics object. Multiple shapes can be combined within a single Graphics instance.
+
+<Image src="/studio-docs/components/graphics-component.png" alt="Graphics Component" width={600} height={600} className="pt-6" />
+
+---
+
+## Shape Settings
+
+<Image src="/studio-docs/components/graphics-shape.png" alt="Graphics Shape Component" width={600} height={600} className="pt-6" />
+
+Each shape you add has its own set of configurable properties:
+
+### Position
+
+Defines the shape’s position relative to the graphics object’s origin.
+
+---
+
+The following settings are **shape-specific** and may vary depending on the selected shape type. Most are self-explanatory:
+
+### Fill
+
+Controls the fill of the shape.
+
+* You can disable fill and enable stroke to create outline-only shapes (e.g., hollow rectangles).
+* Fill supports **solid colors** or **gradients**. Use the **plus** button to define a gradient.
+
+### Stroke
+
+Configures the shape’s stroke (outline).
+
+* Stroke settings mirror those of Fill and include color, width, and gradient options.

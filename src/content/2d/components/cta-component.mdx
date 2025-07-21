@@ -1,0 +1,49 @@
+# CTA Component
+
+import Image from "next/image";
+
+This component is automatically added to all **CTA** objects.
+
+<Image src="/studio-docs/components/cta-component.png" alt="CTA Component" width={600} height={600} className="pt-6" />
+
+The **CTA (Call-To-Action)** Component is used to define interactive visual elements that typically prompt users to take action (e.g., "Play", "Install", etc.).
+
+
+### Enable Pulse
+
+Enables or disables the pulse animation for the CTA object. When enabled, the object will scale in and out periodically to draw attention.
+
+---
+
+### Text
+
+Text displayed inside the CTA object.
+
+#### Font Family
+
+Sets the font family for the CTA text.
+
+#### Stroke
+
+Customize the stroke **thickness** and **color** applied around the text for added contrast.
+
+#### Text Scale X / Y
+
+Scales the text independently along the X and Y axes.
+
+#### Text Offset X / Y
+
+Offsets the text position along the X and Y axes.
+
+---
+
+### Data.js Integration
+
+#### Add Enable in Data.js
+
+If enabled, the CTA's **visibility** can be toggled from the Gearbox platform via `Data.js`.
+
+#### Data.js ID and Name
+
+* **ID** is internal and used for programmatic reference.
+* **Name** is shown on the Gearbox platform and acts as the label.

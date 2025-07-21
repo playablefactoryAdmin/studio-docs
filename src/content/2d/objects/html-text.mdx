@@ -1,0 +1,136 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="HTMLText"  
+  extendsClass="PIXI.HTMLText"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.HTMLText.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="text component"  
+  usesComponentLink="/studio-docs/2d/components/text-component"  
+/>
+
+Create an `HTMLText` object by right clicking in the hierarchy and selecting `Add Node` → `Core` → `HTMLText`.
+
+The HTMLText object renders styled HTML content within the Studio engine using PIXI’s `HTMLText` class. It supports font styling, alignment, stroke, shadow, word wrap, and integrates with Studio’s component system for dynamic text updates.
+
+---
+
+### Properties
+
+<UserTable data={[
+  { name: "text", desc: "Text content (string or HTML)." },
+  { name: "fontFamily", desc: "Font family, supports '__global__' for global font." },
+  { name: "fontSize", desc: "Font size in pixels." },
+  { name: "fill", desc: "Fill color for text." },
+  { name: "align", desc: "Text alignment: 'left', 'center', or 'right'." },
+  { name: "lineHeight", desc: "Height of each line." },
+  { name: "leading", desc: "Additional spacing between lines." },
+  { name: "letterSpacing", desc: "Spacing between letters." },
+  { name: "padding", desc: "Padding around the text." },
+  { name: "strokeColor", desc: "Stroke color of text." },
+  { name: "strokeThickness", desc: "Thickness of stroke." },
+  { name: "shadow", desc: "Shadow settings including color, alpha, blur, angle, and distance." },
+  { name: "wordWrap", desc: "Enable or disable word wrapping." },
+  { name: "wordWrapWidth", desc: "Maximum width for word wrapping." },
+  { name: "breakWords", desc: "Break words to fit within wrapping width." }
+]} />
+
+---
+
+### Methods
+
+<UserTable data={[
+  { name: "setText", desc: "Sets text content or style from a TextData object.", href: "settext" },
+  { name: "setTextStyles", desc: "Applies style properties to the text.", href: "settextstyles" },
+  { name: "updatePixiObject", desc: "Updates PIXI.HTMLText style and bounds.", href: "updatepixiobject" },
+  { name: "updateTextComponent", desc: "Updates properties from a Studio text component.", href: "updatetextcomponent" },
+  { name: "getTextComponent", desc: "Returns current state as a TextGC component.", href: "gettextcomponent" },
+  { name: "updateComponents", desc: "Applies component updates in bulk.", href: "updatecomponents" }
+]} />
+
+---
+
+#### setText
+
+```ts
+setText(text: string | TextData): void
+```
+
+Sets new text content or applies styles from a `TextData` object.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "text", desc: "Text string or detailed TextData object." }
+]} />
+
+---
+
+#### setTextStyles
+
+```ts
+setTextStyles(textData: TextData): void
+```
+
+Applies styling options such as fill, stroke, shadow, and multiline line height.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "textData", desc: "Style and text configuration object." }
+]} />
+
+---
+
+#### updatePixiObject
+
+```ts
+updatePixiObject(): void
+```
+
+Updates the internal PIXI.HTMLText style and recalculates bounds.
+
+---
+
+#### updateTextComponent
+
+```ts
+updateTextComponent(component: TextGC): void
+```
+
+Applies Studio component data to update HTMLText properties.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "component", desc: "The text component object." }
+]} />
+
+---
+
+#### getTextComponent
+
+```ts
+getTextComponent(): TextGC
+```
+
+Returns a `TextGC` component representing the current text state.
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Updates multiple properties from a components object.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "components", desc: "Partial component data for update." }
+]} />

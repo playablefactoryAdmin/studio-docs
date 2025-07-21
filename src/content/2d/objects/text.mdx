@@ -1,0 +1,141 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+ title="Text"  
+ extendsClass="PIXI.Text"  
+ extendsClassLink="https://pixijs.download/release/docs/PIXI.Text.html"  
+ implementsClass="StudioObject2D"  
+ implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+ usesComponent="text component"  
+ usesComponentLink="/studio-docs/2d/components/text-component"  
+/>
+
+Create a `Text` object in **Studio** by right-clicking in the hierarchy and selecting `Add Node` → `Core` → `Text`.
+
+This object allows you to render styled text using `PIXI.Text`, with full support for dynamic updates, shadows, strokes, word wrapping, auto-fitting text to its container, and responsive behavior.
+
+Text content and style can be provided either as plain string or as a structured object with additional styling fields.
+
+```ts
+text.setText({
+  text: "Welcome!",
+  color: "#ffcc00",
+  align: "center",
+  multiline: { enabled: true, lineHeight: 1.5 },
+  stroke: { color: "#000", thickness: 3 },
+  shadow: { color: "#000", alpha: 0.5, angle: 45, distance: 4, blur: 2 }
+});
+```
+
+
+### Properties
+
+<UserTable data={[
+{ name: "text", desc: "The text content." },
+{ name: "fontFamily", desc: "Font family name. Can be a global or custom font." },
+{ name: "fontSize", desc: "Font size in pixels." },
+{ name: "fill", desc: "Text fill color (e.g. '#ffffff')." },
+{ name: "align", desc: "Text alignment ('left', 'center', 'right')." },
+{ name: "lineHeight", desc: "Line height multiplier." },
+{ name: "leading", desc: "Additional spacing between lines." },
+{ name: "letterSpacing", desc: "Space between letters." },
+{ name: "padding", desc: "Padding around the text area." },
+{ name: "strokeColor", desc: "Stroke color." },
+{ name: "strokeThickness", desc: "Stroke thickness." },
+{ name: "shadow", desc: "Text shadow options." },
+{ name: "wordWrap", desc: "Whether word wrap is enabled." },
+{ name: "wordWrapWidth", desc: "Width in pixels before wrapping." },
+{ name: "breakWords", desc: "Breaks long words if true." },
+{ name: "autofit", desc: "Enables auto-scaling to fit parent." },
+{ name: "autofitMultiline", desc: "Whether to wrap when autofitting." },
+{ name: "autofitMaxFontSize", desc: "Max font size allowed during autofit." },
+{ name: "autofitWidthRatio", desc: "Width ratio to use when autofitting (0–100)." },
+{ name: "autofitHeightRatio", desc: "Height ratio to use when autofitting (0–100)." }
+]} />
+
+### Methods
+
+<UserTable data={[
+{ name: "setText", desc: "Sets the text content. Accepts a string or a TextData object.", href: "settext" },
+{ name: "setFont", desc: "Sets the font family if it's registered.", href: "setfont" },
+{ name: "updatePixiObject", desc: "Updates the internal PIXI.Text object with current styles.", href: "updatepixiobject" },
+{ name: "fitText", desc: "Resizes text to fit within parent dimensions based on autofit settings.", href: "fittext" },
+{ name: "updateTextComponent", desc: "Applies TextGC component data to the text object.", href: "updatetextcomponent" },
+{ name: "getTextComponent", desc: "Returns the TextGC representation of this object.", href: "gettextcomponent" },
+{ name: "updateComponents", desc: "Applies all component data. Calls `updateTextComponent` internally.", href: "updatecomponents" },
+{ name: "setTextStyles", desc: "Applies styling from a TextData object.", href: "settextstyles" }
+]} />
+
+---
+
+#### setText
+
+```ts
+setText(text: string | TextData): void
+```
+
+Sets text content. If a `TextData` object is passed, it applies styles as well.
+
+---
+
+#### setFont
+
+```ts
+setFont(font: string): void
+```
+
+Sets the font family, validating it against loaded custom fonts.
+
+---
+
+#### updatePixiObject
+
+```ts
+updatePixiObject(): void
+```
+
+Applies internal style properties to `PIXI.TextStyle`, triggers layout recalculation, and handles autofit if enabled.
+
+---
+
+#### fitText
+
+```ts
+fitText(): void
+```
+
+Dynamically adjusts font size to fit within parent bounds based on `autofit` ratios.
+
+---
+
+#### updateTextComponent
+
+```ts
+updateTextComponent(component: TextGC): void
+```
+
+Applies values from a TextGC component. Also resolves template-linked data if applicable.
+
+---
+
+#### getTextComponent
+
+```ts
+getTextComponent(): TextGC
+```
+
+Returns a snapshot of the current text style and config as a `TextGC`.
+
+---
+
+#### setTextStyles
+
+```ts
+setTextStyles(textData: TextData): void
+```
+
+Applies individual style values from a `TextData` object (e.g., fill, stroke, shadow).
+
+---

@@ -1,0 +1,140 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader
+  title="Cta"
+  extendsClass="Container"
+  extendsClassLink="/studio-docs/2d/objects/container"
+  usesComponent="cta component"
+  usesComponentLink="/studio-docs/2d/components/cta-component"
+/>
+
+`Cta` is a container object representing a clickable call-to-action element with a background image and text. It supports animated pulse effects and integrates with the Studio and Template environments.
+
+---
+
+### Properties
+
+<UserTable data={[
+  { name: "id", desc: "Unique identifier." },
+  { name: "type", desc: "Fixed string 'cta'." },
+  { name: "innerContainer", desc: "PIXI.Container holding background image and text." },
+  { name: "bgImage", desc: "Background image sprite." },
+  { name: "text", desc: "Text object displayed over the background." },
+  { name: "ctaComponent", desc: "Underlying CtaGC component data." },
+  { name: "pulseStarted", desc: "Whether the pulse animation has started." },
+  { name: "pulseTween", desc: "GSAP tween controlling the pulse animation." },
+  { name: "eventsInited", desc: "Whether event listeners have been initialized." }
+]} />
+
+---
+
+### Methods
+<UserTable data={[
+  { name: "updateText", desc: "Updates the displayed text and its styling according to the CtaGC component." },
+  { name: "updatePulse", desc: "Starts or stops the pulse animation based on template data and enablePulse flag." },
+  { name: "updateCta", desc: "Updates size, pivot, origin, and text based on the current CtaGC component and original pivot coordinates." },
+  { name: "updateComponents", desc: "Updates internal components, background sprite, and CTA data from the provided components dictionary." },
+  { name: "updateCtaComponent", desc: "Updates the CTA component state, triggers redraw, and sets up events if in template mode." },
+  { name: "preResize", desc: "Prepares the background image for resizing and updates the CTA component accordingly." },
+  { name: "initEvents", desc: "Initializes event listeners for template-driven dynamic updates." },
+]} />
+
+---
+
+#### updateText
+
+```ts
+updateText(component: CtaGC): void
+````
+
+Updates the displayed text and its styling according to the `CtaGC` component, including template-based overrides.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "component", desc: "CtaGC component containing text properties." }
+]} />
+
+---
+
+#### updatePulse
+
+```ts
+updatePulse(datajsID: string, enablePulse: boolean): void
+```
+
+Starts or stops the pulse animation based on the template data and `enablePulse` flag.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "datajsID", desc: "Identifier used for template data bindings." },
+  { name: "enablePulse", desc: "Boolean to enable or disable pulse animation." }
+]} />
+
+---
+
+#### updateCta
+
+```ts
+updateCta(cta: CtaGC, origX: number, origY: number): void
+```
+
+Updates size, pivot, origin, and text based on the current `CtaGC` component and original pivot coordinates.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "cta", desc: "CtaGC component with visual and transform properties." },
+  { name: "origX", desc: "Original pivot X (0 to 1)." },
+  { name: "origY", desc: "Original pivot Y (0 to 1)." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Updates internal components, background sprite, and CTA data from the provided components dictionary.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "components", desc: "Dictionary containing `cta` and `sprite` components." }
+]} />
+
+---
+
+#### updateCtaComponent
+
+```ts
+updateCtaComponent(ctaRaw?: CtaGC): void
+```
+
+Updates the CTA component state, triggers redraw, and sets up events if in template mode.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "ctaRaw", desc: "Optional CtaGC component to update from. Defaults to current component." }
+]} />
+
+---
+
+#### preResize
+
+```ts
+preResize(): void
+```
+
+Prepares the background image for resizing and updates the CTA component accordingly.
+
+---
+
+#### initEvents
+
+```ts
+initEvents(): void
+```
+
+Initializes event listeners for template-driven dynamic updates (e.g., text changes, pulse toggle).

@@ -1,0 +1,69 @@
+# Camera Component
+
+import Image from "next/image";
+
+This component is automatically added to all **Camera** objects.
+
+<Image src="/studio-docs/components/camera-component.png" alt="Camera Component" width={600} height={600} className="pt-6" />
+
+The Camera Component controls how the camera behaves in the world, including input, zooming, bounds, and following targets.
+
+### Debug
+
+Enables a debug view that shows the camera's bounding box and target frame. Useful during level design and testing.
+
+### World Size
+
+Defines the size of the world the camera operates in.
+This is used for boundary clamping and zoom calculations.
+
+
+### Direction
+
+Specifies the clamping direction:
+
+* Horizontal
+* Vertical
+* Both
+* None
+
+
+### Enable Drag Input
+
+Allows users to drag the camera using pointer input (typically mouse or touch).
+
+
+### Drag Smoothing
+
+Applies a smoothing factor to the drag input.
+When the user stops dragging, the camera eases to a stop based on this multiplier.
+
+
+### Enable Zoom Input
+
+Enables camera zoom control using scroll or pinch gestures.
+
+
+### Clamp Zoom
+
+Restricts the zoom level to stay within the **Max Zoom Multiplier** range.
+
+
+### Max Zoom Multiplier
+
+Sets the upper limit for how far the camera can zoom in or out.
+
+
+### Target
+
+An object or container that the camera will follow automatically.
+
+
+### Target Follow Smoothness
+
+Controls how smoothly the camera follows its target.
+
+* `0`: Snap to target position
+* `>0`: Smoothly interpolate toward the target
+
+Higher values result in slower, smoother motion.

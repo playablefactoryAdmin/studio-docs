@@ -1,15 +1,105 @@
-import ScriptHeader from "@components/ScriptsHeader";
+import SpecialHeader from "@components/SpecialHeader";
 import UserTable from "@components/TableComponent";
 import HereLinkedText from "@components/LinkedText";
 import InnerHeader from "@components/InnerHeader";
 
-<ScriptHeader
+<SpecialHeader
     title="Animated Sprite"
     extendsClass="PIXI.AnimatedSprite"
     extendsClassLink="https://pixijs.download/release/docs/scene.AnimatedSprite.html"
     implementsClass="StudioObject2D"
     implementsClassLink="/studio-docs/2d/objects/studio-object-2d"
     usesComponent="animated sprite component"
-    usesComponentLink="/studio-docs/2d/components/container"
+    usesComponentLink="/studio-docs/2d/components/animated-sprite-component"
 />
 
+Create an `Animated Sprite` in **Studio** by right clicking on the hierarchy and selecting `Add Node` -> `Core` -> `Animated Sprite`.
+
+Animated Sprite takes a JSON data file and a corresponding sprite sheet, then plays animations based on the defined frames and sequences.
+
+Since it's extended from `PIXI.AnimatedSprite`, it has all the functionality of it. This class does not have prototype extensions.
+
+Some of the key features such as `animationSpeed` comes from `PIXI.AnimatedSprite` class. Please check `PixiJS` documentation first for basic functionality.
+
+### Methods
+
+<UserTable data={
+    [
+        {name: "changeAnimationTexture", desc: "Changes the animation texture.", href: "changeAnimationTexture"},
+        {name: "playAnim", desc: "Plays an animation.", href: "playanim"},
+        {name: "changeTextureAndPlay", desc: "Changes the animation texture and plays.", href: "changetextureandplay"},
+    ]
+} />
+
+#### changeAnimationTexture
+```ts
+changeAnimationTexture(animData: any)
+```
+
+Changes the animation texture. This is used internally but exposed to the API just in case.
+
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "animData", desc: "Animation data from Cache2D."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+Cache2D.getAnimation(animationTextureKey, (data) => { //animationTextureKey is the exportForCode id.
+    anim.changeAnimationTexture(data);
+})
+```
+
+
+#### playAnim
+```ts
+playAnim(animation: string, reverse: boolean = false)
+```
+
+Plays an animation given animation name.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "animation", desc: "Animation name to play."},
+        {name: "reverse", desc: "Plays the animation in reverse if true."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+anim.playAnim("start", false);
+```
+
+
+#### changeTextureAndPlay
+```ts
+changeTextureAndPlay(animData: any, animation: string)
+```
+
+Changes the animation texture and plays the animation given animation name.
+
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={
+    [
+        {name: "animData", desc: "Animation data from Cache2D."},
+        {name: "animation", desc: "Animation name to play."},
+    ]
+} />
+
+<InnerHeader title="Example Usage"/>
+
+```js
+Cache2D.getAnimation(animationTextureKey, (data) => { //animationTextureKey is the exportForCode id.
+    anim.changeTextureAndPlay(data, "start");
+})
+```

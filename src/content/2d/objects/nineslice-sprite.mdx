@@ -1,0 +1,78 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="NineSliceSprite"  
+  extendsClass="PIXI.NineSliceSprite"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.NineSliceSprite.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="nineSliceSprite component"  
+  usesComponentLink="/studio-docs/2d/components/nineslice-component"  
+/>
+
+Create a `NineSliceSprite` object by right-clicking in the hierarchy and selecting `Add Node` → `Core` → `NineSliceSprite`.
+
+This object displays a nine-slice scaled sprite using a texture, allowing scalable UI elements without distortion of corners.
+
+It supports texture swapping, tinting, custom slice sizes, and landscape texture support.
+
+### Properties
+
+<UserTable data={[
+  { name: "texture", desc: "Main texture data for the nine-slice sprite." },
+  { name: "landscapeTexture", desc: "Optional alternate texture for landscape mode." },
+  { name: "landscape", desc: "Whether landscape mode is enabled." },
+  { name: "tint", desc: "Tint color applied to the sprite." },
+  { name: "width", desc: "Width of the nine-slice sprite." },
+  { name: "height", desc: "Height of the nine-slice sprite." },
+  { name: "leftWidth", desc: "Width of the left slice." },
+  { name: "rightWidth", desc: "Width of the right slice." },
+  { name: "topHeight", desc: "Height of the top slice." },
+  { name: "bottomHeight", desc: "Height of the bottom slice." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateNineSliceSpriteComponent", desc: "Updates the nine-slice sprite from component data.", href: "updatenineslicespritecomponent" },
+  { name: "getNineSliceSpriteComponent", desc: "Returns the current component data of the nine-slice sprite.", href: "getnineslicespritecomponent" },
+  { name: "updateComponents", desc: "Updates the object with multiple components.", href: "updatecomponents" }
+]} />
+
+---
+
+#### updateNineSliceSpriteComponent
+
+```ts
+updateNineSliceSpriteComponent(component: NineSliceSpriteGC): void
+````
+
+Updates texture, dimensions, slice sizes, and tint from the component.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+{ name: "component", desc: "Nine-slice sprite component with configuration data." }
+]} />
+
+---
+
+#### getNineSliceSpriteComponent
+
+```ts
+getNineSliceSpriteComponent(): NineSliceSpriteGC
+```
+
+Returns current component data representing the nine-slice sprite.
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Applies component updates, including transform origin and nine-slice sprite data.

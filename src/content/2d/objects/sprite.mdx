@@ -2,17 +2,19 @@
 sidebarTitle: Sprite
 ---
 
-import ScriptHeader from "@components/ScriptsHeader";
+import SpecialHeader from "@components/SpecialHeader";
 import Image from "next/image";
 import UserTable from "@components/TableComponent";
 import InnerHeader from "@components/InnerHeader";
 
-<ScriptHeader
+<SpecialHeader
     title="Sprite"
     extendsClass="PIXI.Sprite"
     extendsClassLink="https://pixijs.download/dev/docs/scene.CullingMixinConstructor.html"
     implementsClass="StudioObject2D"
     implementsClassLink="/studio-docs/scripting/objects/studioObject2D"
+    usesComponent="Sprite"
+    usesComponentLink="/studio-docs/2d/components/sprite-component"
 />
 
 Create a sprite object in Studio by right clicking on the Hierarchy panel and selecting `Add Node` -> `Core` -> `Sprite`.

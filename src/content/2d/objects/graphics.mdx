@@ -1,0 +1,71 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="Graphics"  
+  extendsClass="PIXI.Graphics"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.Graphics.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="graphics component"  
+  usesComponentLink="/studio-docs/2d/components/graphics-component"  
+/>
+
+Create a `Graphics` object by right clicking in the hierarchy and selecting `Add Node` → `Core` → `Graphics`.
+
+The Graphics object allows drawing of various shapes like rectangles, circles, ellipses, stars, lines, and polygons. It supports fill and stroke styling, and integrates with Studio’s component system to update its content dynamically.
+
+---
+
+### Properties
+
+<UserTable data={[
+  { name: "id", desc: "Unique identifier of the graphics object." },
+  { name: "type", desc: "Type identifier, always 'graphics'." },
+  { name: "components", desc: "Associated 2D components instance." },
+  { name: "selected", desc: "Selection state in editor." },
+  { name: "locked", desc: "Lock state in editor." },
+  { name: "focusedShapeId", desc: "Currently focused shape's id, or null." }
+]} />
+
+---
+
+### Methods
+
+<UserTable data={[
+  { name: "updateGraphicsComponent", desc: "Updates the graphics drawing from a GraphicsGC component.", href: "updategraphicscomponent" },
+  { name: "updateComponents", desc: "Updates multiple components including graphics.", href: "updatecomponents" }
+]} />
+
+---
+
+#### updateGraphicsComponent
+
+```ts
+updateGraphicsComponent(graphics: GraphicsGC): void
+```
+
+Updates the drawn shapes, fills, and strokes according to the provided graphics component data.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "graphics", desc: "Graphics component configuration object." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Applies component updates and triggers graphics update if graphics component is provided.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+  { name: "components", desc: "Partial components object including graphics component." }
+]} />

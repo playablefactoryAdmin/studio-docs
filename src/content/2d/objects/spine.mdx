@@ -1,0 +1,183 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+ title="Spine"  
+ extendsClass="PIXI.Container"  
+ extendsClassLink="https://pixijs.download/release/docs/PIXI.Container.html"  
+ implementsClass="StudioObject2D"  
+ implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+ usesComponent="spine component"  
+ usesComponentLink="/studio-docs/2d/components/spine-component"  
+/>
+
+Create a `Spine` object by right clicking in the hierarchy and selecting `Add Node` → `Core` → `Spine`.
+
+The Spine object plays skeletal animations exported from Spine Editor and loaded through `Cache2D`. It supports animation control, custom playback speed, skin switching, and texture overrides.
+
+It uses the `@pixi/spine` runtime and wraps it to be usable in the Studio engine.
+
+### Properties
+
+<UserTable data={[
+{ name: "spineTexture", desc: "Current spine asset key." },
+{ name: "animation", desc: "Current animation name." },
+{ name: "animationSpeed", desc: "Playback speed (same as timescale)." },
+{ name: "loop", desc: "Whether the animation is looping." },
+{ name: "autoplay", desc: "Whether to play animation on load." },
+{ name: "skin", desc: "Currently selected skin name." },
+{ name: "timescale", desc: "Animation time scale." }
+]} />
+
+
+### Methods
+
+<UserTable data={[
+{ name: "updateSpineComponent", desc: "Updates the spine object with provided component data.", href: "updatespinecomponent" },
+{ name: "loadSpineTexture", desc: "Loads a new spine texture asset.", href: "loadspinetexture" },
+{ name: "play", desc: "Plays a spine animation with options.", href: "play" },
+{ name: "playAnimation", desc: "Alias for play.", href: "playanimation" },
+{ name: "addAnimation", desc: "Queues another animation after current one.", href: "addanimation" },
+{ name: "resetAnimation", desc: "Stops animations and resets pose.", href: "resetanimation" },
+{ name: "setSkinByName", desc: "Sets skin by name.", href: "setskinbyname" },
+{ name: "replaceSlotTexture", desc: "Replaces a slot's texture with a PIXI.Texture.", href: "replaceslottexture" },
+{ name: "getAnimationList", desc: "Returns available animations.", href: "getanimationlist" },
+{ name: "hasAnimation", desc: "Checks if an animation exists.", href: "hasanimation" },
+{ name: "setTimeScale", desc: "Sets animation speed.", href: "settimescale" }
+]} />
+
+---
+
+#### updateSpineComponent
+
+```ts
+updateSpineComponent(component: SpineGC): void
+```
+
+Updates animation, texture, skin, speed, and autoplay/loop settings.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+{ name: "component", desc: "The spine component configuration." }
+]} />
+
+---
+
+#### loadSpineTexture
+
+```ts
+loadSpineTexture(spineTexture: string): Promise<boolean>
+```
+
+Asynchronously loads a spine texture.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+{ name: "spineTexture", desc: "Export key for the spine asset." }
+]} />
+
+---
+
+#### play
+
+```ts
+play(animationName: string, loop: boolean, callback?: () => void, duration?: number): this
+```
+
+Plays the specified animation. If duration is passed, the animation is time-scaled.
+
+<InnerHeader title="Parameters"/>
+
+<UserTable data={[
+{ name: "animationName", desc: "Animation name to play." },
+{ name: "loop", desc: "Whether to loop the animation." },
+{ name: "callback", desc: "Called on animation complete." },
+{ name: "duration", desc: "Scaled duration to play animation." }
+]} />
+
+---
+
+#### playAnimation
+
+```ts
+playAnimation(animationName: string, loop: boolean, callback?: () => void, duration?: number): this
+```
+
+Alias for `play`.
+
+---
+
+#### addAnimation
+
+```ts
+addAnimation(animationName: string, loop: boolean, callback?: () => void): this
+```
+
+Queues another animation to play after the current one.
+
+---
+
+#### resetAnimation
+
+```ts
+resetAnimation(): void
+```
+
+Stops the animation and clears tracks.
+
+---
+
+#### setSkinByName
+
+```ts
+setSkinByName(skinName: string): this
+```
+
+Sets the active skin by name.
+
+---
+
+#### replaceSlotTexture
+
+```ts
+replaceSlotTexture(slotName: string, pixiTexture: PIXI.Texture): void
+```
+
+Replaces the texture of a specific slot.
+
+---
+
+#### getAnimationList
+
+```ts
+getAnimationList(): string[]
+```
+
+Returns available animation names.
+
+---
+
+#### hasAnimation
+
+```ts
+hasAnimation(name: string): boolean
+```
+
+Checks if animation exists.
+
+---
+
+#### setTimeScale
+
+```ts
+setTimeScale(value: number): this
+```
+
+Sets animation speed.
+
+---
+

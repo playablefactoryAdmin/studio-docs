@@ -1,0 +1,165 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader
+  title="Camera"
+  extendsClass="PixiViewport"
+  extendsClassLink="/studio-docs/2d/objects/pixi_viewport"
+  usesComponent="viewport component"
+  usesComponentLink="/studio-docs/2d/components/camera-component"
+/>
+
+`Viewport` extends the PixiViewport class to provide a 2D viewport with panning, zooming, dragging, and optional camera shake. It integrates tightly with Studio's component system and supports debug visualization.
+
+---
+
+### Properties
+
+<UserTable data={[
+  { name: "id", desc: "Unique identifier." },
+  { name: "type", desc: "Fixed string 'viewport'." },
+  { name: "debugRect", desc: "Graphics object used to draw debug viewport boundaries." },
+  { name: "selected", desc: "Selection state flag." },
+  { name: "locked", desc: "Locked state flag." },
+  { name: "config", desc: "Configuration object, typically the component config." },
+  { name: "components", desc: "Internal components dictionary." },
+  { name: "minScale", desc: "Minimum zoom scale, computed dynamically." }
+]} />
+
+---
+
+### Methods
+<UserTable data={[
+  { name: "setClampDirection", desc: "Sets clamp direction for camera movement limits based on configuration." },
+  { name: "update", desc: "Calls the parent update method, typically called every frame." },
+  { name: "setFollow", desc: "Sets a follow target by object ID with no smoothing." },
+  { name: "updateDebug", desc: "Draws the debug rectangle overlay showing the viewport bounds." },
+  { name: "updateViewportComponent", desc: "Updates viewport component properties including debug visibility and target follow." },
+  { name: "updateComponents", desc: "Updates internal components and applies viewport component updates." },
+  { name: "shakeCamera", desc: "Triggers a camera shake effect with given duration and intensity." },
+  { name: "resize", desc: "Resizes viewport screen dimensions and adjusts zoom scaling." },
+  { name: "settings", desc: "Returns the viewport configuration object." },
+]} />
+
+---
+
+#### setClampDirection
+
+```ts
+setClampDirection(): void
+```
+
+Sets the clamp direction (horizontal, vertical, both) for camera movement limits based on the component configuration.
+
+---
+
+#### update
+
+```ts
+update(delta: number): void
+```
+
+Calls the parent update method, typically called every frame.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "delta", desc: "Time elapsed since last update, in seconds." }
+]} />
+
+---
+
+#### setFollow
+
+```ts
+setFollow(targetId: string): void
+```
+
+Sets a follow target by object ID with no smoothing.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "targetId", desc: "ID of the object to follow." }
+]} />
+
+---
+
+#### updateDebug
+
+```ts
+updateDebug(): void
+```
+
+Draws the debug rectangle overlay showing the viewport bounds.
+
+---
+
+#### updateViewportComponent
+
+```ts
+updateViewportComponent(viewport: ViewportGC): void
+```
+
+Updates the viewport component properties including debug visibility and target follow.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "viewport", desc: "Viewport component data." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Updates internal components and applies viewport component updates.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "components", desc: "Dictionary of components including viewport." }
+]} />
+
+---
+
+#### shakeCamera
+
+```ts
+shakeCamera(duration: number, intensity: number): void
+```
+
+Triggers a camera shake effect with the given duration and intensity.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "duration", desc: "Shake duration in seconds." },
+  { name: "intensity", desc: "Shake intensity in pixels." }
+]} />
+
+---
+
+#### resize
+
+```ts
+resize(w: number, h: number): void
+```
+
+Resizes the viewport screen dimensions and adjusts zoom scaling accordingly.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "w", desc: "New width of the viewport in pixels." },
+  { name: "h", desc: "New height of the viewport in pixels." }
+]} />
+
+---
+
+#### settings (getter)
+
+```ts
+get settings(): ViewportGC
+```
+
+Returns the viewport configuration object.

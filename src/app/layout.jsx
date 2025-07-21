@@ -6,6 +6,7 @@ import Image from "next/image";
 import NavbarLogo from "../components/NavbarLogo";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { HideLastUpdated } from "@components/HideLastUpdated";
 
 export const metadata = {
     // Define your metadata here
@@ -45,6 +46,7 @@ export default async function RootLayout({ children }) {
                         footer={footer}
                         editLink={false}
                         feedback={{ content: false }}
+                        lastUpdated={<HideLastUpdated/>}
                         // ... Your additional layout options
                     >
                         {children}

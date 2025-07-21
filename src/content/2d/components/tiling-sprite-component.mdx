@@ -1,0 +1,56 @@
+---
+sidebarTitle: Tiling Sprite
+---
+
+import Image from "next/image";
+import Slider from "@components/Slider";
+
+# Tiling Sprite Component
+
+This component is automatically added to all **Tiling Sprite** objects.
+
+<Image src="/studio-docs/components/tilingsprite-component.png" alt="Tiling Sprite Component" width={400} height={400} className="pt-6" />
+
+The top three tabs function identically to those in the [Sprite Component](/2d/components/sprite-component.mdx).  
+If you're unfamiliar with those, we recommend reviewing that page first.
+
+## Tint
+
+Applies a solid color tint to the entire tiling sprite.
+
+
+## Tile Position
+
+Defines the offset at which the texture is drawn inside the tiling sprite.
+
+For example, with a 100×50 (width × height) texture:
+- Setting the tile position to `50×50` will offset the tiling so that the center acts as the new origin.
+- The visible result is the texture being shifted and mirrored from the center.
+
+We recommend experimenting with this parameter to better understand its visual effect:
+
+<Slider
+    width={600}
+    height={600}
+    src1={"/studio-docs/components/examples/tilingsprite-tileposition/tilingimage-before.png"}
+    src2={"/studio-docs/components/examples/tilingsprite-tileposition/tilingimage-after.png"}
+/>
+
+## Tile Scale
+
+Scales the repeating texture.
+
+- `1.0` is the original scale.
+- Increasing values zoom out (showing more tiles), while decreasing values zoom in.
+
+## Width
+
+Defines the width of the tiling sprite's render area.
+
+In most cases, this should match the **texture's original width**.
+
+## Height
+
+Defines the height of the tiling sprite's render area.
+
+In most cases, this should match the **texture's original height**.

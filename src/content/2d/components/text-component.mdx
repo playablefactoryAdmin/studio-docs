@@ -1,0 +1,81 @@
+# Text Component
+
+import Image from "next/image";
+
+This component is automatically added to all **Text** and **HTML Text** objects.
+
+Difference between **HTML Text** and **Text** objects is that you can use HTML tags in **HTML Text** object.
+
+<Image src="/studio-docs/components/text-component.png" alt="Text Component" width={600} height={600} className="pt-6" />
+
+The Text Component provides a wide range of styling and behavior options:
+
+* **Basics**: Primary text content, font size, fill, and alignment. (See **Basics** section below.)
+* **Stroke**: Text stroke configuration.
+* **Shadow**: Shadow styling for depth or contrast.
+* **Word Wrap**: Controls wrapping behavior such as wrap width and wrap height.
+* **Data.js**: Settings for `datajsID` and human-readable display name. (See **Data.js** section below.)
+
+---
+
+## Basics
+
+<Image src="/studio-docs/components/text-basic.png" alt="Text Basic Settings" width={600} height={600} className="pt-6" />
+
+### Text
+
+The actual text string to display.
+
+### Fill
+
+Text color. Use the **plus** button to apply a gradient fill.
+
+### Font Family
+
+Choose the desired font from the dropdown list.
+
+### Font Size
+
+Sets the size of the text in pixels.
+
+### Resolution
+
+Controls the resolution of the rendered text. Higher values yield crisper visuals at the cost of performance.
+
+### Height Settings
+
+Adjust vertical layout properties such as:
+
+* **Line Height**
+* **Letter Spacing**
+* **Leading**
+* **Padding**
+
+### Alignment
+
+Specifies text alignment: left, center, or right.
+
+### Autofit
+
+Enable this option to automatically scale the text to fit its bounding area based on the following parameters:
+
+* Max font scale
+* Width and height ratio
+* Multiline
+
+## Data.js
+
+<Image src="/studio-docs/components/text-datajs.png" alt="Text Basic Settings" width={600} height={600} className="pt-6" />
+
+
+### ID
+
+Data.js unique id. This is not visible on the Gearbox platform.
+
+### Name
+
+This is the visible title on the Gearbox platform. Does not have to be unique.
+
+### Exposed Parameters
+
+Select the exposable parameters here. For example, selecting color and stroke means that the user on the Gearbox platform can only change text, color and the stroke properties of the text.    

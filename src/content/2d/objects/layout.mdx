@@ -1,0 +1,121 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="Layout2D"  
+  extendsClass="PIXI.Container"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.Container.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="layout2D component"  
+  usesComponentLink="/studio-docs/2d/components/layout-component"  
+/>
+
+Create a `Layout2D` object by right clicking in the hierarchy and selecting `Add Node` → `Core` → `Layout2D`.
+
+The `Layout2D` object manages a flexible 2D layout system with support for portrait and landscape modes, child resizing, and debug features.
+
+It automatically resizes child objects and updates layout based on parent size changes.
+
+### Properties
+
+<UserTable data={[
+  { name: "id", desc: "Unique identifier of the layout." },
+  { name: "type", desc: "Fixed string 'layout2D'." },
+  { name: "portrait", desc: "Data related to portrait orientation layout." },
+  { name: "landscape", desc: "Data and enabled state for landscape layout." },
+  { name: "hasDebug", desc: "Whether debug mode is enabled." },
+  { name: "selected", desc: "Whether the layout is selected." },
+  { name: "locked", desc: "Whether the layout is locked." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateComponents", desc: "Updates the layout component from given components data.", href: "updatecomponents" },
+  { name: "updateLayoutComponent", desc: "Sets the layout data and triggers resize callbacks.", href: "updatelayoutcomponent" },
+  { name: "removeCellByName", desc: "Removes and destroys a child cell by its label/name.", href: "removecellbyname" },
+  { name: "getLayoutComponent", desc: "Returns the current layout component data.", href: "getlayoutcomponent" },
+  { name: "resizeChildren", desc: "Calls resize update on all child cells or responsive components.", href: "resizechildren" },
+  { name: "onResizeCallback", desc: "Callback invoked on parent resize, updates base width and height.", href: "onresizecallback" }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+````
+
+Updates the layout from components data and triggers child resizing.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+{ name: "components", desc: "Dictionary of components." }
+]} />
+
+---
+
+#### updateLayoutComponent
+
+```ts
+updateLayoutComponent(layout: Layout2DGC): void
+```
+
+Sets layout orientation data and triggers resizing callbacks.
+<InnerHeader title="Parameters" />
+<UserTable data={[
+{ name: "layout", desc: "Layout component data including portrait and landscape info." }
+]} />
+
+---
+
+#### removeCellByName
+
+```ts
+removeCellByName(name: string): void
+```
+
+Removes a child cell by name and destroys it, then resizes remaining children.
+<InnerHeader title="Parameters" />
+<UserTable data={[
+{ name: "name", desc: "Label or name of the child cell to remove." }
+]} />
+
+---
+
+#### getLayoutComponent
+
+```ts
+getLayoutComponent(): Layout2DGC
+```
+
+Returns the current layout component data object.
+
+---
+
+#### resizeChildren
+
+```ts
+resizeChildren(): void
+```
+
+Iterates over children, calling resize callbacks on cells or responsive updates.
+
+---
+
+#### onResizeCallback
+
+```ts
+onResizeCallback(w: number, h: number): void
+```
+
+Updates `baseWidth` and `baseHeight` on resize events.
+<InnerHeader title="Parameters" />
+<UserTable data={[
+{ name: "w", desc: "New width of the parent." },
+{ name: "h", desc: "New height of the parent." }
+]} />
+

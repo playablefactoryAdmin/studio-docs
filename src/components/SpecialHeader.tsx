@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
+import { SwitchToComponentButton } from "./SwitchToComponentButton";
 
-export function ScriptHeader({
+export function SpecialHeader({
     title,
     extendsClass,
     implementsClass,
@@ -12,7 +13,7 @@ export function ScriptHeader({
     return (
         <div className="flex flex-col gap-2 pb-2 pt-1 ">
             <h1 className="text-4xl font-bold" id={title}>{title}</h1>
-            <div className="flex flex-row gap-2 items-end -mt-2 brightness-100">
+            <div className="flex flex-row gap-2 items-end -mt-2 brightness-100 relative">
                 {extendsClass && (
                     <div className="flex flex-row gap-2">
                         <h3 className="text-md font-semibold text-gray-400">
@@ -45,25 +46,15 @@ export function ScriptHeader({
                         </a>
                     </div>
                 )}
+
+                {usesComponent && (
+                    <SwitchToComponentButton link={usesComponentLink}/>
+                )
+                }
             </div>
 
-            {usesComponent && (
-                <div className="flex flex-row gap-2 -mt-3">
-                    <h3 className="text-md font-semibold text-gray-400">
-                        uses
-                    </h3>
-                    <a href={usesComponentLink}>
-                        <h3 className="text-md font-semibold text-blue-500">
-                            {usesComponent}
-                        </h3>
-                    </a>
-                    <h3 className="text-md font-semibold text-gray-400">
-                        data
-                    </h3>
-                </div>
-            )}
         </div>
     );
 }
 
-export default ScriptHeader;
+export default SpecialHeader;

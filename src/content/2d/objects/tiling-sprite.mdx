@@ -1,0 +1,87 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="TilingSprite"  
+  extendsClass="PIXI.TilingSprite"  
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.TilingSprite.html"  
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="tilingSprite component"  
+  usesComponentLink="/studio-docs/2d/components/tiling-sprite-component"  
+/>
+
+Create a `TilingSprite` object by right-clicking in the hierarchy and selecting `Add Node` → `Core` → `TilingSprite`.
+
+The TilingSprite object displays a texture repeated (tiled) across its dimensions. It supports texture updates, tile positioning, scaling, tinting, and landscape texture support.
+
+It wraps PIXI's `TilingSprite` and integrates with Studio’s component system.
+
+### Properties
+
+<UserTable data={[
+  { name: "texture", desc: "Main texture data for the tiling sprite." },
+  { name: "landscapeTexture", desc: "Optional alternate texture for landscape mode." },
+  { name: "landscape", desc: "Whether landscape mode is enabled." },
+  { name: "tint", desc: "Tint color applied to the sprite." },
+  { name: "width", desc: "Width of the tiling sprite." },
+  { name: "height", desc: "Height of the tiling sprite." },
+  { name: "tilePosition", desc: "Position offset for the tiled texture." },
+  { name: "tileScale", desc: "Scale factor for the tiled texture." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateTilingSpriteComponent", desc: "Updates the tiling sprite using the provided component data.", href: "updatetilingspritecomponent" },
+  { name: "getTilingSpriteComponent", desc: "Returns the current component data representing the tiling sprite state.", href: "gettilingspritecomponent" },
+  { name: "updateComponents", desc: "Updates this object based on multiple components passed in.", href: "updatecomponents" },
+  { name: "preResize", desc: "Adjusts the tiling sprite before a resize event.", href: "preresize" }
+]} />
+
+---
+
+#### updateTilingSpriteComponent
+
+```ts
+updateTilingSpriteComponent(component: TilingSpriteGC): void
+````
+
+Updates the sprite’s texture, size, tile position and scale, tint, and other properties based on the component data.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+{ name: "component", desc: "The tiling sprite component containing configuration data." }
+]} />
+
+---
+
+#### getTilingSpriteComponent
+
+```ts
+getTilingSpriteComponent(): TilingSpriteGC
+```
+
+Returns the current tiling sprite component data representing this object's state.
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Updates the object with multiple components, applying the tiling sprite component if present.
+
+---
+
+#### preResize
+
+```ts
+preResize(): void
+```
+
+Called before resizing; updates the tiling sprite component data accordingly.

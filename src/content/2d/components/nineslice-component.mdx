@@ -1,0 +1,40 @@
+# NineSlice Component
+
+import Image from "next/image";
+
+This component is automatically added to all NineSlice Sprite objects.
+
+<Image src="/studio-docs/components/nineslice-sprite-component.png" alt="NineSlice Sprite Component" width={600} height={600} className="pt-6" />
+
+The top three tabs function identically to those in the [Sprite Component](/2d/components/sprite-component.mdx). 
+If you're unfamiliar with those, we recommend reviewing that page first.
+
+The NineSlice Component allows you to scale UI elements such as panels, windows, or buttons without distortion. It works by dividing the texture into 9 regions:
+
+- Corners stay fixed
+- Edges stretch in one direction
+- Center stretches freely
+
+This way, corners retain their original shape even when the object is resized.
+
+**Do not use the scale settings when you are using this component. Use width and height settings of this component instead.**
+
+### Texture
+
+The source texture used for the NineSlice object.
+
+### Left / Right / Top / Bottom
+
+These values define the **inset boundaries** — how far from each edge the slicing occurs.
+
+For example:
+
+* `Left = 10` means the leftmost 10px will not stretch.
+* `Top = 20` means the top 20px is preserved as-is.
+
+Adjust these based on your UI design to control which parts stretch and which parts stay sharp.
+
+### Width / Height
+
+Final rendered size of the NineSlice object.
+You can scale it freely — the borders will stay crisp, and only the center area will stretch.

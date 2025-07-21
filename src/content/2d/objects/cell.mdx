@@ -1,0 +1,134 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader
+  title="Cell2D"
+  extendsClass="PIXI.Container"
+  extendsClassLink="https://pixijs.download/release/docs/PIXI.Container.html"
+  implementsClass="StudioObject2D"
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"
+  usesComponent="cell2D component"
+  usesComponentLink="/studio-docs/2d/components/cell-component"
+/>
+
+`Cell2D` is a core layout cell object that supports portrait and landscape layouts, flexible resizing, masks, and debug visualization.
+
+It integrates tightly with `Layout2D` and provides responsive child positioning.
+
+### Properties
+
+<UserTable data={[
+  { name: "id", desc: "Unique identifier of the cell." },
+  { name: "type", desc: "Fixed string 'cell2D'." },
+  { name: "portrait", desc: "Layout data for portrait orientation." },
+  { name: "landscape", desc: "Layout data for landscape orientation." },
+  { name: "selected", desc: "Whether this cell is selected." },
+  { name: "locked", desc: "Whether this cell is locked." },
+  { name: "hasPortraitMask", desc: "Whether portrait mask is enabled." },
+  { name: "hasLandscapeMask", desc: "Whether landscape mask is enabled." },
+  { name: "maskGraph", desc: "PIXI.Graphics object used as mask." }
+]} />
+
+### Methods
+<UserTable data={
+[
+{ name: "updateComponents", desc: "Updates this cell's data and layout from the components dictionary." },
+{ name: "updateCellComponent", desc: "Sets layout data and updates mask and resizing." },
+{ name: "getOrientation", desc: "Returns current orientation: 'landscape' or 'portrait'." },
+{ name: "updateMask", desc: "Applies or clears rectangular mask based on layout flags." },
+{ name: "resizeChildren", desc: "Resizes and positions child objects based on layout rules." },
+{ name: "updateDebug", desc: "Draws debug overlay rectangle when debug mode is active." },
+{ name: "onResizeCallback", desc: "Updates base width/height and positions cell on resize." },
+]
+} />
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+````
+
+Updates this cell's data and layout from the provided components dictionary, then triggers resizing and mask updates.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "components", desc: "Dictionary of components." }
+]} />
+
+---
+
+#### updateCellComponent
+
+```ts
+updateCellComponent(cell2D: Cell2DGC): void
+```
+
+Sets the portrait and landscape layout data, updates mask, and triggers layout resizing.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "cell2D", desc: "The cell2D component data object containing layout properties." }
+]} />
+
+---
+
+#### getOrientation
+
+```ts
+getOrientation(): "landscape" | "portrait"
+```
+
+Returns the current device orientation with fallback to layout settings. Chooses between `"landscape"` and `"portrait"`.
+
+---
+
+#### updateMask
+
+```ts
+updateMask(cell2D: Cell2DGC): void
+```
+
+Applies or clears a rectangular mask graphics on the cell based on the layout mask flags for the current orientation.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "cell2D", desc: "The cell2D component data used to determine mask state." }
+]} />
+
+---
+
+#### resizeChildren
+
+```ts
+resizeChildren(): void
+```
+
+Resizes and positions child objects according to layout's containType (`row` or `col`), fitting units (`min` or `max`), and spacing (`gap`).
+
+---
+
+#### updateDebug
+
+```ts
+updateDebug(): void
+```
+
+Draws a debug rectangle overlay showing the cell bounds when debug mode is active.
+
+---
+
+#### onResizeCallback
+
+```ts
+onResizeCallback(w: number, h: number): void
+```
+
+Updates this cell's base width and height based on parent size and layout order. Positions the cell accordingly.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+  { name: "w", desc: "New width of the parent or container." },
+  { name: "h", desc: "New height of the parent or container." }
+]} />
