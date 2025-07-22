@@ -1,1 +1,50 @@
+import Image from "next/image";
+
 # View
+
+<Image src="/studio-docs/basics/view/view.png" alt="view" width={1000} height={400} className="pt-6" />
+
+This panel provides a visual preview of your game as it would appear on the selected device screen. It also allows for real-time editing of game object properties.
+You can select, inspect, and modify the properties of each game object dynamically during development.
+
+### Screen Control Toolbar
+
+<Image src="/studio-docs/basics/view/screen-type-selection.png" alt="view" width={300} height={400} className="pt-6" />
+
+To quickly preview how your game would look in other screens such as **iPhone XR** or **iPad**, use this toolbar. 
+
+Screen control toolbar exists on top-right corner on 2D projects. On 3D projects, you can see this this toolbar on top-center.
+
+- Left button allows you to toggle between screens quickly.
+- Center dropdown allows you to select the screen type you wish to preview.
+- Right button allows you to toggle between portrait and landscape mode. 
+
+## 3D Projects
+
+On 3D projects, view panel is a little bit more complicated because you need to switch between 2D and 3D views. To achieve this
+seamlessly, in the top-right corner there will be a toggle to switch between 2D and 3D views. 
+
+<Image src="/studio-docs/basics/view/switch-2d-3d.gif" alt="view" width={1000} height={400} className="pt-6" />
+
+### Transform Tools Panel
+
+<Image src="/studio-docs/basics/view/transform-toolbox.gif" alt="view" width={1000} height={400} className="pt-6" />
+
+This panel provides tools for manipulating game objects in the scene. From top to bottom, the first three buttons let you switch between:
+
+* Move Tool – for adjusting position (translation)
+
+* Rotate Tool – for rotating the object
+
+* Scale Tool – for resizing the object
+
+When the "Local" checkbox is enabled, transformations are applied relative to the object's local coordinate system instead of the global (world) coordinate system.
+
+### Renderer Settings
+
+In 3D projects, when you're in 3D View, an additional button appears to the left of the 2D/3D view toggle. 
+This button opens the Renderer Settings, allowing you to configure rendering options specific to the current 3D view.
+
+<Image src="/studio-docs/basics/view/renderer-settings.gif" alt="view" width={1000} height={400} className="pt-6" />
+
+For more information about the settings that are listed here, please check [Three.js documentation](https://threejs.org/docs/#api/en/renderers/WebGLRenderer).
