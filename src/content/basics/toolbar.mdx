@@ -1,1 +1,47 @@
+import {House, Clapperboard, Hammer, Upload, ShoppingBag, Code2, Truck, FolderOpen} from "lucide-react";
+import Image from "next/image";
+
 # Toolbar
+
+| Icon       | Explanation |
+| :-----     | :----       |
+| <House />  |  Has the same effect as closing the Studio within a project. It will return you to the Home page. |
+| <Clapperboard/>     | Play settings.       |
+| <Hammer/>     | Opens up the build settings to build project.       |
+| <Upload/>     | Upload to Gearbox popup.       |
+| <ShoppingBag/>     | Opens up the Store.       |
+| <Code2/>     | Opens the project in IDE.       |
+| <Truck/>     | Generates the assets that are required for the build process. |
+| <FolderOpen/>     | Opens the project folder in file explorer. |
+
+## Play
+
+By hovering over this and selecting `Play Project` you will initialize the `pnpm i` command. After this is done, Studio will run `npm run dev` command
+and your project will be available on browser localhost and on the preview panel. You can also dock this panel wherever you want.
+
+<Image src="/studio-docs/basics/toolbox/preview-dockable.gif" alt="preview" width={700} height={300} className="mt-6 rounded-xl overflow-hidden" />
+
+## Build
+
+<Image src="/studio-docs/basics/toolbox/build-settings.png" alt="build settings" width={500} height={300} className="mt-6 rounded-xl overflow-hidden" />
+
+When you press the **Build** button, the system will first generate the necessary assets, then simultaneously build both the project and its associated buckets. Once the build process is complete, you’ll be able to upload your game directly to the **Gearbox** platform.
+
+#### Additional Options:
+
+* **Analyzer**: 
+  Enable this option to display the **Build Analyzer** if your game size is too large. It helps identify which assets or components are consuming the most space.
+
+* **Hide Consoles**:
+  Suppresses all `console.log`, `console.warn`, and `console.error` outputs during the build process for a cleaner output.
+
+* **iOS and Android Links**:
+  Default store URLs for iOS and Android can be configured here. These are adjustable on the **Gearbox** platform, but you can define default values in this panel.
+
+## Upload
+
+TODO
+
+## Store
+
+TODO

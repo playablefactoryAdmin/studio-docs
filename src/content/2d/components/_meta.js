@@ -1,4 +1,7 @@
 export default {
+    "node2d-component": {
+        title: "Node2D"
+    },
     "container-component": {
         title: "Container"
     },

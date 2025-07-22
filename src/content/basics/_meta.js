@@ -1,4 +1,5 @@
 export default {
+    home: "Home",
     hierarchy: "Hierarchy",
     "view-panel": "View",
     toolbar: "Toolbar",
