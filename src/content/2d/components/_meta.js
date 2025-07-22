@@ -29,9 +29,9 @@ export default {
     "layer-component": {
         title: "Layer"
     },
-    // "layout": {
-    //     title: "Layout"
-    // },
+    "layout-cell-component": {
+        title: "Layout and Cell"
+    },
     // "cell": {
     //     title: "Cell"
     // },

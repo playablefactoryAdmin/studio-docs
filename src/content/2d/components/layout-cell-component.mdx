@@ -1,0 +1,68 @@
+# Layout and Cell Components
+
+import Image from "next/image";
+
+Layout and Cell are used to create a grid-based layout system. They are tightly integrated with each other.
+
+You can think of layout as a responsive container for cells. It automatically scales to the size of its parent. If you put it to the scene root, 
+it will scale to the size of the screen. Every cell handles its children. 
+
+Since every cell handles its children, you must think of the first cell as an another parent like layout. After selecting the first cell, 
+you can add children cells to it and see how the layout will look in real time.
+
+<Image src="/studio-docs/components/layout-cell-example.png" alt="Layout Example" width={800} height={800} className="pt-6" />
+
+
+Now, let's look at the layout component in detail.
+
+## Layout
+
+<Image src="/studio-docs/components/layout-component.png" alt="Layout Component" width={500} height={500} className="pt-6" />
+
+### Landscape and Portrait 
+
+Normally, landscape settings are used for both landscape and portrait. By selecting landscape here and overriding it, you can set different settings during landscape mode.
+
+### Preview Window
+
+In here, you can see the preview of the layout. You can also see the preview of the layout in the scene.
+
+### Cell Button
+
+Adds a cell as a children of this game object.
+
+### Select Parent
+
+Selects the parent of this game object.
+
+### Delete Cell
+
+Deletes the currently selected cell.
+
+
+## Cell
+
+<Image src="/studio-docs/components/cell-component.png" alt="Layout Example" width={300} height={300} className="pt-6" />
+
+### Order
+
+Determines the stacking order of the cell relative to its siblings. For example, in a vertical stack of two cells, setting the first cell's order to `1` moves it below the second cell.
+
+### Fraction
+
+Specifies the proportion of space the cell occupies relative to its siblings. For instance, setting a cell’s fraction to `0.3` allocates 30% of the available space to it, while the remaining 70% is distributed among the other cells.
+
+### Contain Type
+
+Defines the layout direction of the cell's children.
+
+* `row`: Arranges child elements horizontally.
+* `column`: Arranges child elements vertically.
+
+### Mask
+
+Applies a mask to the cell, controlling visibility and interaction within the layout.
+
+### Z-Index
+
+Specifies the rendering order on the z-axis, using the Pixi.js `zIndex` property. Higher values render above lower ones.

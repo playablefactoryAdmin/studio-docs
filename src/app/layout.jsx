@@ -19,7 +19,7 @@ const navbar = (
         // ... Your additional navbar options
     />
 );
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+// const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
 
 export default async function RootLayout({ children }) {
     return (
@@ -43,7 +43,7 @@ export default async function RootLayout({ children }) {
                         navbar={navbar}
                         pageMap={await getPageMap()}
                         docsRepositoryBase="https://none"
-                        footer={footer}
+                        // footer={footer}
                         editLink={false}
                         feedback={{ content: false }}
                         lastUpdated={<HideLastUpdated/>}
