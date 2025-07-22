@@ -11,6 +11,11 @@ import { HideLastUpdated } from "@components/HideLastUpdated";
 export const metadata = {
     // Define your metadata here
     // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+    title: {
+        default: 'Studio Documentation',
+        template: '%s | Studio'
+    },
+    description: 'Studio documentation',
 };
 
 const navbar = (

@@ -43,5 +43,17 @@ export default {
     // },
     "camera-component": {
         title: "Camera"
-    }
+    },
+    "responsive-component":{
+        title: "Responsive2D"
+    },
+    "transitionfx-component":{
+        title: "Transition FX"
+    },
+    "filters-component":{
+        title: "Filters"
+    },
+    "physics-component":{
+        title: "Physics"
+    },
 }

@@ -1,1 +1,44 @@
+import Image from "next/image";
+import {Callout} from "nextra/components"
+
 # Physics 2D
+
+Studio’s Physics 2D functionality is powered by the Box2D engine. To utilize this feature, you must first enable and configure the appropriate settings.
+
+Navigate to the following path within the Settings menu: `2D` -> `Physics 2D`. Set the  `Physics2D Type` to `Box2D`. This action enables the Box2D engine and allows Studio to load the necessary physics library.
+
+Once these steps are completed, Physics 2D support using Box2D will be active within your project.
+
+<Image src="/studio-docs/advanced/enable-physics.gif" alt="enable physics" width={700} height={300} className="mt-6 rounded-xl overflow-hidden" />
+
+After enabling Physics 2D in the settings, you need to designate the specific Scene in which physics should be applied.
+
+In the [Hierarchy](/basics/hierarchy) panel, select the Scene you want to enable physics for.
+
+<Image src="/studio-docs/advanced/scene-physics.png" alt="enable physics scene" width={400} height={300} className="mt-6 rounded-xl overflow-hidden" />
+
+You need to enable the `Enable Physics2D` option. After that, you need to select the container that needs to act as the "world". 
+For more info, check [understanding 2d physics simulation](#understanding-2d-physics-simulation) section.
+
+Now Physics2D is ready to be used. You can also enable the debug option in the Physics2D settings to visualize your bounds.
+
+Now add a [Physics component](../2d/components/physics-component.mdx) to your game object and put it as a child to your Physics world. Don't forget to set it to dynamic. It should just fall down.
+
+## Understanding 2D Physics Simulation
+
+Physics in Studio must be applied directly to a single top-level container—nesting physics-enabled objects inside other containers is not supported and will result in unexpected behavior.
+
+<Callout type="warning">
+<div className="-mt-4">
+    If you assign a Physics Component to a child object that is nested inside a container placed under a Physics World, the physics simulation will not function correctly for that child. 
+    This is because the physics engine only recognizes objects directly under the physics world hierarchy.
+</div>
+</Callout>
+To ensure proper simulation:
+
+* Apply the Physics Component to direct children of the world container.
+
+* Avoid placing physics-enabled objects inside nested containers.
+
+This structure is necessary due to how the physics world tracks and updates object transformations during simulation.
+

@@ -1,0 +1,102 @@
+import Image from "next/image";
+import {Callout} from "nextra/components"
+
+# Physics Component
+
+Adds physical properties to objects using Box2D. This component controls how an object interacts in the physics simulation.
+
+<Image src="/studio-docs/components/physics-component.png" alt="Scripting System" width={400} height={300} className="mt-6 rounded-lg overflow-hidden" />
+
+### Label
+
+A custom identifier for the physics body. This is used for debugging and selection purposes.
+
+---
+
+### Body Type
+
+Defines how the object behaves in the physics simulation:
+
+* **Static** – Does not move and is unaffected by forces (e.g. ground, wall).
+* **Dynamic** – Fully simulated: responds to gravity, collisions, and forces.
+* **Kinematic** – Not affected by forces but can be moved manually.
+
+Use the correct type depending on whether the object needs to move or just collide.
+
+---
+
+### Sensor
+
+When enabled, the body detects collisions **without responding physically**.
+
+Sensors are great for:
+
+* Triggers
+* Checkpoints
+* Overlap zones
+
+<Callout type="info">Sensors don’t block movement or cause bounces—they simply detect overlap.</Callout>
+
+---
+
+### Friction
+
+Controls how much resistance the body has when sliding against another.
+
+* **0** → Very slippery (ice-like)
+* **1** → Very sticky (sandpaper-like)
+
+Set this value based on how "grippy" the surface should feel.
+
+---
+
+### Restitution
+
+Defines how **bouncy** the object is.
+
+* **0** → No bounce (like clay)
+* **1** → Maximum bounce (like a rubber ball)
+
+---
+
+### Density
+
+Affects the **mass** of the body. Higher values make it heavier.
+
+<Callout type="info">Only applies to dynamic bodies. Static and kinematic bodies ignore this.</Callout>
+
+---
+
+### Shape
+
+Specifies the collision shape of the body (rectangle or circle).
+
+This determines how the object interacts physically with others.
+
+---
+
+### Lock Body
+
+Prevents the body from updating when the node’s transform changes (e.g. position, scale).
+
+Enable this when:
+
+* You want full control of the physics body manually
+* The transform is being handled externally
+
+---
+
+### Offset
+
+Applies an x/y offset to the collision shape **relative to the object origin**.
+
+Useful when the shape should be slightly displaced from the visual object—for example, adding a "foot sensor" under a character.
+
+---
+
+### Shape Settings
+
+The `GET SHAPE` button allows Studio to automatically calculate and apply the most appropriate shape properties for the selected Game Object. This is based on the object's current size, scale, and visual boundaries, and is used to optimize how it interacts within the Physics system.
+
+You can also manually define the shape properties if you want to.
+

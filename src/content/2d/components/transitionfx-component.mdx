@@ -1,0 +1,59 @@
+import Image from "next/image";
+import {Callout} from "nextra/components"
+
+# Transition FX
+
+Dynamically creates gsap animations.
+
+<Image src="/studio-docs/components/transitionfx-component.png" alt="Transition-fx Component" width={400} height={300} className="mt-6 rounded-xl" />
+
+### Name
+
+The name of the Transition FX. This will appear in the tab view and serves as the identifier for the animation.
+
+### Transition Type
+
+A dropdown menu to select the type of transition. Each option is self-explanatory and defines the animation behavior.
+
+### Duration
+
+Specifies the length of the animation in seconds.
+
+### Delay
+
+Sets a delay before the animation starts, in seconds.
+
+### Repeat
+
+Defines how many times the animation should repeat. Use `-1` for infinite looping.
+
+### Repeat Delay
+
+Adds a delay between repeated animation cycles.
+
+### Yoyo
+
+Enables the animation to reverse direction on every other repeat cycle. Useful for creating ping-pong effects.
+
+### Ease
+
+Choose from predefined GSAP easing functions. You can fine-tune the animation curve using the curve editor located on the right panel.
+
+### Autoplay
+
+When enabled, the animation starts automatically upon creation.
+
+### Hide on Complete
+
+If checked, the target object will be hidden after the animation completes.
+
+<Callout type="info">Example: If an animation reduces an object’s scale to `0`, but the object also has a responsive component, it may become visible again on resize. Enabling this option ensures it stays hidden.</Callout>
+
+### Event Names
+
+Select the event names that will trigger this animation. Use `globals.eventEmitter.emit(eventName)` to programmatically fire the animation.
+
+### Next FX
+
+Specifies the next animation (on the same component) that should play after this one finishes.
+
