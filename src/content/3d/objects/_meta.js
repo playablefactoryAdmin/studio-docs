@@ -1,4 +1,7 @@
 export default {
+    "studio-object-3d": {
+        title: "Studio Object 3D"
+    },
     "node3d": {
         title: "Node 3D"
     },

@@ -1,0 +1,54 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+
+# Inline Model
+
+When you drag and drop a .gltf object to your scene, you will see pop-up, asking you to choose a type. This page is for the `Deconstructed` type.
+For the packaged model type, check [Model](model.mdx) instead.
+
+The Deconstructed type is recommended if you plan to:
+
+* Add or remove child objects within the model hierarchy
+
+* Modify individual materials or meshes
+
+* Customize the internal structure of the model in detail
+
+Unlike the Packaged type, which treats the model as a single unit, the Deconstructed import fully loads the .gltf file and iterates through its internal nodes, 
+adding each child object separately to the Studio hierarchy.
+
+This allows for greater flexibility and control over the model's components, making it ideal for more complex editing workflows.
+
+### Class Signature
+
+```ts
+class InlineModel extends THREE.Object3D implements StudioObject3D
+````
+
+### Properties
+
+<UserTable data={[
+{ name: "sID", desc: "Unique session ID assigned by Studio." },
+{ name: "internalAnimationPlayer", desc: "Instance of `Animation3DPlayer` that handles animation playback for the inline model." },
+{ name: "modelAnimations", desc: "Array of `THREE.AnimationClip` objects extracted from the model." },
+{ name: "modelRef", desc: "Reference to the `THREE.Object3D` that was passed into the constructor." },
+{ name: "eventEmitter", desc: "Global `EventEmitter` used to broadcast animation and component updates to the editor." },
+{ name: "isInlineModel", desc: "Boolean flag indicating this is an inline model." },
+{ name: "componentRef", desc: "Reference to the current `InlineModelGC` component instance." },
+]} />
+
+Since each child object of the model is loaded and managed separately, the `InlineModel` class **solely** handles animation-related functionality. 
+It does not manage any other aspects of the model such as materials, transformations, or hierarchy beyond animation playback.
+
+Each individual game object within the model hierarchy is responsible for managing its own properties and behaviors independently.
+
+### Skeletal Meshes and Bones
+
+These special game objects are exclusively loaded via this specific loading method. Unlike other Studio objects, they **do not possess special components**.
+
+Notably, skeletal meshes within these objects can only be transformed or animated by manipulating their bones directly, similar to how other game engines handle skeletal meshes and bone-based animations.
+
+
+
+

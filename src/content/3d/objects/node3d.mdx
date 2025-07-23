@@ -1,0 +1,50 @@
+---
+sidebarTitle: Object3D
+---
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+
+<SpecialHeader title="Node 3D" />
+
+```ts
+interface Object3D {
+	sID: string;
+	label: string;
+	isGameObject: boolean;
+	selected: boolean;
+	locked: boolean;
+
+	components: Components3D;
+	updateComponents(components: { [key: string]: any }): void;
+	getComponent(component: string): any;
+	initComponentSystem(): void;
+	update(delta: number): void;
+
+	parentScene: any;
+
+	destroy(): void;
+	setVisible(value: boolean): void;
+
+	isStudioObject: boolean;
+}
+```
+
+### Properties and Methods
+
+<UserTable data={[
+  { name: "sID", desc: "Unique session identifier for the object." },
+  { name: "label", desc: "User-defined label for the object. Typically shown in the Studio UI." },
+  { name: "isGameObject", desc: "Indicates if this object is treated as a GameObject within the Studio environment." },
+  { name: "selected", desc: "Whether the object is currently selected in Studio." },
+  { name: "locked", desc: "Whether the object is locked and not editable in the Studio." },
+  { name: "components", desc: <HereLinkedText text="Collection of 3D components attached to this object. Learn more" href="components3d.mdx" /> },
+  { name: "updateComponents", desc: <HereLinkedText text="Replaces or updates the current set of components. Learn more" href="components3d.mdx" /> },
+  { name: "getComponent", desc: <HereLinkedText text="Retrieves a specific component by name. Learn more" href="components3d.mdx" /> },
+  { name: "initComponentSystem", desc: "Initializes the internal component system. Usually called once during setup." },
+  { name: "update", desc: "Called on every frame to update the object's logic, animations, or state." },
+  { name: "parentScene", desc: "Reference to the parent scene the object belongs to." },
+  { name: "destroy", desc: "Destroys the object, performing cleanup and removing it from the scene." },
+  { name: "setVisible", desc: "Toggles the object's visibility in the scene." },
+  { name: "isStudioObject", desc: "Flag to indicate that this object is managed by Studio." },
+]} />

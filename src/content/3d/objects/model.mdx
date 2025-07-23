@@ -1,0 +1,48 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+
+# Model
+
+When you drag and drop a .gltf object to your scene, you will see pop-up, asking you to choose a type. This page is for the `Packaged` type.
+For the destructured model type, check [Inline Model](inlinemodel.mdx) instead.
+
+This model type is recommended if you are planning on using [Buckets](/advanced/buckets). This type loads the entire .gltf object as a single object 
+and does not generate materials for you. If you want to access the child nodes and see the materials, use [Inline Model](inlinemodel.mdx) instead.
+
+In detail, this object is the entire scene loaded into **Studio** as one single node. 
+
+The `Model` class extends `THREE.Object3D` and implements the `StudioObject3D` type. It serves as the main representation of a 3D model within the Studio environment, supporting component updates, animation playback, morph targets, and integration with the editor's event system.
+
+```ts
+gltfLoader.load(gltfObjectPath, (gltf: any)=>{
+    gltf.scene //this is the object that gets created as one single node.
+})
+```
+
+### Class Signature
+
+```ts
+class Model extends THREE.Object3D implements StudioObject3D
+```
+### Properties
+
+<UserTable data={[
+  { name: "type", desc: "Object type, set to `'model'`." },
+  { name: "modelUUID", desc: "UUID of the 3D model asset being used." },
+  { name: "stuffsID", desc: "Optional ID if the model is loaded from 'stuffs' (template data)." },
+  { name: "model", desc: "The actual `THREE.Object3D` instance of the model scene." },
+  { name: "internalAnimationPlayer", desc: "Instance of `Animation3DPlayer` used to manage animation playback in Studio mode." },
+  { name: "morphObjects", desc: "Map of mesh names to `THREE.Mesh` instances that have morph targets." },
+  { name: "eventEmitter", desc: "Global `EventEmitter` instance used for editor events and updates." },
+  { name: "activeModel", desc: "`'model' | 'stuffs' | 'empty'` - Determines how the model was loaded." },
+  { name: "componentRef", desc: "Reference to the `ModelGC` component currently applied to the model." },
+  { name: "modelPath", desc: "Resolved path of the current model asset." },
+  { name: "animationManager", desc: "Runtime animation manager (Used in template mode. Not used in Studio)." },
+]} />
+
+- Use `AnimationManager` to control the animation states.
+
+---
+
+It is not recommended that you use the methods available in this class. They are for internal use only.

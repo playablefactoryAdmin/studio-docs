@@ -1,0 +1,46 @@
+---
+sidebarTitle: StudioObject3D
+---
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+
+<SpecialHeader title="StudioObject3D" />
+
+`StudioObject3D` is a **type**, not a class. It is defined as:
+
+```ts
+export type StudioObject3D = ThreeObject3D & THREE.Object3D;
+```
+
+This means it extends the native `THREE.Object3D` with additional properties and methods defined in the `ThreeObject3D` type.
+
+### ThreeObject3D
+
+```ts
+type ThreeObject3D = {
+	sID: string;
+	type: string;
+	components: Components3D;
+	updateComponents: (components: any) => void;
+	getComponent: (component: string) => any;
+	selected: boolean;
+	locked: boolean;
+};
+```
+
+### Properties
+
+<UserTable data={[
+  { name: "sID", desc: "Unique session ID assigned to the object." },
+  { name: "type", desc: "Type of the object (e.g., 'Mesh', 'Light', etc.)." },
+  { name: "components", desc: <HereLinkedText text="Components associated with this object. Learn more" href="components3d.mdx" /> },
+  { name: "updateComponents", desc: <HereLinkedText text="Updates the object's components. Learn more" href="components3d.mdx" /> },
+  { name: "getComponent", desc: <HereLinkedText text="Retrieves a specific component by name. Learn more" href="components3d.mdx" /> },
+  { name: "selected", desc: "Indicates whether the object is currently selected in Studio." },
+  { name: "locked", desc: "Indicates whether the object is locked in Studio (non-editable)." },
+]} />
+
+### Further Information
+
+To learn more about `THREE.Object3D` refer to the official [Three.js documentation](https://threejs.org/docs/#api/en/core/Object3D).
