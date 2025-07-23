@@ -1,0 +1,108 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+ title="OrthographicCamera"  
+ extendsClass="THREE.OrthographicCamera"  
+ extendsClassLink="https://threejs.org/docs/#api/en/cameras/OrthographicCamera"  
+ implementsClass="StudioObject3D"  
+ implementsClassLink="/studio-docs/3d/objects/studio-object-3d"  
+ usesComponent="OrthographicCameraGC"  
+ usesComponentLink="/studio-docs/3d/components/orthographic-camera-gc"  
+/>
+
+### Methods
+
+<UserTable data={[
+  { name: "updateOrthographicCameraComponent", desc: "Updates the camera's orthographic parameters and debug mode.", href: "updateorthographiccameracomponent" },
+  { name: "updateComponents", desc: "Handles updates from component system, applying orthographic camera changes.", href: "updatecomponents" },
+  { name: "changeDebug", desc: "Enables or disables debug helper visualization in the scene.", href: "changedebug" },
+  { name: "transformUpdate", desc: "Updates debug helper if debug visualization is enabled.", href: "transformupdate" },
+  { name: "destroy", desc: "Removes the camera helper and cleans up.", href: "destroy" },
+  { name: "setVisible", desc: "Sets the visibility of the camera and debug helper.", href: "setvisible" }
+]} />
+
+---
+
+#### updateOrthographicCameraComponent
+
+```ts
+updateOrthographicCameraComponent(component: OrthographicCameraGC): void
+```
+
+Updates the orthographic camera parameters: left, right, top, bottom, near, far, and debug settings.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "component", desc: "OrthographicCameraGC component containing camera settings." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Processes component updates, applying changes to the orthographic camera component if available.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "components", desc: "Object mapping component names to component data." }
+]} />
+
+---
+
+#### changeDebug
+
+```ts
+changeDebug(debugEnabled: boolean): void
+```
+
+Toggles the presence and visibility of the camera helper used for debugging.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "debugEnabled", desc: "Enable (true) or disable (false) the debug camera helper." }
+]} />
+
+---
+
+#### transformUpdate
+
+```ts
+transformUpdate(): void
+```
+
+If debug mode is enabled, updates the camera helper to match current camera transform.
+
+---
+
+#### destroy
+
+```ts
+destroy(): void
+```
+
+Cleans up the camera helper by removing it from the scene.
+
+---
+
+#### setVisible
+
+```ts
+setVisible(visible: boolean): void
+```
+
+Sets visibility of both the camera and its debug helper.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "visible", desc: "True to show, false to hide." }
+]} />

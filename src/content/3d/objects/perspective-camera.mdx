@@ -1,0 +1,109 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+ title="PerspectiveCamera"  
+ extendsClass="THREE.PerspectiveCamera"  
+ extendsClassLink="https://threejs.org/docs/#api/en/cameras/PerspectiveCamera"  
+ implementsClass="StudioObject3D"  
+ implementsClassLink="/studio-docs/3d/objects/studio-object-3d"  
+ usesComponent="PerspectiveCameraGC"  
+ usesComponentLink="/studio-docs/3d/components/perspective-camera-gc"  
+/>
+
+### Methods
+
+<UserTable data={[
+  { name: "updatePerspectiveCameraComponent", desc: "Updates the camera parameters and debug settings from the component.", href: "updateperspectivecameracomponent" },
+  { name: "updateComponents", desc: "Handles component updates, including the perspective camera component.", href: "updatecomponents" },
+  { name: "changeDebug", desc: "Enables or disables debug helper visualization in the scene.", href: "changedebug" },
+  { name: "transformUpdate", desc: "Updates debug helper transform if debug is enabled.", href: "transformupdate" },
+  { name: "destroy", desc: "Cleans up the camera helper from the scene.", href: "destroy" },
+  { name: "setVisible", desc: "Sets visibility of the camera and its debug helper.", href: "setvisible" }
+]} />
+
+---
+
+#### updatePerspectiveCameraComponent
+
+```ts
+updatePerspectiveCameraComponent(component: PerspectiveCameraGC): void
+```
+
+Updates camera's field of view, aspect ratio, near/far planes, and debug mode.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "component", desc: "The PerspectiveCameraGC component with camera settings." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Processes component updates, applying changes to the perspective camera component if present.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "components", desc: "A dictionary of component data keyed by component names." }
+]} />
+
+---
+
+#### changeDebug
+
+```ts
+changeDebug(debugEnabled: boolean): void
+```
+
+Toggles the visibility and presence of the camera helper in the scene.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "debugEnabled", desc: "Enable or disable debug helper visualization." }
+]} />
+
+---
+
+#### transformUpdate
+
+```ts
+transformUpdate(): void
+```
+
+If debug is enabled, updates the camera helper to reflect current camera transform.
+
+---
+
+#### destroy
+
+```ts
+destroy(): void
+```
+
+Removes the camera helper from its parent and performs cleanup.
+
+---
+
+#### setVisible
+
+```ts
+setVisible(visible: boolean): void
+```
+
+Sets visibility of both the camera and the debug helper.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "visible", desc: "True to show the camera and helper, false to hide." }
+]} />
+```
