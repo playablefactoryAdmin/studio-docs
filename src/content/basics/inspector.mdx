@@ -1,1 +1,34 @@
+import Image from "next/image";
+
 # Inspector
+
+The Inspector window displays the properties of the currently selected game objects and assets. It allows you to view and modify the attributes of the selected items directly.
+
+On the default layout, Inspector is on the right side of the screen. You can dock this wherever you want.
+
+<Image src="/studio-docs/basics/inspector/inspector-loc.png" alt="inspectorloc" width={900} height={300} className="mt-6 rounded-xl overflow-hidden" />
+
+## Common Asset Settings
+
+When you select an object in the **Asset Viewer**, a set of settings specific to that asset type will be displayed. Below are the commonly available options:
+
+### Export for Code
+
+Enables the asset to be accessed via code. For example, if this option is disabled, attempting to retrieve the asset using `getTexture2D(texId)` will not work.
+
+### Enable Atlas
+
+If applicable, includes the asset in a texture atlas to optimize rendering performance.
+
+### Enable Tiny
+
+Minifies the image during asset generation, reducing file size.
+
+### Loop
+
+**Audio assets only.** If enabled, the audio will loop continuously when played.
+
+### Set as Global Font
+
+**Font assets only.** Sets the selected font as the global font. All `Text` objects configured to use **Global Font** as their **font family** will automatically update to use this font.
+
