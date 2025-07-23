@@ -13,9 +13,11 @@ import { Callout } from "nextra/components";
 Click on the `Directional Light` from the hierarcy.
 
 <Callout type="warning">
+<div className="-mt-3">
   You should not assign the castShadow or receiveShadow property directly to the
   model. Since the model is composed of multiple meshes, you need to assign
   these properties to each mesh individually.
+</div>
 </Callout>
 
 <Image
@@ -47,9 +49,12 @@ Objects in your scene won’t automatically cast or receive shadows. You have to
 - `receiveShadow:` If set to true, the object will receive shadows cast by other objects.
 
 <Callout type="warning">
+<div className="-mt-3">
+
   You should not assign the castShadow or receiveShadow property directly to the
   model. Since the model is composed of multiple meshes, you need to assign
   these properties to each mesh individually.
+</div>
 </Callout>
 
 Enable shadow casting for objects:
@@ -98,9 +103,11 @@ Higher values provide better quality shadows but increase computation time.
 Values must be powers of 2 (e.g., 512, 1024, 2048).
 
 <Callout type="warning">
+<div className="-mt-3">
   Increasing the shadow map size to larger values (e.g., 2048 or above) can
   significantly improve shadow quality but may also lead to higher memory usage
   and decreased performance.
+</div>
 </Callout>
 
 ## 4. Area:
