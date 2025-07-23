@@ -1,0 +1,90 @@
+---
+sidebarTitle: Quarks Particle
+---
+
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<SpecialHeader title="Quarks Particle" />
+
+In 3D, we use the <a href="https://quarks.art/" target="\_blank" rel="noopener noreferrer" style={{ color: "#3182ce", textDecoration: "underline" }}>Quarks library</a> to work with particles. Quarks is a JSON format that comes with textures and properties.
+To use it in the game, we put the particle's json file in `assets/quarkEffects`.
+
+Then we click on json file from editor and from inspector we see the properties of the particle.
+
+<Image
+  src="/studio-docs/advanced/quarks-a.jpg"
+  alt="Quarks Particle Inspector"
+  width={500}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+- `Number of particles` : Number of particles to be created in pool.
+- `Export for Code 3D` : In game usage name.
+
+<Callout type="info">
+  <p>
+    Number of particles shouldn't be too high, it is important for performance
+    to create the necessary number of particles. Pool is created based on the
+    number of particles to recycle.
+  </p>
+</Callout>
+
+Then in code, we use it like this;
+
+```js
+Particle3D.spawnAt("Comic_Hit", new Vector3(0, 0, 0), 1);
+```
+
+### spawnAt Parameters
+
+<UserTable
+  data={[
+    { name: "name", desc: "Name of the particle." },
+    { name: "position", desc: "Position of the particle." },
+    { name: "scale", desc: "Scale of the particle." },
+    {
+      name: "scene",
+      desc: "(Optional) Scene to spawn the particle in. It defaults to the current scene.",
+    },
+  ]}
+/>
+
+`spawnAt` returns a `QuarksParticle` class that extends `Object3D`, you can make position and rotation adjustments after spawn, but the rotation settings are not very reliable, they may not work as expected.
+
+### QuarksParticle Methods
+
+<UserTable
+  data={[
+    {
+      name: "stop(true)",
+      desc: "Stops the particle, if you write true to the parameter, it stops immediately",
+    },
+    { name: "restart", desc: "Restarts the particle." },
+  ]}
+/>
+
+##### Notes
+
+- **My particle is not appearing in the desired position**
+
+This is most likely because the particle’s `worldSpace` property is still set to true.
+`worldSpace` can be useful in cases like exhaust effects, where the particle should maintain its position after being emitted.
+However, for effects that should stay local to their parent (like spinning in place), disabling `worldSpace` gives better results.
+To disable it, open the .json file and change any `worldSpace: true` entries to `false`.
+
+- **My particle works fine the first 4 times, but on the 5th time it doesn't appear or appears somewhere else.**
+
+This is definitely related to `worldSpace`. The incorrect position on the 5th time likely happens because the pool's `maxLen` is reached and it wraps around.
+But if you're keeping `worldSpace` as true and want to fix the position, assign the particle to a variable during `spawnAt`, like this:
+
+```js
+efk.stop(true);
+gsap.delayedCall(0.01, () => {
+  //in essence, it should be called in the next frame, 0.01 is hypothetical
+  efk.restart();
+});
+```
