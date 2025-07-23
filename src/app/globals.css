@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 /* Custom CSS Variables for your theme */
 :root {
   --color-primary: #3b82f6;
