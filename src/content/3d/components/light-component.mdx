@@ -1,0 +1,98 @@
+---
+sidebarTitle: Light
+---
+
+import Image from "next/image";
+
+# Light Component
+
+Every light object holds a light component. On top of having a light component, they might have a specialized component as well.
+For example, **Ambient Light** only holds a light component. **Directional Light** holds a **Light Component** and a **Directional Light** component.
+
+Settings on this component is very straight-forward. Color sets the color of the light, while intensity sets the intensity of the light.
+
+<Image src="/studio-docs/components/3d/light-component.gif" alt="Lights Component" width={800} height={600} className="pt-6" />
+
+## Point Light
+
+<Image src="/studio-docs/components/3d/light-point-component.gif" alt="Lights Component" width={800} height={600} className="pt-6" />
+
+### Distance
+
+When the distance value is zero, the light intensity diminishes following the inverse-square law indefinitely. 
+If the distance is set to a non-zero value, the light follows the inverse-square attenuation up to near that distance, after which it rapidly and smoothly fades to zero. 
+
+For more information, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/PointLight.distance).
+
+### Decay
+
+This value controls how quickly the light intensity decreases with distance. The default is 2, corresponding to physically accurate inverse-square attenuation. 
+
+For more information, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/PointLight.decay).
+
+### Shadow
+
+Enables dynamic shadows. This is expensive. For more details, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/PointLight.castShadow).
+
+## Directional Light
+
+<Image src="/studio-docs/components/3d/light-directional-component.gif" alt="Directional Light Component" width={800} height={600} className="pt-6" />
+
+### Target
+
+Acts like the rotation of a directional light in other game engines.
+
+### Debug
+
+Enables light debug lines.
+
+### Shadow
+
+Enables dynamic shadows. This is expensive. For more details, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow).
+
+## Spot Light
+
+<Image src="/studio-docs/components/3d/light-spot-component.gif" alt="Spot Light Component" width={800} height={600} className="pt-6" />
+
+### Target
+
+Acts like the rotation of the light in other game engines.
+
+### Angle
+
+Specifies the maximum angle, in radians, that the spotlight extends from its central direction
+
+### Penumbra
+
+Defines the percentage of the spotlight cone affected by the penumbra — the soft edge where light gradually fades. Higher values result in a smoother transition between light and shadow.
+
+### Distance and Decay
+
+Works similar to [Point Light's](#point-light).
+
+### Debug
+
+Enables light debug lines.
+
+### Shadow
+
+Enables dynamic shadows. This is expensive. For more details, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow).
+
+## Hemisphere Light
+
+<Image src="/studio-docs/components/3d/light-hemisphere-component.gif" alt="Hemisphere Light Component" width={800} height={600} className="pt-6" />
+
+A light source placed above the scene that simulates environmental lighting by blending from a sky color overhead to a ground color below, 
+creating a subtle gradient that mimics natural ambient illumination.
+
+### Sky Color
+
+Light's sky color.
+
+### Ground Color
+
+Light's ground color.
+
+### Debug
+
+Enables light debug lines.

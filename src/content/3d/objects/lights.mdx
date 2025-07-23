@@ -1,0 +1,66 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";    
+import Image from "next/image";
+
+<SpecialHeader  
+ title="Lights"  
+ implementsClass="StudioObject3D"  
+ implementsClassLink="/studio-docs/3d/objects/studio-object-3d"  
+ usesComponent="model"  
+ usesComponentLink="/studio-docs/3d/components/light-component"  
+/>
+
+Lights created in Studio are built directly on top of the native light classes from **Three.js**. They retain full compatibility and functionality from Three.js, while integrating into the Studio ecosystem through the implementation of the `StudioObject3D` interface.
+
+Each light type listed below is a subclass of its corresponding `THREE.Light` (or light-related) class, with added support for Studio-specific systems such as components, selection, and editor interactions.
+
+This allows you to use and configure lights in Studio exactly as you would in Three.js, with additional Studio features layered on top.
+
+Below are the demonstrations for each light type.
+
+## Point Light
+
+<Image src="/studio-docs/objects/lights/point.png" alt="point light" width={600} height={600} className="pt-6" />
+
+A type of light source that radiates outward uniformly from a central point. This is typically used to simulate illumination from an exposed bulb or similar omnidirectional light emitter.
+
+To learn more about this, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/PointLight).
+
+## Ambient Light
+
+<Image src="/studio-docs/objects/lights/ambient.png" alt="ambient light" width={600} height={600} className="pt-6" />
+
+This type of light provides uniform illumination across all objects in the scene, regardless of their position or orientation.
+
+Think of it as adding brightness to even the areas untouched by direct light or shadows.
+
+To learn more about this, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/AmbientLight).
+
+## Directional Light
+
+<Image src="/studio-docs/objects/lights/directional.png" alt="Animated Sprite Component" width={600} height={600} className="pt-6" />
+
+A directional light source emits light in a single, consistent direction. 
+This is often used to mimic sunlight, as the sun is far enough away for its rays to be treated as parallel and its position as infinitely far.
+
+To learn more about this, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/DirectionalLight).
+
+## Spot Light
+
+This light originates from a single point and projects outward in a specific direction, forming a cone that widens with distance from the source.
+
+To learn more about this, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/SpotLight).
+
+<Image src="/studio-docs/objects/lights/spot.png" alt="Animated Sprite Component" width={600} height={600} className="pt-6" />
+
+## Hemisphere Light
+
+A light source placed above the scene that simulates ambient sky lighting, with its color gradually blending from the sky hue overhead to the ground tone below.
+
+In the example below, sky color is white, while ground color is completely black.
+
+To learn more about this, check [Three.js documentation](https://threejs.org/docs/#api/en/lights/HemisphereLight).
+
+<Image src="/studio-docs/objects/lights/hemisphere.png" alt="Animated Sprite Component" width={600} height={600} className="pt-6" />
+

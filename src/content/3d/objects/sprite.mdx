@@ -1,0 +1,60 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+ title="Sprite"  
+ extendsClass="THREE.Sprite"  
+ extendsClassLink="https://threejs.org/docs/#api/en/objects/Sprite"  
+ implementsClass="StudioObject3D"  
+ implementsClassLink="/studio-docs/3d/objects/studio-object-3d"  
+ usesComponent="sprite3D component"  
+ usesComponentLink="/studio-docs/3d/components/sprite3d-component"  
+/>
+
+### Properties
+
+<UserTable data={[
+  { name: "type", desc: "Object type identifier, always `sprite3D`." },
+  { name: "material", desc: "The THREE.SpriteMaterial used for rendering the sprite." },
+  { name: "center", desc: "The sprite's origin point (default is (0.5, 0.5))." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateSpriteComponent", desc: "Updates sprite properties including center and material.", href: "updatespritecomponent" },
+  { name: "updateComponents", desc: "Handles component updates, forwarding sprite3D component changes.", href: "updatecomponents" }
+]} />
+
+---
+
+#### updateSpriteComponent
+
+```ts
+updateSpriteComponent(component: Sprite3DGC): void
+```
+
+Updates the sprite's center and material based on the provided component.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "component", desc: "sprite3D component containing center and material information." }
+]} />
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: GameComponent }): void
+```
+
+Checks for a `sprite3D` component in the components map and applies updates.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "components", desc: "Map of component names to component instances." }
+]} />
