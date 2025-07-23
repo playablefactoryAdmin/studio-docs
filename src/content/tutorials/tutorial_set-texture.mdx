@@ -1,1 +1,13 @@
 # Setting a Texture in Studio
+
+After making a texture's exportForCode property enabled and a given id, simply get the texture first:
+
+```js
+const myTexture = getTexture2D(textureId)
+```
+
+After that, set the sprite texture using:
+
+```js
+this.sprite.setTextureFrame(myTexture) //do not use setTexture inside Studio.
+```

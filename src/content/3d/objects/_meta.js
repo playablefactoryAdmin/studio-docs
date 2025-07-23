@@ -2,18 +2,18 @@ export default {
     "node3d": {
         title: "Node 3D"
     },
-    "box": {
-        title: "Box"
+    "primitives": {
+        title: "Primitives"
     },
-    "sphere": {
-        title: "Sphere"
-    },
-    "cylinder": {
-        title: "Sphere"
-    },
-    "plane": {
-        title: "Plane"
-    },
+    // "sphere": {
+    //     title: "Sphere"
+    // },
+    // "cylinder": {
+    //     title: "Sphere"
+    // },
+    // "plane": {
+    //     title: "Plane"
+    // },
     "sprite": {
         title: "Sprite"
     },
