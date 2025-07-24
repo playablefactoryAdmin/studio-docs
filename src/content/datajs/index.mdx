@@ -5,38 +5,98 @@ asIndexPage: true
 
 # Data.js Documentation
 
-Welcome to the documentation for Data.js. This documentation provides information about the various data types and structures available in the Data.js library.
+This documentation provides information about the various data types and structures available in the Data.js system to use in platform.
+
+## Introduction
+
+Data.js is a configuration format used to define adjustable game parameters. When parsed by the platform, each entry in the JSON is converted into a corresponding UI component (e.g. sliders, toggles, color pickers), allowing platform users to modify values at runtime without directly editing code.
+The primary goal of datajs is to expose configurable game logic through a structured interface.
+
+## How to use
+
+### Declare core game variables
+
+Begin by declaring the core game variables in a `params.js` file. These variables act as centralized constants or stateful parameters used throughout gameplay logic.
+
+```javascript
+export const params = {
+  ...
+  playerSpeed: 10,
+  ...
+};
+```
+
+### Reference core game variables
+
+In your game code, reference the variables from params.js wherever needed. This ensures that all configurable behavior is driven by a single source. It's exported as `data` object from params.js.
+You can reference it from globals or app object.
+
+```javascript
+import { data } from "globals";
+
+player.velocity.x = input * data.playerSpeed;
+
+// or without importing globals
+player.velocity.x = input * app.data.playerSpeed;
+```
+
+### Create a datajs file
+
+Modify `data.js` file to describe which parameters should be externally adjustable. Each entry in datajs maps to a field in params.js using its id.
+
+```json
+{
+  {
+    "id":"playerSpeed",
+    "type": "range",
+    "min": 0,
+    "max": 10,
+    "step": 1,
+    "default": 10
+  }
+}
+```
+
+### Upload the datajs JSON file
+
+Data.js file is going to be generated as data.json file while uploading the game.
+Once the datajs file is uploaded to the platform, it dynamically generates UI controls (sliders, toggles, etc.) based on the definitions. When a user adjusts a value through the interface, the corresponding field in params.js is updated after refreshing the game or real time based on the implementation.
 
 ## Table of Contents
 
-- [Basic Types](basictypes.md)
-  - [Boolean](booleandata.md)
-  - [Range](rangedata.md)
-  - [Color](colordata.md)
-  - [Text](textdata.md)
+- [Basic Types](datajs/basic-types)
 
-- [Selection/Order Types](selectionordertypes.md)
-  - [Select](selectdata.md)
-  - [Dropdown](dropdowndata.md)
-  - [SelectImage](selectimagedata.md)
-  - [Order](orderdata.md)
-  - [OrderImage](orderimagedata.md)
-  - [PoolImage](poolimagedata.md)
-  - [SlotImage](slotimagedata.md)
+  - [Boolean](datajs/basic-types/booleandata.md)
+  - [Range](datajs/basic-types/rangedata.md)
+  - [Color](datajs/basic-types/colordata.md)
+  - [Text](datajs/basic-types/textdata.md)
 
-- [Upload Types](uploadtypes.md)
-  - [Upload](uploaddata.md)
-  - [Audio](audiodata.md)
-  - [Video](videodata.md)
-  - [Image](imagedata.md)
-  - [Font](fontdata.md)
+- [Selection/Order Types](datajs/selectorder-types)
 
-- [Group Types](grouptypes.md)
-  - [Tab](tabdata.md)
-  - [Group](groupdata.md)
+  - [Select](datajs/selectorder-types/selectdata.md)
+  - [Dropdown](datajs/selectorder-types/dropdowndata.md)
+  - [SelectImage](datajs/selectorder-types/selectimagedata.md)
+  - [Order](datajs/selectorder-types/orderdata.md)
+  - [OrderImage](datajs/selectorder-types/orderimagedata.md)
+  - [PoolImage](datajs/selectorder-types/poolimagedata.md)
+  - [SlotImage](datajs/selectorder-types/slotimagedata.md)
 
-- [Advanced Types](advancedtypes.md)
-  - [Custom](customdata.md)
-  - [Repeater](repeaterdata.md)
+- [Upload Types](datajs/upload-types)
 
-- [Quick Convert](quickconvert.md)
+  - [Upload](datajs/upload-types/uploaddata.md)
+  - [Audio](datajs/upload-types/audiodata.md)
+  - [Video](datajs/upload-types/videodata.md)
+  - [Image](datajs/upload-types/imagedata.md)
+  - [Font](datajs/upload-types/fontdata.md)
+
+- [Group Types](datajs/group-types)
+
+  - [Tab](datajs/group-types/tabdata.md)
+  - [Group](datajs/group-types/groupdata.md)
+
+  - [Advanced Types](datajs/advanced-types)
+
+  - [Custom](datajs/advanced-types/customdata.md)
+  - [Repeater](datajs/advanced-types/repeaterdata.md)
+
+- [Quick Convert](datajs/quickconvert)
