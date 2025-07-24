@@ -1,0 +1,90 @@
+# Prefabs
+
+import Image from "next/image";
+
+## What is a prefab?
+
+Prefabs are cloneable and modifiable versions of objects that will be used multiple times or in multiple locations.
+
+For example, if an object with a view that can be modified will be used multiple times for the same purpose, converting its most basic form into a prefab simplifies development.
+
+## How does a prefab work in Studio?
+
+You can convert all 2D and 3D nodes into prefabs within Studio.
+
+### Creating a Prefab
+
+To convert a node into a prefab, right-click it and select "Create Prefab" from the panel that opens.
+
+The prefabs you create will appear in the prefabs tab under the "Assets" window.
+
+<Image src="/studio-docs/advanced/prefabs/createPrefab.gif" alt="Creating a Prefab" width={395} height={255} className="pt-6" />
+
+### Using Prefabs
+
+You have two options for using prefabs: adding them to your scene or creating them from code.
+
+To add a prefab to your scene, drag the desired prefab from the prefabs tab and drop it into the "View" window or the Hierarchy.
+
+<Image src="/studio-docs/advanced/prefabs/addPrefab1.gif" alt="Using Prefabs" width={395} height={255} className="pt-6" />
+
+To create a prefab from code, first ensure that the prefab's "Export for code" feature is enabled. Then, you can use our pre-built methods: instantiatePrefab2D and instantiatePrefab3D.
+
+<Image src="/studio-docs/advanced/prefabs/exportcode.gif" alt="Using Prefabs" width={395} height={255} className="pt-6" />
+
+These two methods share name and prop values.
+
+Prop values for prefabs that have scripts on their own nodes can be accessed through their scripts' awake method.
+
+<Image src="/studio-docs/advanced/prefabs/scriptedPrefab.png" alt="Using Prefabs" width={395} height={255} className="pt-6" />
+<Image src="/studio-docs/advanced/prefabs/script.png" alt="Using Prefabs" width={518} height={553} className="pt-6" />
+
+instantiatePrefab2D can also receive transform values.
+
+```json
+instantiatePrefab2D(
+	name, // -> string
+	props, // -> undefined | object
+	transform /* -> undefined |   {
+		x, // -> number
+		y, // -> number
+		scale, // -> number
+		rotation, // -> number
+		angle, // -> number
+		parent, // -> string | Container
+		categoryBits, // -> undefined | number
+		maskBits, // -> undefined | [number] 
+	} */
+)
+```
+```json
+instantiatePrefab3D(
+    name, // -> string
+    props, // -> undefined | object
+)
+```
+
+## Sharing Prefabs Between Projects
+
+You can share prefabs to the Store or locale and add them to your project from there.
+
+### Store
+
+To share a prefab to the Store, you can use the "Share on Store" function (detailed in Tutorials/Store).
+
+
+<Image src="/studio-docs/tutorial/store/download.gif" alt="Downloading from Store" width={1186/2} height={693/2} className="pt-6" />
+
+<Image src="/studio-docs/tutorial/store/uploading.gif" alt="Uploading to Store" width={1920/3} height={1057/3} className="pt-6" />
+
+### Local
+
+To share a prefab to your local, you can use the "Export" function. 
+
+This will create a zip file containing all the prefab's necessary files, in the file path you choose, with the name you specify. 
+
+<Image src="/studio-docs/advanced/prefabs/localShare.gif" alt="Using Prefabs" width={518} height={553} className="pt-6" />
+
+You can also include a prefab zip file from your local into your project using the down arrow button in the upper left corner of the Prefabs tab of the Assets window.
+
+<Image src="/studio-docs/advanced/prefabs/reimport.gif" alt="Using Prefabs" width={518} height={553} className="pt-6" />
