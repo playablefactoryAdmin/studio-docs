@@ -1,0 +1,23 @@
+import Image from "next/image";
+
+# Mesh Component
+
+Studio's mesh component enables users to interact with the [Material System](/3d/advanced/material-system.mdx).
+
+<Image src="/studio-docs/components/3d/mesh-component.png" alt="Mesh Component" width={550} height={600} className="pt-6" />
+
+Skeletal Meshes does not have `Cast Shadow` and `Receive Shadow` properties exposed to the Studio. 
+
+These properties are inherited from `THREE.Object3D`. Since nearly all game objects in Three.js are subclasses of `THREE.Object3D`, and Studio subclasses most of these objects, 
+you can access and modify these properties directly via scripting. 
+To do so, simply access the desired node and set the property as needed:
+
+```ts
+this.node.castShadow = true;
+```
+
+### Material
+
+On click, a dropdown menu appears, allowing you to select which material to apply to this game object.
+For more information, refer to the [Material System](/3d/advanced/material-system.mdx) page.
+

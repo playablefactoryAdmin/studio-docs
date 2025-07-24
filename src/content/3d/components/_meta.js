@@ -2,6 +2,12 @@ export default {
     "basics-component": {
         title: "Basics"
     },
+    "mesh-component": {
+        title: "Mesh"
+    },
+    "model-component": {
+        title: "Model"
+    },
     "light-component": {
         title: "Lights"
     },

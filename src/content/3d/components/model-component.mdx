@@ -1,0 +1,35 @@
+import Image from "next/image"
+
+# Model Component
+
+Studio's mesh component enables users to preview animation and setup a model bucket system.
+
+<Image src="/studio-docs/components/3d/model-component.png" alt="Model Component" width={550} height={600} className="pt-6" />
+
+## Buckets
+
+Deconstructed models (inline models) **does not have**  bucket options in Studio. To use buckets with .gltf models, use **Packaged** option instead.
+If you are lost on what Buckets mean, please check the [Buckets](/advanced/buckets.mdx) page first.
+
+To use the buckets feature, create a model bucket in [Buckets Panel](basics/asset-viewer/buckets-panel.mdx) then set it as the `Buckets` option
+in the model component. 
+
+As outlined on the [Buckets](/advanced/buckets.mdx) page, Studio determines which object to load based on the index specified in the bucket object. 
+For instance, if the parameter is currently set to index 1, and the first entry in the bucket is an arrow mesh, then only the arrow mesh will be loaded—other objects will be ignored.
+
+Data.js file is used to define this parameter. You can assign the appropriate parameter id within that file. Then you have to explicity set it in the model component.
+
+## Animations
+
+<Image src="/studio-docs/components/3d/model-animations-component.png" alt="Model Animation Tab" width={550} height={600} className="pt-6" />
+
+This setting is available for both Deconstructed and Packaged models. It is used solely for previewing animations within Studio and does not affect gameplay.
+
+You can choose from the following animation repeat options:
+
+- No Loop
+- Loop
+- Ping Pong 
+
+After selecting an option, click the `Play` button on the right to preview the animation.
+
