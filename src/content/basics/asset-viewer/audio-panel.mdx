@@ -102,7 +102,7 @@ To play an imported sound use:
 
 ```js
 // enter the name of the sound without the extension
-AudioManager.playSound("soundName");
+playSound("soundName");
 ```
 
 This will play the audio whether it is an audiosprite or normal sound. It will find the audio with the name, if there is multiple audios with the same name it can lead to unwanted results.
@@ -110,7 +110,7 @@ This will play the audio whether it is an audiosprite or normal sound. It will f
 #### playSound
 
 ```ts
-static playSound(id: string, loop: boolean | undefined = undefined, volume: number | undefined = undefined, rate: number = 1): void
+playSound(id: string, loop: boolean | undefined = undefined, volume: number | undefined = undefined, rate: number = 1): void
 ```
 
 Play a sound with specified parameters including loop behavior, volume level, and playback rate.
