@@ -1,0 +1,465 @@
+---
+sidebarTitle: Animation
+---
+
+import SpecialHeader from "@components/SpecialHeader";
+import Image from "next/image";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader title="Animation" />
+
+## Animation Panel
+
+When model is loaded, you can see the animation panel at the inspector of the studio.
+You test your animations from here. This is not reflected on game.
+
+<Image
+  src="/studio-docs/advanced/anim3d.png"
+  alt="Animation"
+  width={400}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+## Animation In Game
+
+For playing animation in game, you need to call animationManager from attached script.
+
+```javascript
+this.node.components.animationManager.playAnim("animationName", opts);
+```
+
+### AnimationManager methods
+
+<UserTable
+  data={[
+    {
+      name: "playAnim",
+      desc: "Play an animation with various options including loop type, duration, speed, and fade settings.",
+      href: "playanim",
+    },
+    {
+      name: "stopAllAnimations",
+      desc: "Stop all currently playing animations.",
+      href: "stopallanimations",
+    },
+    {
+      name: "checkCurAnimName",
+      desc: "Check if the current animation name matches the provided name.",
+      href: "checkcuranimname",
+    },
+    {
+      name: "skipToAnimPerc",
+      desc: "Skip to a specific percentage of the current animation.",
+      href: "skiptoanimperc",
+    },
+    {
+      name: "addEvent",
+      desc: "Add an event callback that triggers at a specific percentage during an animation.",
+      href: "addevent",
+    },
+    {
+      name: "resetEvents",
+      desc: "Reset all events for a specific animation.",
+      href: "resetevents",
+    },
+    {
+      name: "getCurAnimCurEvent",
+      desc: "Get the current event for the currently playing animation.",
+      href: "getcuranimcurevent",
+    },
+    {
+      name: "getCurAnimEvent",
+      desc: "Get animation event for a specific animation and percentage.",
+      href: "getcuranimevent",
+    },
+    {
+      name: "removeBonesFromAnim",
+      desc: "Remove specific bones from an animation clip, optionally excluding specified bones.",
+      href: "removebonesfromanim",
+    },
+    {
+      name: "getCurPercentage",
+      desc: "Get the current playback percentage (0-1) of the active animation.",
+      href: "getcurpercentage",
+    },
+    {
+      name: "getAnimPercentage",
+      desc: "Get the playback percentage (0-1) for a specific animation action.",
+      href: "getanimpercentage",
+    },
+    {
+      name: "getAnimActions",
+      desc: "Get the record of all animation actions.",
+      href: "getAnimActions",
+    },
+    {
+      name: "getCurAnim",
+      desc: "Get the currently playing animation action.",
+      href: "getCurAnim",
+    },
+    {
+      name: "getPrevAnim",
+      desc: "Get the previously played animation action.",
+      href: "getPrevAnim",
+    },
+  ]}
+/>
+
+#### playAnim
+
+```ts
+playAnim(animName: string, options?: PlayAnimOptions): AnimationAction | undefined
+```
+
+Play an animation with various options including loop type, duration, speed, and fade settings.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "animName",
+      desc: "Animation name (can be mapped name or original name).",
+    },
+    {
+      name: "options",
+      desc: "Animation playback options including loopType, duration, speed, force, noFade, startPerc.",
+    },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+// Basic usage
+animManager.playAnim("walk");
+
+// With options
+animManager.playAnim("jump", {
+  loopType: LoopRepeat,
+  speed: 1.5,
+  duration: 0.5,
+});
+```
+
+#### stopAllAnimations
+
+```ts
+stopAllAnimations(): void
+```
+
+Stop all currently playing animations.
+
+<InnerHeader title="Example Usage" />
+
+```js
+animManager.stopAllAnimations();
+```
+
+#### checkCurAnimName
+
+```ts
+checkCurAnimName(name: string): boolean
+```
+
+Check if the current animation name matches the provided name.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[{ name: "name", desc: "Animation name to check against." }]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+if (animManager.checkCurAnimName("walk")) {
+  console.log("Currently walking");
+}
+```
+
+#### skipToAnimPerc
+
+```ts
+skipToAnimPerc(percentage: number): void
+```
+
+Skip to a specific percentage of the current animation.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[{ name: "percentage", desc: "Percentage (0-1) to skip to." }]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+// Skip to 50% of current animation
+animManager.skipToAnimPerc(0.5);
+```
+
+#### addEvent
+
+```ts
+addEvent(animName: string, perc: number, event: (animManager: AnimManager) => void): void
+```
+
+Add an event callback that triggers at a specific percentage during an animation.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "animName",
+      desc: "The name of the animation to attach the event to.",
+    },
+    {
+      name: "perc",
+      desc: "The percentage (0-1) of the animation at which to trigger the event.",
+    },
+    {
+      name: "event",
+      desc: "Callback function that receives the AnimManager instance when triggered.",
+    },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+animManager.addEvent("walk", 0.5, (manager) => {
+  console.log("Walk animation is halfway complete");
+});
+```
+
+#### resetEvents
+
+```ts
+resetEvents(anim: string): void
+```
+
+Reset all events for a specific animation.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[{ name: "anim", desc: "Animation name to reset events for." }]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+animManager.resetEvents("walk");
+```
+
+#### getCurAnimCurEvent
+
+```ts
+getCurAnimCurEvent(): any
+```
+
+Get the current event for the currently playing animation.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const currentEvent = animManager.getCurAnimCurEvent();
+if (currentEvent) {
+  console.log("Event ready to fire at:", currentEvent.perc);
+}
+```
+
+#### getCurAnimEvent
+
+```ts
+getCurAnimEvent(curAnim: string, perc: number): any
+```
+
+Get animation event for a specific animation and percentage.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    { name: "curAnim", desc: "Animation name." },
+    { name: "perc", desc: "Current percentage (0-1)." },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+const event = animManager.getCurAnimEvent("walk", 0.6);
+```
+
+#### removeBonesFromAnim
+
+```ts
+removeBonesFromAnim(animClip: AnimationClip, boneNames: string[], exclude?: boolean): any[]
+```
+
+Remove specific bones from an animation clip, optionally excluding specified bones.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    { name: "animClip", desc: "Animation clip to modify." },
+    { name: "boneNames", desc: "Bone names to remove/keep." },
+    { name: "exclude", desc: "If true, keep only specified bones." },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+const remainingTracks = animManager.removeBonesFromAnim(
+  animClip,
+  ["spine", "head"],
+  true
+);
+```
+
+#### getCurPercentage
+
+```ts
+getCurPercentage(): number
+```
+
+Get the current playback percentage (0-1) of the active animation.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const progress = animManager.getCurPercentage();
+console.log(`Animation is ${progress * 100}% complete`);
+```
+
+#### getAnimPercentage
+
+```ts
+getAnimPercentage(anim: AnimationAction): number
+```
+
+Get the playback percentage (0-1) for a specific animation action.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[{ name: "anim", desc: "Animation action to get percentage for." }]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+const walkAction = animManager.getAnimActions()["walk"];
+const progress = animManager.getAnimPercentage(walkAction);
+```
+
+#### getAnimActions
+
+```ts
+getAnimActions(): Record<string, AnimationActionExtended>
+```
+
+Get the record of all animation actions.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const actions = animManager.getAnimActions();
+console.log("Available animations:", Object.keys(actions));
+```
+
+#### getCurAnim
+
+```ts
+getCurAnim(): AnimationActionExtended | null
+```
+
+Get the currently playing animation action.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const currentAnim = animManager.getCurAnim();
+if (currentAnim) {
+  console.log("Current animation:", currentAnim.getClip().name);
+}
+```
+
+#### getPrevAnim
+
+```ts
+getPrevAnim(): AnimationActionExtended | null
+```
+
+Get the previously played animation action.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const prevAnim = animManager.getPrevAnim();
+if (prevAnim) {
+  console.log("Previous animation:", prevAnim.getClip().name);
+}
+```
+
+## Interfaces
+
+#### looptype
+
+```ts
+type LoopType = typeof LoopOnce | typeof LoopRepeat | typeof LoopPingPong;
+```
+
+Type alias for Three.js animation loop types.
+
+<InnerHeader title="Possible Values" />
+
+<UserTable
+  data={[
+    { name: "LoopOnce", desc: "Play animation once and stop." },
+    { name: "LoopRepeat", desc: "Loop animation continuously." },
+    { name: "LoopPingPong", desc: "Play animation back and forth." },
+  ]}
+/>
+
+#### PlayAnimOptions
+
+```ts
+interface PlayAnimOptions
+```
+
+<InnerHeader title="Properties" />
+
+<UserTable
+  data={[
+    {
+      name: "loopType",
+      desc: "Optional. Type of loop behavior (LoopOnce or LoopRepeat).",
+    },
+    {
+      name: "fadeDuration",
+      desc: "Optional. Duration of fade transition in seconds.",
+    },
+    { name: "speed", desc: "Optional. Playback speed multiplier." },
+    {
+      name: "force",
+      desc: "Optional. Force play even if same animation is playing.",
+    },
+    {
+      name: "noFade",
+      desc: "Optional. Skip fade transition and start immediately.",
+    },
+    {
+      name: "startPerc",
+      desc: "Optional. Starting percentage (0-1) of the animation.",
+    },
+  ]}
+/>

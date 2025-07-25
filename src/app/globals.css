@@ -229,6 +229,50 @@
   padding: 0;
 }
 
+
+/* HOVER BOX */
+.hover-box {
+	position: absolute;
+  color: black;
+  font-family: "Inter", sans-serif;
+}
+.hover-box .title {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background: #ffffff;
+	border: 2px solid #111111;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.hover-box .body {
+	position: absolute;
+	width: 200px;
+	min-height: 70px;
+	background: #ffffff;
+	border: 1px solid #000000;
+	border-radius: 8px;
+	left: 20px;
+	top: 20px;
+	opacity: 0;
+	transition: all 0.5s;
+	padding: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+  z-index: 10;
+}
+
+.hover-box:hover .body {
+	opacity: 1;
+	visibility: visible;
+}
+
+
 @theme {
   --color-studio-50: "#f0f9ff", // Sky 50
   --color-studio-100: "#e0f2fe", // Sky 100

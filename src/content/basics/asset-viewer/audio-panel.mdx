@@ -1,1 +1,139 @@
-# Audio Panel
+---
+sidebarTitle: Audio Panel
+---
+
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import Hoverbox from "@components/Hoverbox";
+import Image from "next/image";
+import { Callout } from "nextra/components";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader title="Audio Panel" />
+
+<div className="relative">
+<Image
+  src="/studio-docs/advanced/audio.png"
+  alt="Audio"
+  width={1600}
+  height={600}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+<Hoverbox
+  title="1"
+  body="Drag background music and uploadable sounds to this column."
+  xPercent={35}
+  yPercent={60}
+/>
+
+<Hoverbox
+  title="2"
+  body="Drag audios to this column to use as audiosprite."
+  xPercent={57}
+  yPercent={60}
+/>
+
+<Hoverbox
+  title="3"
+  body="Click to edit audiosprite bitrate and hz."
+  xPercent={66.5}
+  yPercent={60}
+/>
+
+<Hoverbox
+  title="4"
+  body="Clear and regenerate audiosprite files. Useful when you face a problem with audios and studio can't fix it automatically."
+  xPercent={71.5}
+  yPercent={60}
+/>
+
+<Hoverbox
+  title="5"
+  body="Change bitrate, higher bitrate means more quality and more size in kbs. This will generate a new version of the audio. Hit play button to listen the encoded version."
+  xPercent={76.5}
+  yPercent={27}
+/>
+
+<Hoverbox
+  title="6"
+  body="Change hz, higher hz means more quality and more size in kbs. This will generate a new version of the audio. Hit play button to listen the encoded version."
+  xPercent={76.5}
+  yPercent={35}
+/>
+
+<Hoverbox
+  title="7"
+  body="Id used in the data.js, you can name it anything you like as long as it doesn't conflict with another id in your data.js"
+  xPercent={76.5}
+  yPercent={53}
+/>
+
+<Hoverbox
+  title="8"
+  body="Visible name in the data.js."
+  xPercent={76.5}
+  yPercent={60}
+/>
+
+<Hoverbox
+  title="9"
+  body="This button will generate an item in data.js with the submitted ID and name. If an item with the same ID already exists, it will be overridden."
+  xPercent={76.5}
+  yPercent={66}
+/>
+</div>
+
+<Callout type="warning">
+  Studio automatically imports all of the audio assets in the project. Delete
+  all the unused audios to prevent unnecessary file size!
+</Callout>
+
+<Callout type="warning">
+  To use a music as background music name it one of the followings: bgMusic,
+  music, bgm, backgroundMusic. Studio will automatically treat this audio as the
+  background music.
+</Callout>
+
+## Usage
+
+To play an imported sound use:
+
+```js
+// enter the name of the sound without the extension
+AudioManager.playSound("soundName");
+```
+
+This will play the audio whether it is an audiosprite or normal sound. It will find the audio with the name, if there is multiple audios with the same name it can lead to unwanted results.
+
+#### playSound
+
+```ts
+static playSound(id: string, loop: boolean | undefined = undefined, volume: number | undefined = undefined, rate: number = 1): void
+```
+
+Play a sound with specified parameters including loop behavior, volume level, and playback rate.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "id",
+      desc: "Unique identifier of the sound to play.",
+    },
+    {
+      name: "loop",
+      desc: "Optional. Whether the sound should loop continuously. Defaults to undefined (no loop).",
+    },
+    {
+      name: "volume",
+      desc: "Optional. Volume level for the sound (0.0 to 1.0). Defaults to undefined (uses default volume).",
+    },
+    {
+      name: "rate",
+      desc: "Playback rate multiplier. 1.0 is normal speed, 0.5 is half speed, 2.0 is double speed. Defaults to 1.",
+    },
+  ]}
+/>
