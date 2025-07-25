@@ -1,4 +1,5 @@
 export default {
+    "getting-started": "Getting Started",
     home: "Home",
     hierarchy: "Hierarchy",
     "view-panel": "View",
