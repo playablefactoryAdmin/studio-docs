@@ -1,1 +1,49 @@
+import Image from "next/image";
+
 # Buckets
+
+## What are Buckets?
+
+Buckets allow you to use multiple alternatives for an object based on a specific parameter or selected index.
+
+## For which object types can a Bucket be created?
+
+Currently, you can create Buckets in Studio for Image, Spine, Animation, and Model.
+
+<Image src="/studio-docs/advanced/buckets/types.png" alt="object types" width={112} height={132} className="mt-6 rounded-xl overflow-hidden" />
+
+## Creating a Bucket
+
+To create a Bucket, click the "+" button in the Buckets tab of the Assets Viewer window and then select the object type you want to create.
+
+<Image src="/studio-docs/advanced/buckets/create.gif" alt="create" width={932} height={435} className="mt-6 rounded-xl overflow-hidden" />
+
+By clicking on the Bucket you created, you can configure its properties, which appear in the Inspector window.
+
+## Bucket Properties
+
+You can change the Name value to change the Bucket name.
+
+To add a new reference to the Bucket, you can select one of the assets in your project from the "Select Reference" section.
+
+You can also add a new empty reference or use a file directly from your system as a reference.
+
+You can click the "Clear" button to clear bucket references.
+
+To access your bucket from your code, ensure the "Export for Code" checkbox is checked.
+
+For Image-type buckets, it's also possible to define it as a 3D texture. To do this, ensure the "Add as 3D Texture" checkbox is checked.
+
+You can easily create a copy of your bucket by clicking the "Duplicate" button.
+
+<Image src="/studio-docs/advanced/buckets/inspect.gif" alt="inspect" width={1920/3} height={1057/3} className="mt-6 rounded-xl overflow-hidden" />
+
+## How to Use:
+
+In the Object Inspector screen, there's an option called "Buckets." From this option, you can select the desired bucket in your project whose type matches the object's type.
+
+In the Datajs ID option, you need to enter the key for the parameter that determines which index you want to use the bucket's reference at. If no ID is entered, the reference selected within the bucket will be used.
+
+You can also easily create a new object with a Bucket assigned to it by dragging a Bucket into your scene.
+
+<Image src="/studio-docs/advanced/buckets/usage.gif" alt="usage" width={1920/3} height={1057/3} className="mt-6 rounded-xl overflow-hidden" />

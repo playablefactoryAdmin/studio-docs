@@ -1,0 +1,221 @@
+---
+sidebarTitle: Scenes
+---
+
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import Image from "next/image";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader title="Scenes" />
+
+Game starts with a default 3d scene. For creating a new scene or modify its order or delete it, you can do it from panel.
+
+<Image
+  src="/studio-docs/advanced/newScene.gif"
+  alt="Scenes"
+  width={600}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+For changing scene properties, click on scene in node tree, inspector will appear with its properties.
+
+<Image
+  src="/studio-docs/advanced/scene-a.png"
+  alt="Scenes"
+  width={400}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+<Image
+  src="/studio-docs/advanced/scene-b.png"
+  alt="Scenes"
+  width={400}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+## Scene Properties
+
+<UserTable
+  data={[
+    {
+      name: "Import Scene",
+      desc: "Load a scene from a file. This allows you to bring in previously saved scenes or scenes created elsewhere.",
+    },
+    {
+      name: "Export Scene",
+      desc: "Export the current scene to a file. Use this to transfer scenes between projects.",
+    },
+    {
+      name: "Clone Scene",
+      desc: "Create a duplicate of the current scene. Useful for experimenting with changes without affecting the original.",
+    },
+    {
+      name: "Background Type",
+      desc: "Choose the type of background for your scene. Options are solid, gradient, image, hdr, cubemap, transparent.",
+    },
+    {
+      name: "Fog Enabled",
+      desc: "Toggle fog in the scene on or off.",
+    },
+    {
+      name: "Fog Type",
+      desc: "Select the type of fog to use. Options typically include Linear (fog increases linearly with distance) and Exponential (fog increases exponentially for a denser effect).",
+    },
+    {
+      name: "Fog Near",
+      desc: "Set the minimum distance from the camera where fog starts to appear. Objects closer than this value will not be affected by fog.",
+    },
+    {
+      name: "Fog Far",
+      desc: "Set the maximum distance from the camera where fog is fully applied. Objects beyond this distance will be completely covered by fog.",
+    },
+    {
+      name: "Environment Texture",
+      desc: "Assign an environment map (such as a skybox or HDRI) to the scene. This texture is used for reflections and ambient lighting. Best used with a hdr file.",
+    },
+    {
+      name: "Environment Intensity",
+      desc: "Adjust the strength of the environment texture's lighting and reflections. Higher values make the environment effect more pronounced.",
+    },
+  ]}
+/>
+
+## In Game Methods
+
+#### getCurrentScene3D
+
+```ts
+getCurrentScene3D(): Scene3D
+```
+
+Get the current active scene. Alternative: `globals.threeScene`
+
+<InnerHeader title="Example Usage" />
+
+```js
+const scene = getCurrentScene3D();
+// or alternatively
+const scene = globals.threeScene;
+```
+
+#### getScene3DByName
+
+```ts
+getScene3DByName(sceneName: string): Scene3D | null
+```
+
+Get another scene by its name.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "sceneName",
+      desc: "The name of the scene to retrieve.",
+    },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+const otherScene = getScene3DByName("Scene Name");
+```
+
+#### getScene3DList
+
+```ts
+getScene3DList(): Scene3D[]
+```
+
+Get all available scenes as a list.
+
+<InnerHeader title="Example Usage" />
+
+```js
+const sceneList = getScene3DList();
+console.log("Available scenes:", sceneList.length);
+```
+
+#### startScene3D
+
+```ts
+startScene3D(sceneName: string, removeActiveScenes: boolean): void
+```
+
+Start a scene by name with option to remove all currently active scenes.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "sceneName",
+      desc: "The name of the scene to start.",
+    },
+    {
+      name: "removeActiveScenes",
+      desc: "Boolean flag to determine if you want to remove all active scenes before starting the new one.",
+    },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+// Start scene without removing active scenes
+startScene3D("Scene Name", false);
+
+// Start scene and remove all active scenes
+startScene3D("Scene Name", true);
+```
+
+#### restartScene3D
+
+```ts
+restartScene3D(): void
+```
+
+Restart the current active scene.
+
+<InnerHeader title="Example Usage" />
+
+```js
+restartScene3D();
+```
+
+#### goToScene3D
+
+```ts
+goToScene3D(sceneName3D: string, scene2DIndex: number): void
+```
+
+Go to a 3D scene and remove all active scenes, then start 2D scene with specified index.
+
+<InnerHeader title="Parameters" />
+
+<UserTable
+  data={[
+    {
+      name: "sceneName3D",
+      desc: "The name of the 3D scene to go to.",
+    },
+    {
+      name: "scene2DIndex",
+      desc: "The index of the 2D scene to start.",
+    },
+  ]}
+/>
+
+<InnerHeader title="Example Usage" />
+
+```js
+// Go to 3D scene and start 2D scene at index 0
+goToScene3D("Scene Name 3D", 0);
+```
