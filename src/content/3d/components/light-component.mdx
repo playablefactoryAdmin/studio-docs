@@ -3,8 +3,14 @@ sidebarTitle: Light
 ---
 
 import Image from "next/image";
+import SpecialHeader from "@components/SpecialHeader";
 
-# Light Component
+<SpecialHeader  
+ title="Light Component"  
+ usesComponent="light"  
+ usesComponentLink="/studio-docs/3d/objects/lights"
+ buttonText="Switch to Object"
+/>
 
 Every light object holds a light component. On top of having a light component, they might have a specialized component as well.
 For example, **Ambient Light** only holds a light component. **Directional Light** holds a **Light Component** and a **Directional Light** component.
