@@ -1,0 +1,23 @@
+import Image from "next/image";
+import SpecialHeader from "@components/SpecialHeader";
+
+<SpecialHeader  
+ title="Sprite Component"  
+ usesComponent="perspective"  
+ usesComponentLink="/studio-docs/3d/objects/sprite"
+ buttonText="Switch to Object"
+/>
+
+Create a sprite that always faces the camera plane.
+
+<Image src="/studio-docs/components/3d/sprite-component.png" alt="Sprite Component" width={500} height={500} className="pt-6" />
+
+### Center
+
+Defines the anchor point of the sprite.
+
+### Material
+
+Specifies the material assigned to the sprite. Only Sprite materials are accepted.
+
+For more details on the material system used in Studio, refer to the [Material System](./../advanced/material-system.mdx) page.
