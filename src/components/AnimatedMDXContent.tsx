@@ -15,6 +15,7 @@ export default function AnimatedMDXContent({ children }) {
     useLayoutEffect(() => {
         if (containerRef.current && isHydrated) {
             const children = Array.from(containerRef.current.children);
+            const isAnimationsEnabled = localStorage.getItem("animationDisabled") === "1" ? false : true
 
             // Skip the first element and animate the rest
             const elementsToAnimate = children.slice(1);
@@ -24,7 +25,7 @@ export default function AnimatedMDXContent({ children }) {
                 {
                     opacity: 1,
                     x: 0,
-                    duration: 0.6,
+                    duration: isAnimationsEnabled ? 0.6 : 0,
                     ease: "power3.out",
                 }
             )
@@ -37,7 +38,7 @@ export default function AnimatedMDXContent({ children }) {
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 0.4,
+                        duration: isAnimationsEnabled ? 0.4 : 0,
                         stagger: 0.07,
                         delay: 0.0,
                         ease: "power3.out",
