@@ -6,4 +6,8 @@ export default {
     "3d": "3D",
     "datajs": "DataJS",
     old: 'Legacy Docs',
+    settings: {
+        title: "Settings",
+        type: "page",
+    }
 }
