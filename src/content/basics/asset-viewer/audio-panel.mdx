@@ -12,7 +12,7 @@ import InnerHeader from "@components/InnerHeader";
 
 <SpecialHeader title="Audio Panel" />
 
-<div className="relative">
+<div className="relative z-0">
   <Image
     src="/studio-docs/advanced/audio.png"
     alt="Audio"
@@ -86,14 +86,14 @@ import InnerHeader from "@components/InnerHeader";
 </div>
 
 <Callout type="warning">
-<div class="-mt-4">
+<div className="-mt-4">
   Studio automatically imports all of the audio assets in the project. Delete
   all the unused audios to prevent unnecessary file size!
 </div>
 </Callout>
 
 <Callout type="warning">
-<div class="-mt-4">
+<div className="-mt-4">
   To use a music as background music name it one of the followings: bgMusic,
   music, bgm, backgroundMusic. Studio will automatically treat this audio as the
   background music.

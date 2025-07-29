@@ -1,6 +1,74 @@
 ---
-sidebarTitle: Scripting
 asIndexPage: true
 ---
 
 # Asset Viewer
+
+import Hoverbox from "@components/Hoverbox";
+import Image from "next/image";
+
+**Asset Viewer** is the main dockable panel that lets you navigate to various other panels, 
+including the **Assets Panel** shown in the example below. It's likely the panel you'll use most frequently.
+
+Click on the bubbles to go the related documentation page.
+
+<div className="relative">
+    <Image
+    src="/studio-docs/basics/assets-panel/assets-viewer-main.png"
+    alt="Audio"
+    width={1600}
+    height={600}
+    className="mt-6 rounded-xl overflow-hidden"
+    />
+
+    <a href="/studio-docs/basics/asset-viewer/assets-panel">
+        <Hoverbox
+            className="opacity-75"
+            title="1"
+            body="Assets Panel"
+            xPercent={80}
+            yPercent={6}
+        />
+    </a>
+
+    <a href="/studio-docs/basics/asset-viewer/audio-panel">
+        <Hoverbox
+            className="opacity-75"
+            title="2"
+            body="Audio Panel"
+            xPercent={85}
+            yPercent={6}
+        />
+    </a>
+
+    <a href="/studio-docs/basics/asset-viewer/material-panel">
+        <Hoverbox
+            className="opacity-75"
+            title="3"
+            body="Material Panel"
+            xPercent={89.5}
+            yPercent={6}
+        />
+    </a>
+
+    <a href="/studio-docs/basics/asset-viewer/prefab-panel">
+        <Hoverbox
+            className="opacity-75"
+            title="4"
+            body="Prefab Panel"
+            xPercent={93.5}
+            yPercent={6}
+        />
+    </a>
+
+    <a href="/studio-docs/basics/asset-viewer/buckets-panel">
+        <Hoverbox
+            className="opacity-75"
+            title="5"
+            body="Bucket panel"
+            xPercent={97.5}
+            yPercent={6}
+        />
+    </a>
+
+</div>
