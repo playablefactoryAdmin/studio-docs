@@ -1,0 +1,87 @@
+---
+sidebarTitle: Material System
+asIndexPage: true
+---
+import Image from "next/image";
+
+# Material System
+
+You can create any material type using the Material Panel in the Asset Viewer. For more details, check the [Material Panel](/basics/asset-viewer/material-panel) page.
+
+There are multiple shader types as seen in the creation menu. Simply select one and you can see it's properties on the right side.
+
+### Basics Tab
+
+<Image
+  src="/studio-docs/advanced/3d/materials-basic.png"
+  alt="Animation"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+These are the common **basic** settings for every material type. These are not Studio-related settings. 
+For more information regarding these material settings, check [Three.js](https://threejs.org/docs/#api/en/materials/Material) documentation.
+
+### Advanced Tab
+
+<Image
+  src="/studio-docs/advanced/3d/materials-advanced.png"
+  alt="advanced"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+These are the common **advanced** settings for every material type. These are not Studio-related settings.
+For more information regarding these material settings, check [Three.js](https://threejs.org/docs/#api/en/materials/Material) documentation.
+
+### Specifics Tab
+
+<Image
+  src="/studio-docs/advanced/3d/materials-specific.png"
+  alt="specifics"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+These are the material specific settings for every material type. These are not Studio-related settings. Settings exposed to this tab depends on what type of material it is.
+
+In this example, the shader type is **Standard**, so you'll have settings such as shininess, roughness etc. If you create a basic material, you'll see that you only have the wireframe option. 
+
+For more information regarding the specific material settings, check [Three.js](https://threejs.org/docs/#api/en/materials/Material) documentation and navigate to the specific material type you want.
+
+### Maps Tab
+
+<Image
+  src="/studio-docs/advanced/3d/materials-map.png"
+  alt="maps"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+Specify the required maps here. These are not Studio-related settings.
+For more information regarding these material settings, check [Three.js](https://threejs.org/docs/#api/en/materials/Material) documentation.
+
+Amount of maps depend on the material type selected. For example, there are more map settings on Standard than Basic type.
+
+
+### Export Tab
+
+<Image
+  src="/studio-docs/advanced/3d/materials-export.png"
+  alt="export"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+Specify the export settings here. These **are** Studio-related settings.
+
+After enabling export for code and setting the export name, you can use it in code like this:
+
+```js
+
+```

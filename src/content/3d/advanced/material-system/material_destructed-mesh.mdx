@@ -1,0 +1,28 @@
+---
+sidebarTitle: With Inline Meshes
+---
+import Image from "next/image";
+
+# Materials with Inline Meshes
+
+When you try to add a .gltf model to your scene, you will see a prompt on your screen, asking you to choose between **Packaged** or **Destructed** model type.
+For more information regarding this prompt please check [model](3d/objects/model.mdx). In this example, we will continue with Destructed node type.
+
+After selection, Studio automatically generates the materials within the .gltf file for use in Studio.
+
+These are special types of materials. They will hold their original values inside them and you can revert the changes you've made to these 
+material objects using the `Revert Material` button.
+
+<Image
+  src="/studio-docs/advanced/3d/materials-revert.png"
+  alt="revert"
+  width={325}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+It will look greyed out if you did not make any changes to the selected material.
+
+When replacing the .gltf file in place, Studio attempts to automatically match materials and meshes. If it fails, it substitutes a standard 'missing material' and a placeholder cube geometry.
+
+If you've previously modified imported materials, you can revert them to the original version from the new .gltf file. Unmodified materials are updated automatically.
