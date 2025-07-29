@@ -1,0 +1,81 @@
+---
+sidebarTitle: Ad Network Integration
+---
+
+import { Callout } from "nextra/components";
+import UserTable from "@components/TableComponent";
+
+## Ad Network Integration
+
+After uploading your game to the platform, when you select an ad network and start downloading desired version, the necessary components are automatically injected into your game project. This ensures that the correct ad SDK is integrated without requiring any manual setup.
+
+### Ending the game
+
+Certain functions still need to be triggered manually from within the game. For example, when the game ends or player can no longer interact with the game, you must explicitly call:
+
+```ts
+//...
+globals.end(true); //true means player won the game or reached the goal
+```
+
+This is usually done in endcard scene.
+
+### Sending the user to the market
+
+For sending the user to the market, you must call `app.main.gotoLink()`. This will open the market link based on user device is ios or android.
+
+```ts
+app.main.gotoLink();
+```
+
+### Sending the user to the market with a condition
+
+If your game got specialized market send option, you must call both functions. Example scenario:
+Player collected x amount of money and you want to send it to the market.
+
+```ts
+//...
+if (player.money >= reqMoneyAmount) {
+  globals.end(true); // end the game if this is the main goal of current version scenario
+  app.main.gotoLink(); // opens the market link
+}
+```
+
+<Callout type="info">
+  Do not to call `app.main.gotoLink()` in update without flag. Opening the
+  market link multiple times simultaneously is not intended behavior.
+</Callout>
+
+### Default Market Params
+
+When creating playable ads, the platform provides several built-in parameters that control market behavior and user interactions. These parameters can be configured through the DataJS system and are automatically available in your game logic.
+
+<UserTable
+  data={[
+    {
+      name: "gotoMarketClickNum",
+      desc: "Controls how many clicks are required before automatically directing the user to the market. Set to 0 to disable click-based market redirection. Range: 0-30 clicks.",
+    },
+    {
+      name: "gotoMarketAfterTime",
+      desc: "Time in seconds after which the user will be automatically directed to the market. Set to 0 to disable time-based market redirection. Range: 0-60 seconds.",
+    },
+    {
+      name: "gotoMarketOnce",
+      desc: "Boolean flag that determines if the market should only be opened once during the entire game session. When true, subsequent market calls will be ignored.",
+    },
+    {
+      name: "endCardFullScreenClick",
+      desc: "Boolean flag that enables clicking anywhere on the EndCard screen to direct the user to the market. When enabled, the entire EndCard becomes a clickable area. Requires globals.end to be called.",
+    },
+    {
+      name: "goToMarketDirectly",
+      desc: "Boolean flag that immediately redirects the user to the market when the EndCard stage is reached, without requiring any user interaction. Requires globals.end to be called.",
+    },
+  ]}
+/>
+
+<Callout type="info">
+  These are default market options. Implementations already done. For some you
+  need to call globals.end.
+</Callout>
