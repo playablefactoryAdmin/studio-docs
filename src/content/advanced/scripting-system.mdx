@@ -1,9 +1,8 @@
 import Image from "next/image";
 import UserTable from "@components/TableComponent";
-import {Callout} from "nextra/components"
+import { Callout } from "nextra/components";
 
 # Scripting System
-
 
 Studio has an in-depth scripting system. Nearly all objects can hold multiple scripts as a component.
 Using scripts, you can add behavior to your game objects.
@@ -12,15 +11,18 @@ Using scripts, you can add behavior to your game objects.
 
 On the asset viewer, press the `+` button and select the script type you want to create. You will see 4 types of scripts:
 
-
 <div className="flex flex-col md:flex-row ">
-    <Image src="/studio-docs/advanced/script-creation.png" alt="Scripting System" width={400} height={300} className="mt-6 rounded-lg overflow-hidden" />
-    <div className="flex flex-col items-center justify-center px-8">
-    * Add 3D Script
-    * Add 3D Script (TypeScript)
-    * Add 2D Script
-    * Add 2D Script (TypeScript)
-    </div>
+  <Image
+    src="/studio-docs/advanced/script-creation.png"
+    alt="Scripting System"
+    width={400}
+    height={300}
+    className="mt-6 rounded-lg overflow-hidden"
+  />
+  <div className="flex flex-col items-center justify-center px-8">
+    * Add 3D Script * Add 3D Script (TypeScript) * Add 2D Script * Add 2D Script
+    (TypeScript)
+  </div>
 </div>
 
 Simply select the script type you want to create and press the `Create` button.
@@ -29,39 +31,61 @@ Simply select the script type you want to create and press the `Create` button.
 
 ```js
 export default class Temp2d extends Script2D /* - or Script3d*/ {
-	awake() {}
+  //...public variables...
 
-	init() {}
-	update(delta) {}
-	resize(w, h) {}
-	onRemove() {}
+  awake() {}
 
-	onAdd() {}
+  init() {}
+  update(delta) {}
+  resize(w, h) {}
+  onRemove() {}
+
+  onAdd() {}
 }
 ```
 
-<UserTable data={
-    [
-        { name: "awake", desc: "Runs first for all game objects." },
-        { name: "init", desc: "Runs after every game object finishes their awake function." },
-        { name: "update(delta)", desc: "Runs every frame. `delta` is the time since the last frame." },
-        { name: "resize(w, h)", desc: "Runs when the window is resized. `w` and `h` are the new width and height of the window." },
-        { name: "onRemove", desc: "Runs when the script is removed from the game object." },
-        { name: "onAdd", desc: "Runs when the script is added to the game object." }
-    ]
-} />
-
+<UserTable
+  data={[
+    { name: "awake", desc: "Runs first for all game objects." },
+    {
+      name: "init",
+      desc: "Runs after every game object finishes their awake function.",
+    },
+    {
+      name: "update(delta)",
+      desc: "Runs every frame. `delta` is the time since the last frame.",
+    },
+    {
+      name: "resize(w, h)",
+      desc: "Runs when the window is resized. `w` and `h` are the new width and height of the window.",
+    },
+    {
+      name: "onRemove",
+      desc: "Runs when the script is removed from the game object.",
+    },
+    {
+      name: "onAdd",
+      desc: "Runs when the script is added to the game object.",
+    },
+  ]}
+/>
 
 ## Adding Scripts to Objects and Deletion
 
 Simply select a game object, and on the inspector view, press `Add Component` -> `Script`.
 
 With this, your object will have a script component. But it does not have the script yet. For that, press the `Add Script` button
-and select your script. 
+and select your script.
 
 To delete a script, simply hover over the script in the Script Component and press the red trash icon.
 
-<Image src="/studio-docs/advanced/script-add-delete.gif" alt="Scripting Add Delete" width={400} height={300} className="mt-6 rounded-lg overflow-hidden" />
+<Image
+  src="/studio-docs/advanced/script-add-delete.gif"
+  alt="Scripting Add Delete"
+  width={400}
+  height={300}
+  className="mt-6 rounded-lg overflow-hidden"
+/>
 
 ## Exposing Variables to Studio
 
@@ -71,7 +95,7 @@ When working with Studio, exposing variables correctly is essential for enabling
 
 In JavaScript, you must use JSDoc-style annotations to expose variables to Studio. This allows Studio to recognize and manage the variables appropriately.
 
-Use the @@type{} syntax and ensure each declaration is properly terminated with a semicolon `(;)`. Below are examples:
+Use the `/**@@type{Type}*/` syntax and ensure each declaration is properly terminated with a semicolon `(;)`. Make sure do not leave any space between type. Below are examples:
 
 ```js
 /**@@type{Boolean}*/
@@ -79,15 +103,82 @@ testBool = true;
 
 /**@@type{Color}*/
 testColor = "#40277a";
-```
 
-<Callout type="info">For additional examples, refer to the temp3d.js file included in the Studio template.</Callout>
+/**@@type{Number}*/
+testNumber = 10;
+
+/**@@type{String}*/
+testString = "Hello, world!";
+
+/**@@type{Vector2}*/
+testVector2 = { x: 10, y: 20 };
+
+/**@@type{Vector3}*/
+testVector3 = { x: 10, y: 20, z: 30 };
+
+/**@@type{ScriptClass}*/
+testScriptOwnerObject = null;
+
+/**@@type{ComponentType}*/
+testComponentTypeObject = null;
+```
 
 ### TypeScript
 
-In TypeScript, you must use `@public` decorator for the variable to show up in Studio.
+In TypeScript, you must use `//@public` decorator for the variable to show up in Studio.
 
 ```ts
-@public
-myString: string = "hello!";
+//@public
+public testString: string = "hello!";
+
+//@public
+public testNumber: number = 10;
+
+//@public
+public testBoolean: boolean = true;
+
+//@public
+public testColor: Color = "#40277a";
+
+//@public
+public testVector2: Vector2 = { x: 10, y: 20 };
+
+//@public
+public testVector3: Vector3 = { x: 10, y: 20, z: 30 };
+
+//@public
+public testScriptOwnerObject: ScriptClass = null;
+
+//@public
+public testComponentTypeObject: ComponentType = null;
 ```
+
+<Callout type="info">
+  ScriptClass is the script that is attached to the game object. When you
+  declare a public variable with a specific script type like ScriptClass, the
+  editor filters the selectable objects to only show those that have that script
+  attached.
+</Callout>
+
+<Callout type="info">
+  ComponentType is main basic types like Sprite, PerspectiveCamera, Mesh, etc.
+</Callout>
+
+### Adding Scripts In Runtime
+
+You can add scripts to game objects in runtime for more dynamic or complex logic.
+For 2D use `addScript2D` and for 3D use `addScript3D`.
+
+```ts
+const myObject = new Object3D(); //any object type
+const script1 = new Humanoid();
+const script2 = new Walker();
+const script3 = new PlayerController();
+
+addScript(myObject, [script1, script2, script3]);
+```
+
+<Callout type="info">
+  When scripts added this way, their awake method will be called immediately.
+  Init method will be called at beginning of it's first update.
+</Callout>
