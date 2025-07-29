@@ -1,6 +1,6 @@
 # Quick Convert
 
-If you developed your game for old Gearbox edit page and trying to switch to new one, you can use this guide.
+If you developed your game for old platform edit page and trying to switch to new one, you can use this guide.
 
 Open your data.js:
 
