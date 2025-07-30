@@ -1,0 +1,17 @@
+import Image from "next/image";
+
+# Adding Backgrounds
+
+Backgrounds are basically the setting behind a main subject. It must fill the entire screen.
+
+To do this for every device size possible, it has to be responsive. Select the object you would like to use it as background, and add
+a [Responsive2D](/2d/components/responsive-component.mdx) component.
+
+<Image src="/studio-docs/tutorial/adding-background/add-responsive.gif" alt="add responsive" width={800} height={600} className="mt-6 rounded-xl" />
+
+After creating your `Responsive2D` component, set the fit type to either `Max` or `Stretch`. This can depend on the type of background you will use.
+For this example, we are using a gradient fill, so the `Stretch` option will work better here. For stuff like images, `Max` would be a better choice.
+
+After selecting your desired fit type, set **width** and **height ratio** to `100`. This will make it span the entire screen. 
+
+<Image src="/studio-docs/tutorial/adding-background/responsive-examples.gif" alt="responsive example" width={800} height={600} className="mt-6 rounded-xl" />

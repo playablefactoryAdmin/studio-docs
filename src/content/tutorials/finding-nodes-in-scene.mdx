@@ -1,0 +1,27 @@
+---
+sidebarTitle: Finding Nodes in Scene
+---
+import Image from "next/image";
+
+
+# Find and Get Nodes in Scene
+
+Let's make a simple node hierarchy like this:
+
+<Image src="/studio-docs/tutorial/find-nodes-in-scene/node-hierarchy.png" alt="add responsive" width={400} height={400} className="mt-6 rounded-xl" />
+
+Now create a gameManager script using the [Script System](/advanced/scripting-system.mdx).
+
+After that step, open the newly created script file, and modify the `awake` function as seen below.
+
+```js
+import { getObject2D } from "utils2D";
+
+awake(props={}){
+    this.props = props;
+    const uiText = getObject2D("mySpecial_UI_Text");
+    console.log(uiText)
+}
+```
+
+Return back to your game and you should be able to see the node printed to the console.
