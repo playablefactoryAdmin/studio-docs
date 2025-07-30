@@ -1,0 +1,77 @@
+---
+sidebarTitle: Settings Panel
+---
+
+import SpecialHeader from "@components/SpecialHeader";
+import HereLinkedText from "@components/LinkedText";
+import Hoverbox from "@components/Hoverbox";
+import Image from "next/image";
+import { Callout } from "nextra/components";
+import InnerHeader from "@components/InnerHeader";
+import { Settings } from "lucide-react";
+
+<SpecialHeader title="Settings Panel" />
+
+This contains main settings for your game. You can find it in the bottom left corner
+of the screen.
+
+## General
+
+General settings section contains core configuration options.
+
+| Name                            | Description                                                                                                                                                                              |
+| :------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Libraries                       | Choosing between 2D Pixi.js or 3D Three.js rendering libraries. Affects which rendering engine is included. 3D includes 2D library as well.                                              |
+| Enable Audio                    | Controls whether audio functionality is included in the build.                                                                                                                           |
+| Convert Fonts to WOFF2          | Boolean option that automatically converts font files to WOFF2 format during build process. WOFF2 provides better compression and faster loading times for web deployment.               |
+| Render 2D and 3D on Same Canvas | \*Experimental\* Boolean setting that determines whether 2D and 3D content should be rendered on a single canvas element.                                                                |
+| Enable Base122                  | \*Experimental\* Boolean toggle for Base122 encoding support. Base122 is a more efficient encoding method that can reduce payload size for certain data types in network communications. |
+| Preloader                       | Choosing the default preloader style and behavior. Controls the loading screen appearance and progression display while game assets are being loaded.                                    |
+| Screen Lock                     | Orientation lock setting with options for Default, Portrait, Landscape. Default means both orientations are allowed.                                                                     |
+
+## 2D
+
+### Resize 2D
+
+| Name        | Description                                            |
+| :---------- | :----------------------------------------------------- |
+| W Ratio Max | Responsive component maximum width ratio limit.        |
+| H Ratio Max | Responsive component maximum height ratio limit.       |
+| V Space Max | Responsive component maximum vertical spacing limit.   |
+| H Space Max | Responsive component maximum horizontal spacing limit. |
+
+### Physics 2D
+
+| Name      | Description                                                                                  |
+| :-------- | :------------------------------------------------------------------------------------------- |
+| Physics2D | 2D physics engine selection. None for no physics, Box2D for full physics simulation support. |
+
+### Bitmap Fonts
+
+This section manages bitmap font configuration for your project. To add a new bitmap font, enter the font name in the input field and press Enter. Once added, you can configure various settings for each font including size, character sets, and rendering options.
+
+## 3D
+
+### General 3D
+
+| Name                | Description                                                                         |
+| :------------------ | :---------------------------------------------------------------------------------- |
+| Enable Draco Loader | Enables support for Draco compressed models. It's not supported by all ad networks. |
+
+### Physics 3D
+
+| Name      | Description                                                                                                                                                                                                                                      |
+| :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Physics3D | 3D physics engine selection. None for no physics, Cannon for all around physics simulation, Rapier3D for advanced physics simulation support. Cannon has ease of use and smaller bundle size. Rapier3D is more performant and has more features. |
+
+## Events
+
+In here you can set up event names for your game for to use in components like [TransitionFx](/2d/components/transitionfx-component) component.
+
+## Studio
+
+| Name                    | Description                                                                                   |
+| :---------------------- | :-------------------------------------------------------------------------------------------- |
+| IDE                     | Choose your preferred IDE for external editing. Options include VSCode or Cursor.             |
+| Component View          | Toggle between horizontal and vertical tab layout for component panels.                       |
+| Hierarchy Sticky Scroll | Enable sticky scrolling behavior in the hierarchy panel to maintain context while navigating. |
