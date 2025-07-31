@@ -1,1 +1,133 @@
-# [WIP] Particle Emitter
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import InnerHeader from "@components/InnerHeader";
+
+<SpecialHeader  
+  title="Particle Emitter"  
+  extendsClass="PIXI.Container"  
+  extendsClassLink="https://pixijs.download/release/docs/scene.Container.html"
+  implementsClass="StudioObject2D"  
+  implementsClassLink="/studio-docs/2d/objects/studio-object-2d"  
+  usesComponent="particleEmitter component"  
+  usesComponentLink="/studio-docs/2d/components/particle-component"  
+/>
+
+Create a `ParticleEmitter` object by right-clicking in the hierarchy and selecting `Add Node` → `Effects` → `ParticleEmitter`.
+
+The `ParticleEmitter` object displays animated particles using the [pixi-particles](https://github.com/pixijs/particle-emitter) library. It wraps and manages a particle emitter with full control over particle behaviors, textures, spawn zones, and lifecycle, and integrates with Studio’s component system.
+
+It supports both static and dynamic textures, debounced texture loading, and an optional `autoplay` setting to start emitting on load.
+
+### Properties
+
+<UserTable data={[
+  { name: "emitter", desc: "The active particle emitter instance." },
+  { name: "autoplay", desc: "Whether the emitter automatically starts emitting particles on initialization." },
+  { name: "isActive", desc: "Controls whether the emitter is actively emitting." },
+  { name: "config", desc: "Emitter configuration used for creating/updating the emitter." },
+  { name: "selected", desc: "Indicates if the object is currently selected." },
+  { name: "locked", desc: "If true, the emitter cannot be interacted with in the editor." }
+]} />
+
+### Methods
+
+<UserTable data={[
+  { name: "updateEmitter", desc: "Initializes or updates the PIXI particle emitter with the given config.", href: "updateemitter" },
+  { name: "updateParticleEmitterComponent", desc: "Builds the emitter from the given component config.", href: "updateparticleemittercomponent" },
+  { name: "updateComponents", desc: "Updates this object using one or more Studio components.", href: "updatecomponents" },
+  { name: "mapParticleDataToComponent", desc: "Converts raw particle data into a full config with behaviors and spawn data.", href: "mapparticledatatocomponent" },
+  { name: "customUpdate", desc: "Advances the emitter by a delta time (called per frame).", href: "customupdate" },
+  { name: "setEmitterPosition", desc: "Sets the emitter's spawn position.", href: "setemitterposition" },
+  { name: "emitParticleAt", desc: "Emits one or more particles at a given position.", href: "emitparticleat" }
+]} />
+
+---
+
+#### updateEmitter
+
+```ts
+updateEmitter(config: any): Promise<void>
+```
+
+Initializes or re-initializes the particle emitter using a new config object. This includes async texture resolution, configuration normalization, and emitter creation.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "config", desc: "Particle configuration object defining behaviors, textures, spawn shape, etc." }
+]} />
+
+---
+
+#### updateParticleEmitterComponent
+
+```ts
+updateParticleEmitterComponent(particleEmitter?: ParticleEmitterGC): void
+```
+
+Parses the component data into a usable config and calls `updateEmitter()` to apply it.
+
+---
+
+#### updateComponents
+
+```ts
+updateComponents(components: { [key: string]: any }): void
+```
+
+Updates multiple Studio components. Specifically, applies and processes `particleEmitter` and `container` components.
+
+---
+
+#### mapParticleDataToComponent
+
+```ts
+mapParticleDataToComponent(rawConfig: any): any
+```
+
+Converts raw particle component data into a valid configuration object used by the emitter. This includes behavior formatting and spawn shape data normalization.
+
+---
+
+#### customUpdate
+
+```ts
+customUpdate(delta: number): void
+```
+
+Updates the particle emitter each frame. This method should be called in the animation loop with the frame's delta time.
+
+---
+
+#### setEmitterPosition
+
+```ts
+setEmitterPosition(x: number, y: number): void
+```
+
+Sets the emitter's `spawnPos` to a specific coordinate in local space.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "x", desc: "X-coordinate for the emitter's spawn position." },
+  { name: "y", desc: "Y-coordinate for the emitter's spawn position." }
+]} />
+
+---
+
+#### emitParticleAt
+
+```ts
+emitParticleAt(x: number, y: number, amount: number = 1): void
+```
+
+Temporarily moves the emitter to a position and emits a specified number of particles immediately.
+
+<InnerHeader title="Parameters" />
+
+<UserTable data={[
+  { name: "x", desc: "X-coordinate for emission." },
+  { name: "y", desc: "Y-coordinate for emission." },
+  { name: "amount", desc: "Number of particles to emit at once (default is 1)." }
+]} />

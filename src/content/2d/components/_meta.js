@@ -59,4 +59,7 @@ export default {
     "physics-component":{
         title: "Physics"
     },
+    "particle-component":{
+        title: "Particle"
+    },
 }

@@ -1,1 +1,173 @@
-# [WIP] Particle
+import Image from "next/image";
+import {Callout} from "nextra/components"
+import UserTable from "@components/TableComponent";
+import SpecialHeader from "@components/SpecialHeader";
+
+<SpecialHeader  
+ title="Particle Component"  
+ usesComponent="particle"  
+ usesComponentLink="/studio-docs/2d/objects/particle-emitter"
+ buttonText="Switch to Object"
+/>
+
+### Basics
+
+<Image src="/studio-docs/components/particle/particle-basics.png" alt="Particle Basics" width={500} height={500} className="pt-6" />
+
+<UserTable data={[
+  { name: "Lifetime", desc: "Generates a random lifetime for each particle within a specified range. The left value is the minimum, and the right is the maximum." },
+  { name: "Frequency", desc: "Controls how often particles are spawned. Use a very high number to effectively disable spawning." },
+  { name: "Spawn Chance", desc: "Probability that a particle will be spawned when it's time to emit." },
+  { name: "Particles Per Wave", desc: "Determines how many particles are emitted during each spawn event." },
+  { name: "Emitter Lifetime", desc: "Duration (in seconds) the emitter will emit particles. A value of 0 means it emits indefinitely." },
+  { name: "Max Particles", desc: "Maximum number of active particles allowed on screen at the same time." },
+  { name: "Add At Back", desc: "Whether the particle should be added behind existing particles. Used by pixi-particles." },
+  { name: "Autoplay", desc: "Whether the emitter should start emitting immediately upon being created." }
+]} />
+
+### Alpha
+
+<Image src="/studio-docs/components/particle/particle-alpha.png" alt="Particle Alpha" width={500} height={500} className="pt-6" />
+
+If both STATIC and Dynamic are set to true, STATIC will be overriden. 
+
+#### Static
+
+Directly set the alpha
+
+#### Dynamic
+
+Set the start, middle and end alpha values. You can think of this as points on a curve. Setting it to 0, 1 and 0 respectively will make alpha ease like a bell curve.
+
+### Scale
+
+<Image src="/studio-docs/components/particle/particle-scale.png" alt="Particle Scale" width={500} height={500} className="pt-6" />
+
+If both STATIC and Dynamic are set to true, STATIC will be overriden. 
+
+#### Static
+
+Randomly set the scale of the particle given min and max value range.
+
+#### Dynamic
+
+Set the start, middle and end alpha values. You can think of this as points on a curve. Setting it to 0, 1 and 0 respectively will make scale ease like a bell curve.
+
+Min mult acts as a multiplier for all the values.
+
+### Color
+
+<Image src="/studio-docs/components/particle/particle-color.png" alt="Particle Color" width={500} height={500} className="pt-6" />
+
+If both STATIC and Dynamic are set to true, STATIC will be overriden. 
+
+#### Static
+
+Sets the color of the particle.
+
+#### Dynamic
+
+Set the start, middle and end alpha values. You can think of this as points on a curve. Setting it to 0, 1 and 0 respectively will make color ease like a bell curve.
+
+### Move Acceleration
+
+<Image src="/studio-docs/components/particle/particle-move-acceleration.png" alt="Particle Move Acceleration" width={500} height={500} className="pt-6" />
+
+
+<UserTable data={[
+  { name: "X", desc: "Set the direction of acceleration." },
+  { name: "Min Start", desc: "Minimum random value for the direction (both axes)." },
+  { name: "Max Start", desc: "Maximum random value for the direction (both axes)." },
+  { name: "Rotate", desc: "Rotates the particle so that it faces the direction of acceleration." },
+]} />
+
+### Rotation
+
+<Image src="/studio-docs/components/particle/particle-rotation.png" alt="Particle Color" width={500} height={500} className="pt-6" />
+
+If both STATIC and Dynamic are set to true, STATIC will be overriden. 
+
+#### Static
+
+Randomly set the rotation of the particle given min and max value range.
+
+#### Dynamic
+
+Using Min and Max Start values, set the start rotation of the particle. Min Speed and Max Speed are used to set the speed of the particle. 
+Accel makes the particle rotate faster over time.
+
+### Move Speed
+
+<Image src="/studio-docs/components/particle/particle-move-speed.png" alt="Particle Move Speed" width={500} height={500} className="pt-6" />
+
+If both STATIC and Dynamic are set to true, STATIC will be overriden. 
+
+This works in tandem with Move Acceleration. Set the direction of the acceleration and the speed of the particle will be set in here.
+
+#### Static
+
+Randomly set the rotation of the particle given min and max value range.
+
+#### Dynamic
+
+Set the start, middle and end alpha values. You can think of this as points on a curve. 
+Setting it to 0, 1 and 0 respectively will make speed ease like a bell curve.
+
+Min mult acts as a multiplier for all the values.
+
+### Spawn Burst
+
+<Image src="/studio-docs/components/particle/particle-spawn-burst.png" alt="Particle Spawn Burst" width={500} height={500} className="pt-6" />
+
+#### Spacing
+
+Angle spacing between particles within the same wave, measured in degrees.
+
+#### Start
+
+Rotation to start spawning particles at (degrees)
+
+#### Distance
+
+Distance from emitter to particles.
+
+
+### Spawn Burst
+
+<Image src="/studio-docs/components/particle/particle-spawn-burst.png" alt="Particle Spawn Burst" width={500} height={500} className="pt-6" />
+
+#### Spacing
+
+Angle spacing between particles within the same wave, measured in degrees.
+
+#### Start
+
+Rotation to start spawning particles at (degrees)
+
+#### Distance
+
+Distance from emitter to particles.
+
+### Blend Mode
+
+<Image src="/studio-docs/components/particle/particle-blend-mode.png" alt="Particle Blend Mode" width={500} height={500} className="pt-6" />
+
+Sets the blend mode of the particles.
+
+### Move Path
+
+<Image src="/studio-docs/components/particle/particle-move-path.png" alt="Particle Move Path" width={500} height={500} className="pt-6" />
+
+Set the path of the particle, as a mathematical function.
+
+Set the start, middle and end alpha values. You can think of this as points on a curve. 
+Setting it to 0, 1 and 0 respectively will make speed ease like a bell curve.
+
+Min mult acts as a multiplier for all the values.
+
+
+### Spawn Shape
+
+<Image src="/studio-docs/components/particle/particle-spawn-shape.png" alt="Particle Spawn Shape" width={500} height={500} className="pt-6" />
+
+Set the spawn shape of the emitter. Only `rect` and `torus` are supported.
