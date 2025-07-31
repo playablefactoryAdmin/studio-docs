@@ -7,42 +7,44 @@ import UserTable from "@components/TableComponent";
 
 ## Ad Network Integration
 
-After uploading your game to the platform, when you select an ad network and start downloading desired version, the necessary components are automatically injected into your game project. This ensures that the correct ad SDK is integrated without requiring any manual setup.
+After uploading your game to the platform, when you select an ad network and start downloading the desired version, the necessary components are automatically injected into your game project. This ensures that the correct ad SDK is integrated without requiring any manual setup.
 
 ### Ending the game
 
-Certain functions still need to be triggered manually from within the game. For example, when the game ends or player can no longer interact with the game, you must explicitly call:
+Certain functions still need to be triggered manually from within the game. For example, when the game ends or the player can no longer interact with the game, you must explicitly call:
 
 ```ts
 //...
-globals.end(true); //true means player won the game or reached the goal
+import {  gameFinished } from "utils";
+gameFinished(true); //true means the player won the game or reached the goal
 ```
 
-This is usually done in endcard scene.
+This is usually done in the endcard scene.
 
-### Sending the user to the market
+### Redirecting the user to the market
 
-For sending the user to the market, you must call `app.main.gotoLink()`. This will open the market link based on user device is ios or android.
+For redirecting the user to the market, you must call `redirectToStore()`. This will redirect the user to the store page.
 
 ```ts
-app.main.gotoLink();
+import { redirectToStore } from "utils";
+redirectToStore();
 ```
 
-### Sending the user to the market with a condition
+### Redirecting the user to the market with a condition
 
-If your game got specialized market send option, you must call both functions. Example scenario:
-Player collected x amount of money and you want to send it to the market.
+If your game has specialized market send options, you must call both functions. Example scenario:
+The player collected x amount of money and you want to send them to the market.
 
 ```ts
 //...
 if (player.money >= reqMoneyAmount) {
-  globals.end(true); // end the game if this is the main goal of current version scenario
-  app.main.gotoLink(); // opens the market link
+  globals.end(true); // end the game if this is the main goal of the current version scenario
+  redirectToStore(); // opens the market link
 }
 ```
 
 <Callout type="info">
-  Do not to call `app.main.gotoLink()` in update without flag. Opening the
+  Do not call `redirectToStore()` in update without a flag. Opening the
   market link multiple times simultaneously is not intended behavior.
 </Callout>
 
@@ -62,7 +64,7 @@ When creating playable ads, the platform provides several built-in parameters th
     },
     {
       name: "gotoMarketOnce",
-      desc: "Boolean flag that determines if the market should only be opened once during the entire game session. When true, subsequent market calls will be ignored.",
+      desc: "Boolean flag that determines if the market should only be opened once during the entire game session. When true, subsequent automatic market calls will be ignored.",
     },
     {
       name: "endCardFullScreenClick",
@@ -76,6 +78,6 @@ When creating playable ads, the platform provides several built-in parameters th
 />
 
 <Callout type="info">
-  These are default market options. Implementations already done. For some you
+  These are default market options. Implementations are already done. For some, you
   need to call globals.end.
 </Callout>
