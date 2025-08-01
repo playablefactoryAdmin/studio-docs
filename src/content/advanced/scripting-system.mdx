@@ -20,11 +20,10 @@ On the asset viewer, press the `+` button and select the script type you want to
     className="mt-6 rounded-lg overflow-hidden"
   />
   <div className="flex flex-col items-center justify-center px-8">
-    * Add 3D Script 
-    * Add 3D Script (TypeScript) 
-    * Add 2D Script 
-    * Add 2D Script
-    (TypeScript)
+    * Add 3D Script <br />
+    * Add 3D Script (TypeScript) <br />
+    * Add 2D Script <br />
+    * Add 2D Script (TypeScript) <br />
   </div>
 </div>
 
@@ -185,3 +184,26 @@ addScript(myObject, [script1, script2, script3]);
   When scripts added this way, their awake method will be called immediately.
   Init method will be called at beginning of it's first update.
 </Callout>
+
+## Script List Inheritance Rules
+
+Studio only shows classes that **directly** extend Scriptable2D/3D in the script list.
+
+**Problem Case:**
+
+```ts
+// ✅ This will appear in the list
+class PlayerBase extends Scriptable2D {}
+
+// ❌ This won't appear (indirect inheritance)
+class PlayerController extends PlayerBase {}
+```
+
+**Solution:** For scripts using indirect inheritance, add `//@scriptable` above the class:
+
+```ts
+//@scriptable
+class PlayerController extends PlayerBase {}
+```
+
+This way PlayerController will also appear in the script list.
