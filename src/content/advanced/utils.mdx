@@ -1,0 +1,496 @@
+import SpecialHeader from "@components/SpecialHeader";
+import UserTable from "@components/TableComponent";
+import HereLinkedText from "@components/LinkedText";
+import InnerHeader from "@components/InnerHeader";
+
+# Utils
+
+There are 3 utility modules. One is this a common utils used in both 3D and 2D projects, and the other two are 2D and 3D utils used respectively in their
+project type.
+
+---
+
+### Methods
+
+<UserTable data={
+[
+{ name: "redirectToStore", desc: "Redirects the user to the store page or ad link.", href: "redirecttostore" },
+{ name: "gameFinished", desc: "Triggers end card behavior based on win/loss outcome and project flags.", href: "gamefinished" },
+]
+} />
+
+---
+
+### Function Details
+
+#### redirectToStore
+
+```ts
+redirectToStore(): void
+```
+
+Calls `app.main.gotoLink()` to redirect the user to the store or external link (e.g., App Store or Play Store).
+
+Typically used in end cards or interactive calls to action.
+
+<InnerHeader title="Example Usage" />
+```ts
+redirectToStore();
+```
+
+---
+
+#### gameFinished
+
+```ts
+gameFinished(didWon: boolean): void
+```
+
+Triggers game completion logic including:
+
+* Custom pointer interaction to open the store
+* Conditional direct store redirection
+* Banner hiding based on project config
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+    { name: "didWon", desc: "Whether the player won or lost the game." }
+]} />
+
+<InnerHeader title="Behavior Based on Flags" />
+
+* `app.data.goToMarketDirectly`: instantly redirects after win/loss
+* `app.data.bannerHideOnEndCard`: hides top banner on end card
+* `app.data.bannerHideOnEndCardIsQuick`: hides banner quickly if `true`
+
+<InnerHeader title="Example Usage" />
+```ts
+gameFinished(true); // Player won
+```
+
+<InnerHeader title="Internally Uses" />
+- `gsap.delayedCall` for timing interactions
+- `app.main.gotoLink` for redirection
+- `globals.pixiScene` for input handling
+- `globals.topBanner.hide()` for banner control
+
+## Utils2D
+
+The `utils2d` module provides utility functions for working with 2D objects, textures, animations, prefabs, and scenes in **Studio**. It integrates with the core rendering, object management, and caching systems.
+
+These helper methods simplify common tasks like spawning prefabs, loading assets, managing scenes, and working with the runtime.
+
+---
+
+### Methods
+
+<UserTable data={
+    [
+        { name: "getObject2D", desc: "Finds an object by name in a scene.", href: "getobject2d" },
+        { name: "getTexture2D", desc: "Retrieves a texture from the cache.", href: "gettexture2d" },
+        { name: "getAnimation2D", desc: "Retrieves animation data from the cache.", href: "getanimation2d" },
+        { name: "getSpine2D", desc: "Retrieves a Spine animation from the cache.", href: "getspine2d" },
+        { name: "instantiatePrefab2D", desc: "Instantiates a prefab with optional transforms and physics data.", href: "instantiateprefab2d" },
+        { name: "addScript", desc: "Attaches runtime scripts to a 2D object.", href: "addscript" },
+        { name: "getApplication", desc: "Returns the main Pixi Application instance.", href: "getapplication" },
+        { name: "setGlobalFont", desc: "Sets the global font for 2D rendering.", href: "setglobalfont" },
+        { name: "startScene2D", desc: "Starts a scene by name.", href: "startscene2d" },
+        { name: "startScene2DByIndex", desc: "Starts a scene by index.", href: "startscene2dbyindex" },
+        { name: "removeScene2D", desc: "Removes a specific scene from the renderer.", href: "removescene2d" },
+        { name: "removeActiveScenes2D", desc: "Removes all currently active scenes.", href: "removeactivescenes2d" },
+        { name: "getCurrentScene2D", desc: "Gets the currently active scene.", href: "getcurrentscene2d" },
+        { name: "getRenderer2D", desc: "Returns the main 2D renderer instance.", href: "getrenderer2d" },
+    ]
+} />
+
+---
+
+#### getObject2D
+```ts
+getObject2D(name: string, scene?: Scene2D): StudioObject2D | undefined
+```
+
+Finds an object by its name within a given scene.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+    { name: "name", desc: "Label/name of the object to find." },
+    { name: "scene", desc: "Optional scene to search within." }
+]} />
+
+---
+
+#### getTexture2D
+```ts
+getTexture2D(key: string): PIXI.Texture
+```
+
+Retrieves a texture from `Cache2D` using the provided key.
+
+<InnerHeader title="Parameters" />
+<UserTable data={[
+    { name: "key", desc: "Key of the texture as defined in Cache2D." }
+]} />
+
+---
+
+#### getAnimation2D
+```ts
+getAnimation2D(key: string): any
+```
+
+Returns animation data from `Cache2D`.
+
+---
+
+#### getSpine2D
+```ts
+getSpine2D(key: string): any
+```
+
+Retrieves Spine animation data from the cache.
+
+---
+
+#### instantiatePrefab2D
+```ts
+instantiatePrefab2D(key: string, props?: any, transform?: TransformOptions): StudioObject2D | null
+```
+
+Instantiates a prefab by key and applies optional transform or physics configuration.
+
+<InnerHeader title="TransformOptions Structure" />
+
+```ts
+interface TransformOptions {
+    x: number;
+    y: number;
+    scale: number;
+    rotation: number;
+    angle: number;
+    parent: string | Container;
+    categoryBits?: number;
+    maskBits?: [number];
+}
+```
+
+<InnerHeader title="Example Usage" />
+```ts
+const instance = instantiatePrefab2D("Player", {}, {
+    x: 100,
+    y: 200,
+    scale: 1.5,
+    parent: "UI Root"
+});
+```
+
+---
+
+#### addScript
+```ts
+addScript(obj: StudioObject2D, scripts: any[]): any
+```
+
+Adds one or more script components to a 2D object.
+
+---
+
+#### getApplication
+```ts
+getApplication(): PIXI.Application
+```
+
+Returns the PixiJS `Application` used by Studio's 2D system.
+
+---
+
+#### setGlobalFont
+```ts
+setGlobalFont(id: string): void
+```
+
+Sets the global font by ID for all 2D rendering.
+
+---
+
+#### startScene2D
+```ts
+startScene2D(name: string, removeActiveScenes?: boolean): Promise<void>
+```
+
+Starts a scene by name. If `removeActiveScenes` is true, all current scenes will be removed before loading the new one.
+
+---
+
+#### startScene2DByIndex
+```ts
+startScene2DByIndex(index: number, removeActiveScenes?: boolean): Promise<void>
+```
+
+Starts a scene using its index in the project.
+
+---
+
+#### removeScene2D
+```ts
+removeScene2D(scene: Scene2D): void
+```
+
+Removes a specific scene from the renderer.
+
+---
+
+#### removeActiveScenes2D
+```ts
+removeActiveScenes2D(): void
+```
+
+Removes all currently active scenes.
+
+---
+
+#### getCurrentScene2D
+```ts
+getCurrentScene2D(): Scene2D
+```
+
+Returns the current active `Scene2D` instance.
+
+---
+
+#### getRenderer2D
+```ts
+getRenderer2D(): PIXI.Renderer
+```
+
+Returns the active PixiJS renderer for 2D rendering.
+
+Here is documentation for your `utils3d.ts` module in the same format and tone as your previous `Animated Sprite` and `utils2d` docs:
+
+---
+
+## Utils3D
+
+The `utils3d` module provides utility functions to manage and manipulate 3D assets, scenes, prefabs, and rendering in **Studio**. It extends functionality from Three.js and Studio’s internal systems like `Cache3D`, `SceneHelper3D`, and `ParticlePool`.
+
+These utilities simplify common operations like cloning models, spawning prefabs, managing cameras, and working with particles.
+
+---
+
+### Methods
+
+<UserTable data={
+    [
+        { name: "getObject3D", desc: "Finds a 3D object by name in a scene.", href: "getobject3d" },
+        { name: "cloneAsset", desc: "Clones a static 3D model from cache.", href: "cloneasset" },
+        { name: "cloneAssetSkeleton", desc: "Clones a 3D model with a skeleton (e.g., animated characters).", href: "cloneassetskeleton" },
+        { name: "getTexture3D", desc: "Retrieves a texture from the 3D cache.", href: "gettexture3d" },
+        { name: "getMaterial", desc: "Retrieves a material from the 3D cache.", href: "getmaterial" },
+        { name: "instantiatePrefab3D", desc: "Instantiates a 3D prefab.", href: "instantiateprefab3d" },
+        { name: "addScript", desc: "Attaches scripts to a 3D object.", href: "addscript" },
+        { name: "getRenderer3D", desc: "Returns the active Three.js renderer.", href: "getrenderer3d" },
+        { name: "getMainCamera3D", desc: "Returns the active main camera from the scene.", href: "getmaincamera3d" },
+        { name: "Particle3D.spawnAt", desc: "Spawns a particle effect at a position.", href: "particle3d-spawnat" },
+        { name: "Particle3D.attachTo", desc: "Attaches a particle effect to a 3D object.", href: "particle3d-attachto" },
+        { name: "startScene3D", desc: "Starts a 3D scene by name.", href: "startscene3d" },
+        { name: "startScene3DByIndex", desc: "Starts a 3D scene by index.", href: "startscene3dbyindex" },
+        { name: "removeScene3D", desc: "Removes a specific 3D scene.", href: "removescene3d" },
+        { name: "removeActiveScenes3D", desc: "Removes all active 3D scenes.", href: "removeactivescenes3d" },
+        { name: "getCurrentScene3D", desc: "Gets the currently active 3D scene.", href: "getcurrentscene3d" },
+        { name: "getSceneByName", desc: "Finds a scene by name from the scene list.", href: "getscenebyname" },
+        { name: "getSceneList", desc: "Returns all loaded 3D scenes.", href: "getscenelist" },
+        { name: "restartScene3D", desc: "Restarts the current 3D scene.", href: "restartscene3d" },
+        { name: "goToScene3D", desc: "Navigates to another 3D scene, optionally syncing with a 2D scene index.", href: "gotoscene3d" },
+    ]
+} />
+
+---
+
+#### getObject3D
+```ts
+getObject3D(name: string, scene?: Scene3D): StudioObject3D | undefined
+```
+
+Finds a 3D object by its name (label) from a scene.
+
+---
+
+#### cloneAsset
+```ts
+cloneAsset(name: string, scale?: number): Object3D | null
+```
+
+Clones a static 3D model from the cache and applies a uniform scale.
+
+<InnerHeader title="Example Usage" />
+```ts
+const clone = cloneAsset("Tree", 2.0);
+scene.add(clone);
+```
+
+---
+
+#### cloneAssetSkeleton
+```ts
+cloneAssetSkeleton(name: string, scale?: number): Object3D | null
+```
+
+Clones a model with skeleton and animation support (e.g., characters). Uses `SkeletonUtils.clone`.
+
+---
+
+#### getTexture3D
+```ts
+getTexture3D(key: string): THREE.Texture
+```
+
+Retrieves a texture from the 3D cache using its key.
+
+---
+
+#### getMaterial
+```ts
+getMaterial(key: string): THREE.Material
+```
+
+Gets a material from the cache.
+
+---
+
+#### instantiatePrefab3D
+```ts
+instantiatePrefab3D(key: string, props?: any): StudioObject3D
+```
+
+Instantiates a prefab from 3D project data and injects props into its scripts.
+
+<InnerHeader title="Example Usage" />
+```ts
+const enemy = instantiatePrefab3D("EnemyPrefab", { health: 100 });
+```
+
+---
+
+#### addScript
+```ts
+addScript(obj: StudioObject3D, scripts: Script3D[]): void
+```
+
+Attaches one or more `Script3D` components to a given 3D object.
+
+---
+
+#### getRenderer3D
+```ts
+getRenderer3D(): THREE.WebGLRenderer
+```
+
+Returns the current Three.js renderer instance.
+
+---
+
+#### getMainCamera3D
+```ts
+getMainCamera3D(): Camera | undefined
+```
+
+Returns the active main camera from the current 3D scene, if available.
+
+---
+
+#### Particle3D.spawnAt
+```ts
+Particle3D.spawnAt(key: string, position: Vector3, scale: number, scene: Object3D): void
+```
+
+Spawns a particle effect at a specific world position.
+
+---
+
+#### Particle3D.attachTo
+```ts
+Particle3D.attachTo(key: string, target: Object3D, offset: Vector3, scale: number, force?: number): void
+```
+
+Attaches a particle to a target object at an offset position. Optional `force` allows dynamic emission.
+
+---
+
+#### startScene3D
+```ts
+startScene3D(name: string, removeActiveScenes?: boolean): Promise<void>
+```
+
+Starts a 3D scene by name. Optionally removes other active scenes before starting.
+
+---
+
+#### startScene3DByIndex
+```ts
+startScene3DByIndex(index: number, removeActiveScenes?: boolean): Promise<void>
+```
+
+Starts a 3D scene using its index.
+
+---
+
+#### removeScene3D
+```ts
+removeScene3D(scene: Scene3D): void
+```
+
+Removes the specified 3D scene.
+
+---
+
+#### removeActiveScenes3D
+```ts
+removeActiveScenes3D(): void
+```
+
+Removes all currently running 3D scenes.
+
+---
+
+#### getCurrentScene3D
+```ts
+getCurrentScene3D(): Scene3D
+```
+
+Returns the active `Scene3D`.
+
+---
+
+#### getSceneByName
+```ts
+getSceneByName(name: string): Scene3D | undefined
+```
+
+Returns a loaded scene from the internal scene list by its name.
+
+---
+
+#### getSceneList
+```ts
+getSceneList(): Scene3D[]
+```
+
+Returns all available scenes in the system as an array.
+
+---
+
+#### restartScene3D
+```ts
+restartScene3D(): void
+```
+
+Restarts the current 3D scene using the `SceneManager3D`.
+
+---
+
+#### goToScene3D
+```ts
+goToScene3D(sceneName: string, scene2dIndex?: number): void
+```
+
+Switches to a 3D scene and optionally a related 2D scene index.
