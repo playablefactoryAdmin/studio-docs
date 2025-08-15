@@ -154,3 +154,28 @@ You could also then access this module, and manipulate its properties however yo
     </div>
 </div>
 
+
+### Implementation of Base Module Classes
+
+```ts
+interface ShuraSystemFrameState {
+    spawnCount: 0,
+}
+
+export abstract class ShuraEmitterUpdateModuleBase {
+    abstract execute(state: ShuraSystemFrameState, delta: number): number;
+}
+```
+
+```ts
+export abstract class ShuraParticleSpawnModuleBase {
+    public abstract execute(particle: ShuraParticle): void;
+}
+```
+```ts
+export abstract class ShuraParticleUpdateModuleBase {
+    public abstract execute(particle: ShuraParticle, delta: number): void
+}
+```
+
+Simply extend the appropriate base class and override its execute method.
