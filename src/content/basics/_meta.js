@@ -6,4 +6,5 @@ export default {
     toolbar: "Toolbar",
     inspector: "Inspector",
     "asset-viewer": "Asset Viewer",
+    "theming": "Theming",
 };
