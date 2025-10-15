@@ -1,0 +1,110 @@
+# 3D Development Guide
+
+Welcome to the 3D development guide for Studio! This section covers everything you need to know about creating 3D games and experiences using Studio's powerful 3D engine.
+
+## What is 3D Development in Studio?
+
+Studio's 3D engine provides a comprehensive set of tools and components for creating:
+- **3D Games**: First-person shooters, racing games, puzzle games, and more
+- **3D Experiences**: Interactive 3D web experiences and virtual environments
+- **Architectural Visualization**: 3D models and walkthroughs
+- **Product Showcases**: Interactive 3D product presentations
+- **Educational Content**: 3D learning experiences and simulations
+
+## Key Features
+
+- **Real-time 3D Rendering**: High-performance 3D graphics with modern rendering techniques
+- **Material System**: Advanced material editor with PBR (Physically Based Rendering) support
+- **Lighting System**: Dynamic lighting with shadows and reflections
+- **Animation System**: Skeletal animation and keyframe animation support
+- **Physics Integration**: 3D physics simulation for realistic interactions
+- **Model Import**: Support for various 3D model formats
+- **Camera Controls**: Multiple camera types for different perspectives
+- **Particle Effects**: 3D particle systems for visual effects
+
+## Getting Started
+
+### Objects
+Learn about the fundamental 3D objects you can create in Studio:
+
+- **[Inline Model](3d/objects/inlinemodel.mdx)**: Import and use 3D models directly in your scenes
+- **[Lights](3d/objects/lights.mdx)**: Various lighting types for illuminating your 3D scenes
+- **[Model](3d/objects/model.mdx)**: 3D model objects with advanced rendering features
+- **[Node3D](3d/objects/node3d.mdx)**: Basic 3D node for organizing and transforming objects
+- **[Orthographic Camera](3d/objects/orthographic-camera.mdx)**: Camera with orthographic projection
+- **[Perspective Camera](3d/objects/perspective-camera.mdx)**: Camera with perspective projection
+- **[Primitives](3d/objects/primitives.mdx)**: Basic 3D shapes like cubes, spheres, and planes
+- **[Sprite](3d/objects/sprite.mdx)**: 2D sprites in 3D space for UI and effects
+- **[Studio Object 3D](3d/objects/studio-object-3d.mdx)**: Base 3D object class
+
+### Components
+Explore the powerful components that add functionality to your 3D objects:
+
+- **[Basics Component](3d/components/basics-component.mdx)**: Fundamental 3D object properties
+- **[Light Component](3d/components/light-component.mdx)**: Lighting configuration and behavior
+- **[Mesh Component](3d/components/mesh-component.mdx)**: 3D mesh rendering and properties
+- **[Model Component](3d/components/model-component.mdx)**: 3D model management and rendering
+- **[Orthographic Camera Component](3d/components/orthographic-camera-component.mdx)**: Orthographic camera control
+- **[Perspective Camera Component](3d/components/perspective-camera-component.mdx)**: Perspective camera control
+- **[Sprite Component](3d/components/sprite-component.mdx)**: 2D sprites in 3D space
+
+## Advanced Topics
+
+For more advanced 3D development techniques, check out:
+
+- **[Animation](3d/advanced/animation.mdx)**: 3D animation systems and techniques
+- **[Material System](3d/advanced/material-system/index.mdx)**: Advanced material creation and management
+- **[Quarks Particle](3d/advanced/quarks-particle.mdx)**: Advanced particle effects for 3D
+- **[Scenes](3d/advanced/scenes.mdx)**: Scene management and optimization
+- **[Shadows](3d/advanced/shadows.mdx)**: Shadow rendering and configuration
+
+## 3D Development Workflow
+
+### 1. Scene Setup
+- Create a new 3D project
+- Set up cameras and lighting
+- Import or create 3D models
+
+### 2. Material Creation
+- Use the material system to create realistic materials
+- Apply textures and configure material properties
+- Set up lighting and shading
+
+### 3. Animation
+- Add skeletal animations to models
+- Create keyframe animations for objects
+- Set up animation triggers and events
+
+### 4. Physics
+- Add physics components to objects
+- Configure collision detection
+- Set up physics interactions
+
+### 5. Optimization
+- Optimize models and textures
+- Configure LOD (Level of Detail) systems
+- Test performance across different devices
+
+## Best Practices
+
+1. **Model Optimization**: Keep polygon counts reasonable for your target platforms
+2. **Texture Management**: Use appropriate texture sizes and formats
+3. **Lighting**: Balance performance with visual quality in lighting setup
+4. **Material Efficiency**: Use efficient materials and avoid unnecessary complexity
+5. **Performance Monitoring**: Regularly test performance on target devices
+6. **Asset Organization**: Keep your 3D assets well-organized in the project
+
+## Performance Considerations
+
+- **Polygon Count**: Monitor and optimize polygon counts for smooth performance
+- **Texture Memory**: Manage texture memory usage efficiently
+- **Draw Calls**: Minimize draw calls through batching and optimization
+- **LOD Systems**: Implement Level of Detail systems for distant objects
+- **Culling**: Use frustum and occlusion culling to improve performance
+
+## Next Steps
+
+- Explore the [2D Development Guide](../2d/) for 2D game development
+- Check out the [Tutorials](../tutorials/) for step-by-step examples
+- Learn about [DataJS](../datajs/) for dynamic content management
+- Review [Advanced Features](../advanced/) for advanced Studio capabilities
