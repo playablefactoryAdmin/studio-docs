@@ -10,6 +10,40 @@ import { Callout } from "nextra/components";
 
 <SpecialHeader title="Shadows" />
 
+## Enable Shadow Map in Renderer Settings
+
+Before setting up shadows for your lights and objects, you must first enable shadow mapping in the renderer settings.
+
+1. Open the **Renderer Settings** panel (located in the right top corner of the view)
+2. In the **Inspector** panel, find the **Shadow Map** checkbox
+3. Check the **Shadow Map** option to enable shadow rendering
+
+<Image
+  src="/studio-docs/advanced/shadow-rs.png"
+  alt="Renderer Settings - Enable Shadow Map"
+  width={500}
+  height={300}
+  className="mt-6 rounded-xl overflow-hidden"
+/>
+
+Once shadow mapping is enabled, you can proceed with configuring shadows for your lights and objects.
+
+## Shadow Map Types
+
+Three.js offers different shadow map types that affect the quality and performance of shadows in your scene. You can select the shadow map type in the renderer settings:
+
+- **BasicShadowMap**: Provides unfiltered shadow maps. This option is the fastest but offers the lowest quality shadows with hard edges.
+
+- **PCFShadowMap**: Utilizes the Percentage-Closer Filtering (PCF) algorithm to filter shadow maps, resulting in smoother edges compared to BasicShadowMap. This is the default setting in Three.js.
+
+- **PCFSoftShadowMap**: An enhanced version of PCFShadowMap that offers even softer shadows, especially beneficial when using low-resolution shadow maps.
+
+- **VSMShadowMap**: Employs the Variance Shadow Map (VSM) algorithm for filtering. When using VSMShadowMap, all shadow receivers will also cast shadows, which can lead to more realistic lighting but may impact performance.
+
+> **Performance Note**: Higher quality shadow map types (PCFSoftShadowMap, VSMShadowMap) provide better visual results but may impact performance, especially on lower-end devices.
+
+## Configure Light Shadows
+
 Click on the `Directional Light` from the hierarcy.
 
 <Callout type="warning">
