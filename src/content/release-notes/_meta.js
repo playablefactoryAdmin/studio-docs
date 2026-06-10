@@ -1,4 +1,5 @@
 export default {
+    "1.6.0": "Version 1.6.0",
     "1.5.9": "Version 1.5.9",
     "1.5.8": "Version 1.5.8",
     "1.5.7": "Version 1.5.7",
