@@ -18,5 +18,5 @@ Here's an example of how to use `Video`:
   "id": "uniqueIdentifier",
   "name": "Introduction Video",
   "desc": "Embeds an introductory video on the website.",
-  "default": "base64...",
+  "default": null,
 }

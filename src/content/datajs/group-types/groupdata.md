@@ -8,6 +8,7 @@
 - **desc (string)**: A description.
 - **default (undefined)**: The default value (undefined, as it's not a selectable value).
 - **accordion (boolean)**: Whether the group functions as an accordion, allowing expansion and collapse.
+- **opened (boolean, Optional)**: When `accordion` is true, controls whether the group is opened by default.
 - **items (DataItem[])**: A list of DataItems.
 
 ## Example
@@ -22,7 +23,9 @@ Here's an example of how to use `Group`:
   "desc": "Organizes product information into groups.",
   "default": undefined,
   "accordion": true,
+  "opened": true,
   "items": [
     /* List of DataItems representing product details */
-  ],
+  ]
 }
+```

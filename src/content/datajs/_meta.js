@@ -1,4 +1,6 @@
 export default {
+    commonfields: "Common Fields",
+    globalprops: "GlobalProps",
     "basic-types": {
         title: "Basic Types"
     },
@@ -11,11 +13,14 @@ export default {
     "group-types": {
         title: "Group Types"
     },
+    "ai-types": {
+        title: "AI Types"
+    },
+    "endcard-types": {
+        title: "End Card / Shell Types"
+    },
     "advanced-types": {
         title: "Advanced Types"
     },
-
-    "slottextdata": {
-        display: "hidden"
-    }
+    quickconvert: "Quick Convert"
 }

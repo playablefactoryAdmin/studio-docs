@@ -9,7 +9,7 @@
 - **default (number)**: The default value.
 - **min (number)**: The minimum value.
 - **max (number)**: The maximum value.
-- **step (number)**: The step value.
+- **step (number, Optional)**: The step value.
 
 ## Example
 
@@ -24,7 +24,7 @@ Here's an example of how to use `Range`:
   "default": 25,
   "min": 0,
   "max": 100,
-  "step": 1,
+  "step": 1
 }
 ```
 

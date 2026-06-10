@@ -7,11 +7,11 @@
 - **name (string)**: A human-readable name.
 - **desc (string)**: A description.
 - **default (number | number[])**: The default value(s).
-- **multipleSelection (boolean)**: Allows multiple selections.
+- **multipleSelection (boolean, Optional)**: Allows multiple selections.
 - **options (string[])**: List of available options.
 - **min (number, Optional)**: Minimum number of selections.
 - **max (number, Optional)**: Maximum number of selections.
-- **layout ("auto" "flex", Optional default "auto")**: Automatically align vertical or horizontal, or put options in a "flex" layout with wrap at the end of line.
+- **layout ("auto" | "flex", Optional)**: Automatically align vertical or horizontal (`auto`, default), or put options in a `flex` layout with wrap at the end of line.
 
 ## Example
 
@@ -27,5 +27,6 @@ Here's an example of how to use `Select`:
   "multipleSelection": true,
   "options": ["Apple", "Banana", "Cherry", "Orange"],
   "min": 1,
-  "max": 3,
+  "max": 3
 }
+```

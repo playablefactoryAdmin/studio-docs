@@ -7,12 +7,13 @@
 - **name (string)**: A human-readable name.
 - **desc (string)**: A description.
 - **default (number | number[])**: The default value(s).
-- **multipleSelection (boolean)**: Allows multiple image selections.
+- **multipleSelection (boolean, Optional)**: Allows multiple image selections.
 - **options (string[])**: List of available image options.
 - **min (number, Optional)**: Minimum number of selections.
 - **max (number, Optional)**: Maximum number of selections.
-- **size (string)**: Specifies the image size ("sm," "md," "lg").
-- **display ("cover" | "contain" | "responsive")**: how to display the image in the editor (default cover).
+- **size ("xxs" | "xs" | "sm" | "md" | "lg")**: Specifies the image size.
+- **display ("cover" | "contain" | "responsive", Optional)**: How to display the image in the editor (default `cover`).
+- **displayOnly (boolean, Optional)**: When true, the images are shown but not interactable (display-only mode).
 
 ## Example
 
@@ -32,3 +33,4 @@ Here's an example of how to use `SelectImage`:
   "size": "md",
   "display": "responsive"
 }
+```

@@ -9,8 +9,11 @@
 - **default (any[])**: The default value, which is an array of items.
 - **min (number)**: The minimum number of repetitions.
 - **max (number)**: The maximum number of repetitions.
-- **defaultLimit (number)**: When default limit is set to x, the default value will only contain the first x items in default property. When new items are added, they are taken from the same index position default item. If max is larger than the default array, remaining items are initialized normally.
-- **template (object)**: An object with `templateName` (string) and `items` (DataItem[]). Template name can contain $index, which will be replaced by the index of the item. "id" fields still have to be unique with the rest of the file. Please do not put repeaters in other repeaters!
+- **defaultLimit (number, Optional)**: When `defaultLimit` is set to x, the default value will only contain the first x items in the `default` property. When new items are added, they are taken from the same index position default item. If `max` is larger than the default array, remaining items are initialized normally.
+- **template (object)**: An object with:
+  - `templateName` (string): Can contain `$index` (or `$(index+N)`) which will be replaced by the index of the item. `id` fields still have to be unique with the rest of the file. Please do not put repeaters in other repeaters!
+  - `items` (DataItem[]): List of DataItems for each repeated entry.
+  - `startIndex` (number, Optional): Controls how `$index` and `$(index+N)` placeholders are numbered. For example, `startIndex: 2` makes the first repeater item use `$index` => 2.
 
 ## Example
 
@@ -35,6 +38,7 @@ Here's an example of how to use `Repeater`:
   "max": 5,
   "template": {
     "templateName": "taskTemplate $index",
+    "startIndex": 1,
     "items": [
       {
         "type": "text",
@@ -55,6 +59,6 @@ Here's an example of how to use `Repeater`:
         "default": null
       }
     ]
-  },
+  }
 }
 ```

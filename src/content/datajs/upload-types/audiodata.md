@@ -19,6 +19,6 @@ Here's an example of how to use `Audio`:
   "id": "uniqueIdentifier",
   "name": "Background Music",
   "desc": "Specifies the background music for the application.",
-  "default": "base64...",
+  "default": null,
   "tab": "Settings"
 }
